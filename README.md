@@ -1,4 +1,4 @@
-ptolemy
-=======
+# ptolemy
 
-Developing archival editions and data sets for reading Ptolemy
+A project developing archival editions and data sets for reading Ptolemy.
+
