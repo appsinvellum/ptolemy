@@ -1,0 +1,149 @@
+
+/*
+----------------------------------
+Handle TEI elements (constructed by getPassage.xsl)
+----------------------------------
+*/
+
+:lang(ar){
+	text-align: right;
+}
+
+.lineNumber {
+	margin-right: 1em;
+	color: #aaa;
+	background-color:inherit;
+	margin-right: 3em;
+	/* float: right; */
+}
+
+:lang(ar) .lineNumber {
+	float: right;
+	margin-left: 3em;
+}
+
+.unclearText {
+	color: grey;
+}
+
+.suppliedText {
+	color: #69C;
+}
+
+
+.sic {
+	color: red;
+}
+
+.corr {
+	color: green;
+}
+
+.bookNumber {
+	font-size: 125%;
+	color: maroon;
+	margin-bottom: 0.5em;
+}
+
+.book {
+	margin: 2em;
+}
+
+.title {
+	font-style: oblique;
+}
+
+.supralinearText {
+	color: red;
+	vertical-align: super;
+}
+
+del {
+	text-decoration: line-through;
+	color: red;
+}
+
+.primaryTitle {
+	font-style: oblique;
+}
+
+.note {
+	display: block;
+	float: right;
+	width: 40%;
+	font-size: 85%;
+	border-left: 1px solid black;
+	padding-left: 1em;
+}
+
+.fragment {
+	background: blue;
+}
+
+.column {
+
+}
+
+.speaker {
+	font-weight: bold;
+}
+
+p {
+	display: block;
+	}
+	
+bibl:before {
+	content: " (";
+}
+
+bibl {
+	display: block;
+	color: maroon;
+	margin-left: 3em;
+	font-size: 70%;
+	margin-bottom: 1em;
+	}
+
+bibl:after {
+	content: ") ";
+}
+
+.note bibl {
+	display: inline;
+	color: maroon;
+	margin-left: 0em;
+	font-size: 100%;
+	margin-bottom: 0em;
+	}
+
+.note bibl:before {
+	content: "";
+}
+
+.note bibl:after {
+	content: "";
+}
+
+
+.metadata {
+	  color : gray;
+}
+
+
+table {
+      margin : 2em;
+}
+
+td {
+	padding : 0.4em;
+	border-left : solid 1px maroon;
+}
+
+span.greekFract:after {
+ content: "' ";
+}
+
+span.greekInt {
+text-decoration:overline;
+}
+
