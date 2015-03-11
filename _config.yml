@@ -1,0 +1,37 @@
+# Dependencies
+markdown:         redcarpet
+pygments:         true
+
+# Permalinks
+permalink:        pretty
+
+# Setup
+title:            The Ptolemy Machine
+tagline:          ''
+description:      ''
+baseurl: '/ptolemy/'
+
+
+author:
+  name:           'Neel Smith'
+ 
+
+paginate:         5
+
+github:
+  repo:           https://github.com/neelsmith/hocuspocus
+
+version:          0.12.0
+
+links:
+  - title: Live specification
+    url: /specs/ptolemy/Ptolemy.html
+  - title: API docs
+    url: /api
+  - title: Github project
+    url: https://github.com/neelsmith/ptolemy
+    external: true
+  - title: NS on github
+    url: http://neelsmith.github.io/
+    external: true
+   
