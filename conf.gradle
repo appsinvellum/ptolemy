@@ -1,0 +1,13 @@
+
+ext {
+    tischemaurl = "http://www.homermultitext.org/hmtschemas/TextInventory.rng"
+
+    mdSrc = "specs/md"
+    
+    htmlPreface = """
+<html xmlns:concordion="http://www.concordion.org/2007/concordion">
+<body>
+    """
+    htmlEnd = "</body>\n</html>\n"
+    tokenMap = [    "openex": "<div class='example'>", "closeex" : "</div>"]
+}
