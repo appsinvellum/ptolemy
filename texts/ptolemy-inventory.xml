@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?oxygen RNGSchema="TextInventory.rng" type="xml"?>
+
+<TextInventory 
+  xmlns="http://chs.harvard.edu/xmlns/cts"
+   tiversion="5.0.rc.1">
+  
+  <ctsnamespace abbr="greekLit" ns="http://chs.harvard.edu"/>
+
+  <textgroup 
+    urn="urn:cts:greekLit:tlg0363:">
+    <groupname
+      xml:lang="eng">Claudius Ptolemy</groupname>
+    <work
+      urn="urn:cts:greekLit:tlg0363.tlg009:"
+      xml:lang="grc">
+      <title
+        xml:lang="eng">Geography</title>
+      <edition
+        urn="urn:cts:greekLit:tlg0363.tlg009.hc01:">
+        <label
+          xml:lang="eng">Smith</label>
+        <description xml:lang="eng">Electronic edition created by Neel Smith</description>
+        <online
+          docname="editions/ptolemy-geo-hc.xml">
+          
+          <namespaceMapping
+            abbreviation="tei"
+            nsURI="http://www.tei-c.org/ns/1.0"/>
+          <citationMapping>
+            
+            <citation
+              label="book"
+              scope="/tei:TEI/tei:text/tei:body"
+              xpath="/tei:div[@n='?']">
+              <citation
+                label="chapter"
+                scope="/tei:TEI/tei:text/tei:body/tei:div[@n='?']"
+                xpath="/tei:div[@n = '?']">
+                <citation
+                  label="section"
+                  scope="/tei:TEI/tei:text/tei:body/tei:div[@n='?']/tei:div[@n = '?']"
+                  xpath="/tei:div[@n = '?']">
+              </citation>
+              
+            </citation>
+         
+         </citation>
+         
+         
+          </citationMapping>
+        </online>
+      </edition>
+    </work>
+  </textgroup>
+  
+    
+</TextInventory>
