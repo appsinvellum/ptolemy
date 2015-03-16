@@ -6,15 +6,19 @@ For an introduction to the Ptolemy Machine — what it is, and why — see the [
 
 The Ptolemy Machine works directly from a digital edition of Ptolemy's *Geography*.   Its archival form is a TEI-compliant XML document, following markup conventions specified [here](markup/Markup.html).
 
-The first task to specify is extracting Ptolemy's data set from the archival TEI XML edition of the text.
+The central data structure is comprised of the 1264 lists containing site names with coordinate locations in longitude and latitude.  The text's hierarchy of book and chapter defines the situation of each list in the proper continent and politcial unit (province of the Roman Empire, or "satrapy" of a foreign state).  Within that hierarchy, each list contains data for a single combination of ethnic group, physical region, and geographic type.  
 
-From an XML source text, we need to extract `list` items that contain paired `name` and `measure` elements.
+The Ptolemy Machine extracts from  the archival TEI XML edition of the text the two essential related data sets:  the 1264 lists, and the 6341 items with corrdinates contained in the lists.
 
-Citation hierarchy is book/chapter/section in `div/div/div`.  Books ~ continents, chapters ~ provinces, sections ~ geotype.
 
-Rather than adding ever more markup to the XML, we will annotate these analytically.
 
-We will also align this edition with other analyses of Ptolemy.
+
+## Alignment with other projects ##
+
+The CITE Collection of sites could be aligned with the Bern database of Ptolemaic sites, and with identifiers in the Pleiades Gazetteer.
+
+
+
 
 
 ## Information about code dependencies ##
