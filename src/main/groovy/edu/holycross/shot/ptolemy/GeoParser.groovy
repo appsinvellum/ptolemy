@@ -54,7 +54,7 @@ class GeoParser {
 	    if (coords.size() != 4) {
 	      throw new Exception("GeoParser: too few coordinates for site ${siteUrn} in list ${listId}")
 	    }
-	    def dataRecord = [listId, itemIdx, siteName, coords[0], coords[1], coords[2], coords[3]]
+	    def dataRecord = [siteTotal, listId, itemIdx, siteName, coords[0], coords[1], coords[2], coords[3]]
 
 	    siteMap[siteUrn] = dataRecord
 	    itemIdx++
@@ -82,7 +82,7 @@ class GeoParser {
 	    if (coords.size() != 4) {
 	      throw new Exception("GeoParser: too few coordinates for site ${siteUrn} in list ${listId}")
 	    }
-	    def dataRecord = [listId, itemIdx, siteName, coords[0], coords[1], coords[2], coords[3]]
+	    def dataRecord = [siteTotal, listId, itemIdx, siteName, coords[0], coords[1], coords[2], coords[3]]
 
 	    siteMap[siteUrn] = dataRecord
 	    itemIdx++

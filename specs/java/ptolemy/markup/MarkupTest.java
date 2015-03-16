@@ -1,4 +1,4 @@
-package ptolemy.dependencies;
+package ptolemy.markup;
 
 
 import org.concordion.integration.junit3.ConcordionTestCase;
