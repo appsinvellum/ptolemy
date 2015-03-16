@@ -22,7 +22,7 @@
           xml:lang="eng">Smith</label>
         <description xml:lang="eng">Electronic edition created by Neel Smith</description>
         <online
-          docname="editions/ptolemy-geo-hc.xml">
+          docname="ptolemy-geo-hc.xml">
           
           <namespaceMapping
             abbreviation="tei"

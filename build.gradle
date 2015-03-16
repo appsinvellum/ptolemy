@@ -101,6 +101,10 @@ dependencies {
   // DOCUMENT THESE: 
   compile group: 'edu.harvard.chs', name : 'cite' , version: citeVersion
   compile group: 'edu.harvard.chs', name : 'greekutils' , version: greekutilsVersion
+
+  compile group: 'edu.holycross.shot', name : 'greeklang' , version: greeklangVersion
+
+  
   schemas group: 'edu.harvard.chs', name: 'cite', version: citeVersion, classifier: 'schemas', ext: 'zip'
 
 }
@@ -212,7 +216,8 @@ addVersion.doLast {
   tokenMap["version"] = version
   tokenMap["deps"] = """
     <tr><td>cite</td><td>${citeVersion}</td></tr>
-    <tr><td>greekutils</td><td>${greekutilsVersion}</td></tr>""".toString() 
+    <tr><td>greekutils</td><td>${greekutilsVersion}</td></tr>
+    <tr><td>greeklang</td><td>${greeklangVersion}</td></tr>""".toString() 
 }
 
 task conc(type: Copy, dependsOn: [test, addVersion]) {

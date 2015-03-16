@@ -11,6 +11,7 @@ ext {
 
  // report these in specs listing
  // of cite dependencies
+ greeklangVersion = '0.0.3'
  citeVersion = '0.93.0'
  greekutilsVersion = '0.8.5'
 
