@@ -1,6 +1,10 @@
 # Specifications for the Ptolemy Machine, version @version@ #
 
-The initial focus of the Ptolemy Machine  is Ptolemy's *Geography*.
+For an introduction to the Ptolemy Machine — what it is, and why — see the [project web site](http://neelsmith.github.io/ptolemy/).  This document specifies the computational system introduced there.  In this version, the focus of work is Ptolemy's *Geography*.
+
+## Data structures ##
+
+The Ptolemy Machine works directly from a digital edition of Ptolemy's *Geography*.   Its archival form is a TEI-compliant XML document, following markup conventions specified [here](markup/Markup.html).
 
 The first task to specify is extracting Ptolemy's data set from the archival TEI XML edition of the text.
 
@@ -12,24 +16,7 @@ Rather than adding ever more markup to the XML, we will annotate these analytica
 
 We will also align this edition with other analyses of Ptolemy.
 
-Sample markup.
 
+## Information about code dependencies ##
 
-
-    <div  ana='#massalia' n='2' type='paralios'>
-                       <p > Περιγράφεται δὲ ἡ παράλιος πᾶσα τὸν τρόπον τοῦτον· μετὰ τὰς
-                            τοῦ Οὐάρου ποταμοῦ ἐκβολὰς ἐν τῷ Λιγυστικῷ πελάγει <rs  type='ethnic'>Μασσαλιωτῶν</rs>
-                        </p>
-                        <list  ana='#liguriansea' type='simple'>
-                            <item >
-                                <name  key='pt-ll-1114' type='place'>Νίκαια</name>
-                                <measure  type='llpair'>
-                                    <num  type='cardinal'>κη</num>
-                                    <num  type='fraction'/>
-                                    <num  type='cardinal'>μγ</num>
-                                    <num  type='fraction'>ιβ</num>
-                                </measure>
-                            </item>
-
-
-
+[dependencies](dependencies/Dependencies.html)

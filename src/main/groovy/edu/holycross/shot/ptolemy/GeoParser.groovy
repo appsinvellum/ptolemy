@@ -10,8 +10,6 @@ class GeoParser {
   /** TEI namespace as a groovy Namespace object. */
   static groovy.xml.Namespace tei = new groovy.xml.Namespace("http://www.tei-c.org/ns/1.0")
 
-
-
   /** Root of parsed document. */
   groovy.util.Node root
 
@@ -42,6 +40,7 @@ class GeoParser {
 
 	  Integer itemIdx = 0
 	  l[tei.item].each {  i ->
+	    // get name and measure from each item:
 	    siteTotal++;
 	    String siteName =  i[tei.name].text().replaceAll(/[\n\r]/,'')
 	    siteName = siteName.replaceAll(/[ \t]+/,' ')
@@ -59,9 +58,7 @@ class GeoParser {
 
 	    siteMap[siteUrn] = dataRecord
 	    itemIdx++
-	    // get name
-	    
-	    // get measure
+
 	  }
 	}
       }
@@ -71,6 +68,7 @@ class GeoParser {
 	  String listId = formListUrn(count)
 	  Integer itemIdx = 0
 	  l[tei.item].each {  i ->
+	    // get name and measure from each item:
 	    siteTotal++;
 	    String siteName =  i[tei.name].text().replaceAll(/[\n\r]/,'')
 	    siteName = siteName.replaceAll(/[ \t]+/,' ')
