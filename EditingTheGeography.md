@@ -22,15 +22,3 @@
 
 - implement a gradle build task generating the point from current edition and validating the inventory
 
-### Aligning the editions with other work on Ptolemy ###
-
-- Pelagios.  Collaborate in order share the joy and labor of identifying Ptolemy's taxonomy.  How can we best associate this project's identifiers with Pelagios identifiers?
-- Recent Bern edition and associated database.  As each section of the text is validated, each geographic entity will be checked for alignment with the Bern database; conversely, each Bern entry in the corresponding section of the text will be checked against this project's inventory.
-
-
-### Manual indexing ###
-
-Need to define in conjunction with Pelagios group a standard vocabulary for Ptolemy's taxonomy of:
-    - physical geographic type
-    - physical geographic area
-    - ethnic/cultural group
