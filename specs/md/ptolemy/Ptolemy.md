@@ -6,12 +6,23 @@ For an introduction to the Ptolemy Machine — what it is, and why — see the [
 
 The Ptolemy Machine works directly from a digital edition of Ptolemy's *Geography*.   Its archival form is a TEI-compliant XML document, following markup conventions specified [here](markup/Markup.html).
 
-The central data structure is comprised of the 1264 lists containing site names with coordinate locations in longitude and latitude.  The text's hierarchy of book and chapter defines the situation of each list in the proper continent and politcial unit (province of the Roman Empire, or "satrapy" of a foreign state).  Within that hierarchy, each list contains data for a single combination of ethnic group, physical region, and geographic type.  
+The central data structure is comprised of the lists containing site names with coordinate locations in longitude and latitude.  The text's hierarchy of book and chapter defines the situation of each list in the proper continent and politcial unit (province of the Roman Empire, or "satrapy" of a foreign state).  Within that hierarchy, each list contains data for a single combination of ethnic group, physical region, and geographic type.  
 
 The Ptolemy Machine extracts from  the archival TEI XML edition of the text the two essential related data sets:  the 1264 lists, and the 6341 items with corrdinates contained in the lists.
 
 
 
+@openex@
+
+### Examples ###
+
+Counting the lists found in the archival XML source gives a total of 
+<strong concordion:assertEquals="countLists()">1264</strong> lists.
+
+
+Counting the number of sites with lon-lat coordinates in these lists gives a total of 
+<strong concordion:assertEquals="countSites()">6341</strong> sites.
+@closeex@
 
 ## Alignment with other projects ##
 
