@@ -23,11 +23,25 @@ class DataManager {
 
 
 
+  /** Checks if a string is a valid Ptolemaic value for
+   * the equautor (latitude 0).
+   * @param latString The string to check.
+   * @returns True if latString is a valid value for the equator.
+   */
   boolean isEquator(String latString) {
     return ((latString == equator) || (latString == equator_acc) || (latString == equator_abbr))
   }
   
-  /**
+
+  /** Checks all coordinates in a map of site name to
+   * data collection.
+   * @param mapSource A map keyed by URNs for sites,
+   * containing arrays composed of the following properties:
+   * sequence within the work, URN for the list it bleongs to,
+   * sequence withint the list, name of the site, lon. degree,
+   * lon. fraction, lat. degree, lat. fraction and a boolean 
+   * value indicating wheter or not latitude is south of the equator.
+   * @returns True if all coordinates are valid.
    */
   boolean validateCoords(HashMap mapSource) {
     boolean ok = true
@@ -98,38 +112,8 @@ class DataManager {
   }
       
 
-  // cols 5-8 are the coords
-  boolean validateCoords(File tsvSource) {
-    Integer count = 0
-    boolean ok = true
-    tsvSource.eachLine { l ->
-      if (count > 0) {
-	def cols = l.split(/\t/)
 
-	if (cols.size() < 9) {
-	  System.err.println "Only ${cols.size()} columns in ${l}"
-	} else {
 
-	
-	  String lonDeg = cols[5]
-	  try {
-	    MilesianInteger mi = new MilesianInteger(lonDeg)
-	  } catch (Exception e) {
-	    System.err.println "Could not parse ${lonDeg} in row ${l}"
-	    ok = false
-	  }
-	
-	  String lonFract = cols[6]
-	  String latDeg = cols[7]
-	  String latFract = cols[8]
-	}
-	
-	
-      }
-      count++
-    }
-    return ok
-  }
   
   
 }
