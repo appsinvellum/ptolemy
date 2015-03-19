@@ -8,16 +8,27 @@ import edu.holycross.shot.greekutils.MilesianString
 /**
  * A class for managing tabular data in .csv or .tsv format.
  */
-class TableManager {
+class DataManager {
 
   static String equator = "ἰσημερινός"
+  static String equator_acc = 'ἰσημερινόν'
+  static String equator_abbr = 'ἰσημεριν.'
 
+  
+  
   /** Constructor.
    */
-  TableManager() {
+  DataManager() {
   }
 
 
+
+  boolean isEquator(String latString) {
+    return ((latString == equator) || (latString == equator_acc) || (latString == equator_abbr))
+  }
+  
+  /**
+   */
   boolean validateCoords(HashMap mapSource) {
     boolean ok = true
     Integer errCount = 0
@@ -52,12 +63,19 @@ class TableManager {
       }
 
 
-      try {
-	MilesianInteger mi = new MilesianInteger(latDeg)
-      } catch (Exception e) {
-	System.err.println "Could not parse lat.deg. ${latDeg} in row ${siteData}"
-	ok = false
-	errCount++
+      if (isEquator(latDeg)) {
+	// valid value == 0
+      } else if (latDeg.size() == 0) {
+	//  empty string == valid value of 0
+      } else {
+
+	try {
+	  MilesianInteger mi = new MilesianInteger(latDeg)
+	} catch (Exception e) {
+	  System.err.println "Could not parse lat.deg. ${latDeg} in row ${siteData}"
+	  ok = false
+	  errCount++
+	    }
       }
       
 
