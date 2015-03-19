@@ -170,6 +170,14 @@ task cpResources(type: Copy) {
   into "${buildDir}/specs"
 }
 
+task cpCollections(type: Copy) {
+  from "collections"
+  into "${buildDir}/collections"
+  description "Copies CITE Collections in .csv and .tsv format to build area"
+}
+
+
+
 task setUpResources(dependsOn: cpResources) {
 }
 setUpResources.doLast {
@@ -220,7 +228,7 @@ addVersion.doLast {
     <tr><td>greeklang</td><td>${greeklangVersion}</td></tr>""".toString() 
 }
 
-task conc(type: Copy, dependsOn: [test, addVersion]) {
+task conc(type: Copy, dependsOn: [test, addVersion, cpCollections]) {
 //task conc(type: Copy) {
   from "${buildDir}/concordion-results"
   into "${buildDir}/concordion-formatted"
