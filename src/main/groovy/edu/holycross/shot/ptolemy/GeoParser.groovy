@@ -40,6 +40,7 @@ class GeoParser {
 
 	  Integer itemIdx = 0
 	  l[tei.item].each {  i ->
+	    boolean negativeLat = false
 	    // get name and measure from each item:
 	    siteTotal++;
 	    String siteName =  i[tei.name].text().replaceAll(/[\n\r]/,'')
@@ -49,12 +50,15 @@ class GeoParser {
 	    def coords = []
 	    i[tei.measure][tei.num].each { digit ->
 	      coords.add(digit.text())
+	      if (digit.'@n' == "NO/T") {
+		negativeLat = true
+	      }
 	    }
 
 	    if (coords.size() != 4) {
 	      throw new Exception("GeoParser: too few coordinates for site ${siteUrn} in list ${listId}")
 	    }
-	    def dataRecord = [siteTotal, listId, itemIdx, siteName, coords[0], coords[1], coords[2], coords[3]]
+	    def dataRecord = [siteTotal, listId, itemIdx, siteName, coords[0], coords[1], coords[2], coords[3], negativeLat]
 
 	    siteMap[siteUrn] = dataRecord
 	    itemIdx++
@@ -68,6 +72,7 @@ class GeoParser {
 	  String listId = formListUrn(count)
 	  Integer itemIdx = 0
 	  l[tei.item].each {  i ->
+	    boolean negativeLat = false
 	    // get name and measure from each item:
 	    siteTotal++;
 	    String siteName =  i[tei.name].text().replaceAll(/[\n\r]/,'')
@@ -77,13 +82,16 @@ class GeoParser {
 	    def coords = []
 	    i[tei.measure][tei.num].each { digit ->
 	      coords.add(digit.text())
+	      if (digit.'@n' == "NO/T") {
+		negativeLat = true
+	      }
 	    }
 
 	    if (coords.size() != 4) {
 	      throw new Exception("GeoParser: too few coordinates for site ${siteUrn} in list ${listId}")
 	    }
-	    def dataRecord = [siteTotal, listId, itemIdx, siteName, coords[0], coords[1], coords[2], coords[3]]
 
+	    def dataRecord = [siteTotal, listId, itemIdx, siteName, coords[0], coords[1], coords[2], coords[3], negativeLat]
 	    siteMap[siteUrn] = dataRecord
 	    itemIdx++
 	  }
