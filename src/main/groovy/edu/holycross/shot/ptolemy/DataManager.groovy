@@ -1,4 +1,6 @@
-package edu.holycross.shot.ptolemy;
+package edu.holycross.shot.ptolemy
+
+import groovy.json.JsonBuilder
 
 import edu.holycross.shot.greekutils.MilesianInteger
 import edu.holycross.shot.greekutils.MilesianFraction
@@ -46,10 +48,18 @@ class DataManager {
   boolean validateCoords(HashMap mapSource) {
     boolean ok = true
     Integer errCount = 0
+    
     mapSource.keySet().each { site ->
       def siteData = mapSource[site]
+
       String lonDeg = siteData[4]
+      String lonFract = siteData[5]
       String latDeg = siteData[6]
+      String latFract = siteData[7]
+      
+      String demarcatedLon = lonFract + '"'
+      String demarcatedLat = latFract + '"'
+
       try {
 	MilesianInteger mi = new MilesianInteger(lonDeg)
       } catch (Exception e) {
@@ -57,13 +67,7 @@ class DataManager {
 	ok = false
 	errCount++
       }
-
       
-
-      String lonFract = siteData[5]
-      String latFract = siteData[7]
-      String demarcatedLon = lonFract + '"'
-      String demarcatedLat = latFract + '"'
       if (lonFract.size() > 0) {
 	try {
 	  MilesianFraction mf = new MilesianFraction(demarcatedLon)
@@ -75,7 +79,6 @@ class DataManager {
 	  errCount++;
 	}
       }
-
 
       if (isEquator(latDeg)) {
 	// valid value == 0
@@ -104,7 +107,6 @@ class DataManager {
 	  errCount++;
 	}
       }
-	    
       
     }
     System.err.println "Totals: ${errCount} errors found"
@@ -112,8 +114,132 @@ class DataManager {
   }
       
 
+  String toGeoJson(HashMap coordMap) {
+    def featureList = []
+    
+    coordMap.keySet().each { site ->
+      def coords  = coordMap[site]
+      
+      GeoJsonSite gjSite = new GeoJsonSite(geometry: [:], properties: [:], type: 'Feature')
+      gjSite.properties = ['urn': site]
+      gjSite.geometry = ['coordinates': [coords[0], coords[1]], 'type': 'Point']
+      featureList.add(gjSite)
+    }
 
+    JsonBuilder bldr = new groovy.json.JsonBuilder()
+    bldr(type : 'FeatureCollection', features : featureList)
+    return bldr.toPrettyString()
+  }
 
   
-  
+
+  /** Takes a map of site URNs to Ptolemy data arrays,
+   * and generates a map of site URNs to lon-lat pairs.
+   * @param mapSource Source data map.
+   * @returns Map of lon-lat pairs.
+   */
+  HashMap convertCoords(HashMap mapSource) {
+
+    HashMap decimalCoords = [:]
+    mapSource.keySet().each { site ->
+      boolean ok = true
+      
+      BigDecimal lon = 0
+      BigDecimal lat = 0
+    
+      def siteData = mapSource[site]
+      String lonDeg = siteData[4]
+      String lonFract = siteData[5]
+      String latDeg = siteData[6]
+      String latFract = siteData[7]
+      
+      String demarcatedLon = lonFract + '"'
+      String demarcatedLat = latFract + '"'
+
+
+      MilesianInteger milLon
+      MilesianInteger milLat
+
+      MilesianFraction milLonFract
+      MilesianFraction milLatFract
+
+      
+      try {
+	milLon = new MilesianInteger(lonDeg)
+      } catch (Exception e) {
+	System.err.println "Could not parse lon.deg. ${lonDeg} in row ${siteData}"
+	ok = false
+	errCount++
+      }
+      
+      if (lonFract.size() > 0) {
+	try {
+	  milLonFract = new MilesianFraction(demarcatedLon)
+	  
+	} catch (Exception e) {
+	  System.err.println "Could not parse lon.fraction ${demarcatedLon} in row ${siteData}"
+	  System.err.println "\tlen was ${lonFract.length()} with ${lonFract.codePointCount(0,lonFract.length())} code points, first one at ${lonFract.codePointAt(0)}.\n\n"
+	  ok = false
+	  errCount++;
+	}
+      }
+
+      if (isEquator(latDeg)) {
+	// valid value == 0
+      } else if (latDeg.size() == 0) {
+	//  empty string == valid value of 0
+      } else {
+
+	try {
+	  milLat = new MilesianInteger(latDeg)
+	} catch (Exception e) {
+	  System.err.println "Could not parse lat.deg. ${latDeg} in row ${siteData}"
+	  ok = false
+	  errCount++;
+	}
+      }
+      
+
+      if (latFract.size() > 0) {
+	try {
+	  milLatFract = new MilesianFraction(demarcatedLat)
+	  
+	} catch (Exception e) {
+	  System.err.println "Could not parse lon.fraction ${demarcatedLat} in row ${siteData}"
+	  System.err.println "\tlen was ${lonFract.length()} with ${latFract.codePointCount(0,latFract.length())} code points, first one at ${latFract.codePointAt(0)}.\n\n"
+	  ok = false
+	  errCount++;
+	}
+      }
+      
+      if (ok) {
+	lon = 0
+	lat = 0
+	if (milLon != null) {
+	  lon = milLon.toInteger() as BigDecimal
+	}
+	if (milLonFract != null) {
+	  lon += milLonFract.getFractionValue()
+	}
+
+	if (milLat != null) {
+	  lat = milLat.toInteger() as BigDecimal
+	}
+	if (milLatFract != null) {
+	  lat += milLatFract.getFractionValue()
+	}
+
+	// ADD CHECK FOR NEGATIVE LAT!
+
+	ArrayList coords = [lon, lat]
+	decimalCoords[site] = coords
+      }
+      
+      
+    }
+    return decimalCoords
+  }
+
 }
+
+
