@@ -30,7 +30,7 @@ class DataManager {
    * @param latString The string to check.
    * @returns True if latString is a valid value for the equator.
    */
-  boolean isEquator(String latString) {
+  static boolean isEquator(String latString) {
     return ((latString == equator) || (latString == equator_acc) || (latString == equator_abbr))
   }
   
@@ -240,6 +240,16 @@ class DataManager {
     return decimalCoords
   }
 
+  HashMap sitesForList(HashMap siteHash, String listId) {
+  }
+  
+  HashMap sitesForPassage(HashMap listHash, HashMap siteHash, String urnString) {
+    HashMap filtered = [:]
+    
+    
+    return filtered
+  }
+  
 }
 
 

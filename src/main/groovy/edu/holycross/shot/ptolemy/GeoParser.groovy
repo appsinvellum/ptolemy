@@ -1,5 +1,10 @@
 package edu.holycross.shot.ptolemy;
 
+import edu.holycross.shot.greekutils.MilesianInteger
+import edu.holycross.shot.greekutils.MilesianFraction
+import edu.holycross.shot.greekutils.GreekString
+
+
 /**
  * A class for parsing the geographic database in Ptolemy's Geography.  
  * Works from a TEI source file following a specified set
@@ -91,6 +96,10 @@ class GeoParser {
 	      throw new Exception("GeoParser: too few coordinates for site ${siteUrn} in list ${listId}")
 	    }
 
+
+
+	    // Replace this with a PtolemySite object
+	    
 	    def dataRecord = [siteTotal, listId, itemIdx, siteName, coords[0], coords[1], coords[2], coords[3], negativeLat]
 	    siteMap[siteUrn] = dataRecord
 	    itemIdx++
@@ -100,7 +109,138 @@ class GeoParser {
     }
     return siteMap
   }
-  
+
+
+
+
+
+
+
+
+  ArrayList indexPtolemySites ()
+  throws Exception{
+    def siteList = []
+    Integer count = 0
+    Integer siteTotal = 0
+    root[tei.text][tei.body][tei.div][tei.div][tei.div].each { divNode ->
+      divNode[tei.list].each { l -> 
+	if (l.'@type' == "simple") {
+	  count++;
+	  String listId = formListUrn(count)
+
+	  Integer itemIdx = 0
+	  l[tei.item].each {  i ->
+	    boolean negativeLat = false
+	    // get name and measure from each item:
+	    siteTotal++;
+	    String siteName =  i[tei.name].text().replaceAll(/[\n\r]/,'')
+	    siteName = siteName.replaceAll(/[ \t]+/,' ')
+	    String siteUrn =  i[tei.name][0].'@key'
+
+	    def coords = []
+	    i[tei.measure][tei.num].each { digit ->
+	      coords.add(digit.text())
+	      if (digit.'@n' == "NO/T") {
+		negativeLat = true
+	      }
+	    }
+
+	    if (coords.size() != 4) {
+	      throw new Exception("GeoParser: too few coordinates for site ${siteUrn} in list ${listId}")
+	    }
+	    MilesianInteger lat1 = new MilesianInteger(coords[0])
+
+	    MilesianInteger lon1
+	    if ((! DataManager.isEquator(coords[2])) && (coords[2].size() > 0)) {
+		  lon1 = new MilesianInteger(coords[2])
+	    }
+
+	    MilesianFraction lat2
+	    MilesianFraction lon2
+	    if (coords[1].size() > 0) {
+	      lat2 = new MilesianFraction(coords[1] + '"')
+	    }
+	    if (coords[3].size() > 0) {
+	      lon2 = new MilesianFraction(coords[3] + '"')
+	    }
+
+	    def dataRecord = [urnString: siteUrn, textSequence : siteTotal, listUrn: listId, listIndex: itemIdx, greekName: siteName, southLatitude: negativeLat, latDegree:  lat1]
+	    
+	    if (lon1 != null) {
+	      dataRecord["lonDegree"] = lon1
+	    }
+	    if (lat2 != null) {
+	      dataRecord["latFraction"] = lat2
+	    }
+	    if (lon2 != null) {
+	      dataRecord["lonFraction"] = lon2
+	    }
+	    siteList.add(new PtolemySite(dataRecord))
+	    itemIdx++
+
+	  }
+	}
+      }
+      divNode[tei.p][tei.list].each { l ->
+	if (l.'@type' == "simple") {
+	  count++;
+	  String listId = formListUrn(count)
+	  Integer itemIdx = 0
+	  l[tei.item].each {  i ->
+	    boolean negativeLat = false
+	    // get name and measure from each item:
+	    siteTotal++;
+	    String siteName =  i[tei.name].text().replaceAll(/[\n\r]/,'')
+	    siteName = siteName.replaceAll(/[ \t]+/,' ')
+	    String siteUrn =  i[tei.name][0].'@key'
+
+	    def coords = []
+	    i[tei.measure][tei.num].each { digit ->
+	      coords.add(digit.text())
+	      if (digit.'@n' == "NO/T") {
+		negativeLat = true
+	      }
+	    }
+
+	    if (coords.size() != 4) {
+	      throw new Exception("GeoParser: too few coordinates for site ${siteUrn} in list ${listId}")
+	    }
+
+
+	    MilesianInteger lat1 = new MilesianInteger(coords[0])
+	    MilesianInteger lon1 = null
+	    if ((! DataManager.isEquator(coords[2])) && (coords[2].size() > 0)) {
+	      lon1 = new MilesianInteger(coords[2])
+	    }
+
+	    MilesianFraction lat2 = null
+	    MilesianFraction lon2 = null
+	    if (coords[1].size() > 0) {
+	      lat2 = new MilesianFraction(coords[1] + '"')
+	    }
+	    if (coords[3].size() > 0) {
+	      lon2 = new MilesianFraction(coords[3] + '"')
+	    }
+	    
+	    def dataRecord = [urnString: siteUrn, textSequence : siteTotal, listUrn: listId, listIndex: itemIdx, greekName: siteName, southLatitude: negativeLat, latDegree:  lat1]
+	    if (lon1 != null) {
+	      dataRecord["lonDegree"] = lon1
+	    }
+	    if (lat2 != null) {
+	      dataRecord["latFraction"] = lat2
+	    }
+	    if (lon2 != null) {
+	      dataRecord["lonFraction"] = lon2
+	    }
+	    siteList.add(new PtolemySite(dataRecord))
+	    itemIdx++
+	  }
+	}
+      }
+    }
+    return siteList
+  }
+
 
   /** Maps the basic list structure of the Geography
    * to CTS URNs where the list occurs.
