@@ -146,26 +146,31 @@ class GeoParser {
 	    if (coords.size() != 4) {
 	      throw new Exception("GeoParser: too few coordinates for site ${siteUrn} in list ${listId}")
 	    }
-	    MilesianInteger lat1 = new MilesianInteger(coords[0])
 
-	    MilesianInteger lon1
+	    
+	    MilesianInteger lat1
 	    if ((! DataManager.isEquator(coords[2])) && (coords[2].size() > 0)) {
-		  lon1 = new MilesianInteger(coords[2])
+	      lat1  = new MilesianInteger(coords[2])
 	    }
+
+	    MilesianInteger lon1 = new MilesianInteger(coords[0])
+	    //	    if ((! DataManager.isEquator(coords[0])) && (coords[0].size() > 0)) {
+	    //		  lon1 = new MilesianInteger(coords[0])
+	    // }
 
 	    MilesianFraction lat2
 	    MilesianFraction lon2
 	    if (coords[1].size() > 0) {
-	      lat2 = new MilesianFraction(coords[1] + '"')
+	      lon2 = new MilesianFraction(coords[1] + '"')
 	    }
 	    if (coords[3].size() > 0) {
-	      lon2 = new MilesianFraction(coords[3] + '"')
+	      lat2 = new MilesianFraction(coords[3] + '"')
 	    }
 
-	    def dataRecord = [urnString: siteUrn, textSequence : siteTotal, listUrn: listId, listIndex: itemIdx, greekName: siteName, southLatitude: negativeLat, latDegree:  lat1]
+	    def dataRecord = [urnString: siteUrn, textSequence : siteTotal, listUrn: listId, listIndex: itemIdx, greekName: siteName, southLatitude: negativeLat, lonDegree:  lon1]
 	    
-	    if (lon1 != null) {
-	      dataRecord["lonDegree"] = lon1
+	    if (lat1 != null) {
+	      dataRecord["latDegree"] = lat1
 	    }
 	    if (lat2 != null) {
 	      dataRecord["latFraction"] = lat2
@@ -205,24 +210,25 @@ class GeoParser {
 	    }
 
 
-	    MilesianInteger lat1 = new MilesianInteger(coords[0])
-	    MilesianInteger lon1 = null
+	    MilesianInteger lat1
 	    if ((! DataManager.isEquator(coords[2])) && (coords[2].size() > 0)) {
-	      lon1 = new MilesianInteger(coords[2])
+	      lat1 = new MilesianInteger(coords[2])
 	    }
+	    MilesianInteger lon1 = new MilesianInteger(coords[0])
+
 
 	    MilesianFraction lat2 = null
 	    MilesianFraction lon2 = null
-	    if (coords[1].size() > 0) {
-	      lat2 = new MilesianFraction(coords[1] + '"')
-	    }
 	    if (coords[3].size() > 0) {
-	      lon2 = new MilesianFraction(coords[3] + '"')
+	      lat2 = new MilesianFraction(coords[3] + '"')
+	    }
+	    if (coords[1].size() > 0) {
+	      lon2 = new MilesianFraction(coords[1] + '"')
 	    }
 	    
-	    def dataRecord = [urnString: siteUrn, textSequence : siteTotal, listUrn: listId, listIndex: itemIdx, greekName: siteName, southLatitude: negativeLat, latDegree:  lat1]
+	    def dataRecord = [urnString: siteUrn, textSequence : siteTotal, listUrn: listId, listIndex: itemIdx, greekName: siteName, southLatitude: negativeLat, lonDegree:  lon1]
 	    if (lon1 != null) {
-	      dataRecord["lonDegree"] = lon1
+	      dataRecord["latDegree"] = lat1
 	    }
 	    if (lat2 != null) {
 	      dataRecord["latFraction"] = lat2

@@ -26,12 +26,17 @@ class PtolemySite {
 
 
   ArrayList getLL() {
-    return [this.getLatitude(), this.getLongitude()]
+    return [this.getLongitude(), this.getLatitude()]
   }
   
 
   BigDecimal getLatitude() {
-    BigDecimal lat  = latDegree.toInteger() as BigDecimal
+    BigDecimal lat
+    if (latDegree == null)  {
+      lat = 0
+    } else {
+      lat = latDegree.toInteger() as BigDecimal
+    }
     if (latFraction != null) {
       lat += latFraction.getFractionValue()
     }
@@ -43,14 +48,10 @@ class PtolemySite {
   
   BigDecimal getLongitude() {
     BigDecimal lon
-    if (lonDegree == null) {
-       lon = 0
-    } else {
-      try {
-	lon = lonDegree.toInteger() as BigDecimal
-      } catch (Exception e) {
-	System.println "\n\nERROR: could not convert lonDegree ${lonDegree} to integer in ${textSequence}. ${this.toString()}"
-      }
+    try {
+      lon = lonDegree.toInteger() as BigDecimal
+    } catch (Exception e) {
+      System.println "\n\nERROR: could not convert lonDegree ${lonDegree} to integer in ${textSequence}. ${this.toString()}"
     }
     if (lonFraction != null) {
       lon += lonFraction.getFractionValue()

@@ -120,7 +120,62 @@ class DataManager {
   }
       
 
-  /**
+  String featuresToGeoJson(ArrayList featureList) {
+    JsonBuilder bldr = new groovy.json.JsonBuilder()
+    bldr(type : 'FeatureCollection', features : featureList)
+    return bldr.toPrettyString()
+  }
+
+  String projectPtolemy(ArrayList siteList) {
+    def featureList = []
+
+    siteList.each { pSite ->
+      GeoJsonSite gjSite = new GeoJsonSite(geometry: [:], properties: [:], type: 'Feature')
+      
+      
+      TransCoder xcoder = new TransCoder()
+      xcoder.setParser("Unicode")
+      xcoder.setConverter("GreekXLit")
+
+      
+      gjSite.properties = ['urn': pSite.urnString, 'greek': pSite.greekName, 'site': xcoder.getString(pSite.greekName)]
+
+      
+      gjSite.geometry = ['coordinates': PtolemyProjector.project(pSite), 'type': 'Point']
+      featureList.add(gjSite)
+    }
+    return (featuresToGeoJson(featureList))
+  }
+
+
+  
+
+  
+  String shrinkPtolemy(ArrayList siteList) {
+    def featureList = []
+
+    siteList.each { pSite ->
+      GeoJsonSite gjSite = new GeoJsonSite(geometry: [:], properties: [:], type: 'Feature')
+      
+      
+      TransCoder xcoder = new TransCoder()
+      xcoder.setParser("Unicode")
+      xcoder.setConverter("GreekXLit")
+
+      
+      gjSite.properties = ['urn': pSite.urnString, 'greek': pSite.greekName, 'site': xcoder.getString(pSite.greekName)]
+
+      
+      gjSite.geometry = ['coordinates': PtolemyProjector.shrink(pSite), 'type': 'Point']
+      featureList.add(gjSite)
+    }
+    return (featuresToGeoJson(featureList))
+  }
+
+
+  
+  
+  /** Formats a list of PtolemySite objects as geojson.
    */
   String toGeoJson(ArrayList siteList) {
     def featureList = []
@@ -137,9 +192,7 @@ class DataManager {
       featureList.add(gjSite)
     }
 
-    JsonBuilder bldr = new groovy.json.JsonBuilder()
-    bldr(type : 'FeatureCollection', features : featureList)
-    return bldr.toPrettyString()
+    return (featuresToGeoJson(featureList))
   }
 
   /**
@@ -156,9 +209,12 @@ class DataManager {
       featureList.add(gjSite)
     }
 
+    return (featuresToGeoJson(featureList))
+    /*
     JsonBuilder bldr = new groovy.json.JsonBuilder()
     bldr(type : 'FeatureCollection', features : featureList)
     return bldr.toPrettyString()
+    */
   }
 
   
