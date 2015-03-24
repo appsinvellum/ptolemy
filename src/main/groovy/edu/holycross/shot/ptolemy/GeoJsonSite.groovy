@@ -9,6 +9,10 @@ class GeoJsonSite {
   def geometry
   def type
 
+
+  /** Overrides default toString() method
+   * @returns Human-readable string with name and coordinates of site.
+   */
   String toString() {
     return """${properties.siteName} with coords ${geometry.coordinates}"""
   }

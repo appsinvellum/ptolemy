@@ -104,6 +104,7 @@ dependencies {
 
   compile group: 'edu.holycross.shot', name : 'greeklang' , version: greeklangVersion
 
+  compile group : 'edu.unc.epidoc', name: 'transcoder', version : epidocVersion
   
   schemas group: 'edu.harvard.chs', name: 'cite', version: citeVersion, classifier: 'schemas', ext: 'zip'
 
@@ -223,6 +224,7 @@ task addVersion(){
 addVersion.doLast {
   tokenMap["version"] = version
   tokenMap["deps"] = """
+    <tr><td>epidoc</td><td>${epidocVersion}</td></tr>
     <tr><td>cite</td><td>${citeVersion}</td></tr>
     <tr><td>greekutils</td><td>${greekutilsVersion}</td></tr>
     <tr><td>greeklang</td><td>${greeklangVersion}</td></tr>""".toString() 

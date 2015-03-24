@@ -27,9 +27,10 @@ class GeoParser {
   }
 
   /** Maps indvidual list items with lon-lat data
-   * onto the containing list structure.
-   * @returns Map of CITE URNs for items to CITE URNs
-   * for lists.
+   * onto the containing list structure. Useful in conjunction with
+   * DataManager for validating contents of entries and verifying
+   * quality of XML source.
+   * @returns Map of CITE URNs for items to CITE URNs for lists.
    * @throws Exception if not four coordinates for a site.
    */
   java.util.HashMap indexListItems ()
@@ -110,13 +111,10 @@ class GeoParser {
     return siteMap
   }
 
-
-
-
-
-
-
-
+  /** Creates an ordered list of PtolemySite objects.
+   * @returns List of PtolemySites.
+   * @throws Exception if not four coordinates for a site.
+   */
   ArrayList indexPtolemySites ()
   throws Exception{
     def siteList = []

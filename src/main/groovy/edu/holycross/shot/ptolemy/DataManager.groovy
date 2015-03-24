@@ -6,14 +6,20 @@ import edu.holycross.shot.greekutils.MilesianInteger
 import edu.holycross.shot.greekutils.MilesianFraction
 import edu.holycross.shot.greekutils.MilesianString
 
+import edu.unc.epidoc.transcoder.TransCoder
 
 /**
  * A class for managing tabular data in .csv or .tsv format.
  */
 class DataManager {
 
+
+  // Strings allowed in edition for 0 of latitude value.
+  /** Nominative case for 0 of latitude value. */
   static String equator = "ἰσημερινός"
+  /** Accusative case for 0 of latitude value. */
   static String equator_acc = 'ἰσημερινόν'
+  /** Abbreviated form 0 of latitude value. */
   static String equator_abbr = 'ἰσημεριν.'
 
   
@@ -114,6 +120,30 @@ class DataManager {
   }
       
 
+  /**
+   */
+  String toGeoJson(ArrayList siteList) {
+    def featureList = []
+    siteList.each { pSite ->
+      GeoJsonSite gjSite = new GeoJsonSite(geometry: [:], properties: [:], type: 'Feature')
+
+      TransCoder xcoder = new TransCoder()
+      xcoder.setParser("Unicode")
+      xcoder.setConverter("GreekXLit")
+
+      
+      gjSite.properties = ['urn': pSite.urnString, 'greek': pSite.greekName, 'site': xcoder.getString(pSite.greekName)]
+      gjSite.geometry = ['coordinates': pSite.getLL(), 'type': 'Point']
+      featureList.add(gjSite)
+    }
+
+    JsonBuilder bldr = new groovy.json.JsonBuilder()
+    bldr(type : 'FeatureCollection', features : featureList)
+    return bldr.toPrettyString()
+  }
+
+  /**
+   */
   String toGeoJson(HashMap coordMap) {
     def featureList = []
     
@@ -121,7 +151,7 @@ class DataManager {
       def coords  = coordMap[site]
       
       GeoJsonSite gjSite = new GeoJsonSite(geometry: [:], properties: [:], type: 'Feature')
-      gjSite.properties = ['urn': site]
+      gjSite.properties = ['urn': site ]
       gjSite.geometry = ['coordinates': [coords[0], coords[1]], 'type': 'Point']
       featureList.add(gjSite)
     }
