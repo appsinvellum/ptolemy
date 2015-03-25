@@ -225,14 +225,113 @@ class DataManager {
   }
 
 
-  /** Formats a KML string for a list of PtolemySites.
-   * @param ptolemyPoints List of PtolemyPoint objects with
-   * coordinates and labelling data for each point.
-   * @param label Labelling string for the entire map or
-   * kml data set.
-   * @returns A String of KML text.
-   */
-  String toKml(ArrayList ptolemyPoints, String label) {
+  String satrapalKml(ArrayList ptolemyPoints, HashMap provinceLabels, String label) {
+    BigDecimal labelScale = 0.5
+    
+    def writer = new StringWriter()
+    def xml = new MarkupBuilder(writer)
+    xml.mkp.xmlDeclaration (version: '1.0', encoding: 'UTF-8')
+    xml.kml(xmlns: 'http://www.opengis.net/kml/2.2') {
+      Document {
+        name(label)
+        Style(id : "color0") {
+	  IconStyle {
+	    Icon {
+	      href("http://maps.google.com/mapfiles/kml/pal4/icon24.png")
+	    }
+	    color("6414F0FF")
+	    colorMode("normal")
+	  }
+	  LabelStyle {
+	    scale("${labelScale}")
+	  }
+        }
+        Style(id : "color1") {
+	  IconStyle {
+	    Icon {
+	      href("http://maps.google.com/mapfiles/kml/pal4/icon24.png")
+	    }
+	    color("701400D2")
+	    colorMode("normal")
+	  }
+	  LabelStyle {
+	    scale("${labelScale}")
+	  }
+        }
+        Style(id : "color2") {
+	  IconStyle {
+	    Icon {
+	      href("http://maps.google.com/mapfiles/kml/pal4/icon24.png")
+	    }
+	    color("88FF78B4")
+	    colorMode("normal")
+	  }
+	  LabelStyle {
+	    scale("${labelScale}")
+	  }
+        }
+        Style(id : "color3") {
+	  IconStyle {
+	    Icon {
+	      href("http://maps.google.com/mapfiles/kml/pal4/icon24.png")
+	    }
+	    color("7878DC78")
+	    colorMode("normal")
+	  }
+	  LabelStyle {
+	    scale("${labelScale}")
+	  }
+        }
+        Style(id : "color4") {
+	  IconStyle {
+	    Icon {
+	      href("http://maps.google.com/mapfiles/kml/pal4/icon24.png")
+	    }
+	    color("781478FF")
+	    colorMode("normal")
+	  }
+	  LabelStyle {
+	    scale("${labelScale}")
+	  }
+        }
+
+	Integer satrapyCount = 0
+	String currentSatrapy = ""
+	ptolemyPoints.each { ptol  ->
+	  if (ptol.ptolemyList.provinceUrn != currentSatrapy) {
+	    currentSatrapy = ptol.ptolemyList.provinceUrn
+	    satrapyCount++
+	  }
+	  Integer color = satrapyCount.mod(5)
+	  Placemark {
+	    styleUrl {
+	      mkp.yield("#color${color}")
+	    }
+	    
+	    def coords = PtolemyProjector.project(ptol)
+
+	    TransCoder xcoder = new TransCoder()
+	    xcoder.setParser("Unicode")
+	    xcoder.setConverter("GreekXLit")
+	    String xcoded = xcoder.getString(ptol.greekName)
+      
+	    description {
+	      mkp.yield("${xcoded} (${ptol.greekName}) in ${provinceLabels[ptol.ptolemyList.provinceUrn]}")
+	    }
+	    Point {
+	      coordinates("${coords[0]},${coords[1]},0")
+	    }
+	  }
+	}
+      }
+    }
+    return writer.toString()
+  }
+
+
+
+
+    String toKml(ArrayList ptolemyPoints, String label) {
     def writer = new StringWriter()
     def xml = new MarkupBuilder(writer)
     xml.mkp.xmlDeclaration (version: '1.0', encoding: 'UTF-8')
