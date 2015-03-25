@@ -23,7 +23,79 @@ class DataManager {
   /** Abbreviated form 0 of latitude value. */
   static String equator_abbr = 'ἰσημεριν.'
 
+
+  // reads a csv file w first col = urn,
+  // second col == label, maps urn -> label
+  HashMap labelMap(File csv) {
+    def urnMap = [:]
+    Integer count  = 0
+    csv.eachLine { l ->
+      def cols = l.split(/,/)
+      String urn = cols[0]
+      
+      urnMap[urn] = cols[1]
+      count++
+    }
+    return urnMap
+  }
   
+  // creates list of PtolemyList objects
+  // from minimal csv file with list, seq and text
+  ArrayList listsFromCsv(File csv) {
+    def ptolLists = []
+    Integer count = 0
+    csv.eachLine { l ->
+      if (count > 0) {
+	def cols = l.split(/,/)
+	if (cols.size() != 3) {
+	  System.err.println "Did not find 3 columns in ${cols}"
+	} else {
+	  Integer seq = cols[1].toInteger()
+	  PtolemyList ptolemyList = new PtolemyList(
+	    listUrn: cols[0],textSequence: seq,passageUrn: cols[2]
+	  )
+	  ptolLists.add(ptolemyList)
+	}
+      }
+      count++
+    }
+    return ptolLists
+  }
+
+  /** Adds data from CSV source to a list of PtolemyList objects.
+   * @param ptolLists A list of PtolemyList objects.
+   * @param csv CSV file with data for provinces.
+   */
+  ArrayList addProvinces(ArrayList ptolLists, File csv) {
+    ArrayList resultList = ptolLists
+    Integer count = 0
+    csv.eachLine { l ->
+      if (count > 0) {
+	def cols = l.split(/,/)
+	if (cols.size() != 3) {
+	  System.err.println "Did not find 3 columns in ${cols}"
+	} else {
+	  def includedUrn = ~/${cols[1]}\..*/
+	  def includedLists = ptolLists.findAll {it.passageUrn ==~ includedUrn}
+	  if (includedLists == null) {
+	    System.err.println "ERROR: no matching passage for " + cols[1] + ", failed for " + cols + " using pattern " + includedUrn
+	  }
+	  includedLists.each { pList ->
+	    System.err.println "Matched on " + pList
+	    pList.provinceUrn = cols[2]
+	    // Now replace in original list!
+	    resultList = resultList.findAll { it.listUrn != pList.listUrn}
+	    resultList.add(pList)
+	  }
+	}
+      }
+      count++
+    }
+    return resultList
+  }
+
+  
+
   
   /** Constructor.
    */
