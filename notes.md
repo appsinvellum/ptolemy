@@ -5,17 +5,18 @@
 
 ## Content to add to master branch ##
 
-- compute coordinate values using greeklang lib
-- shrink coords by 250/180 ratio
+- √ compute coordinate values using greeklang lib
+- √ shrink coords by 250/180 ratio
+- √ compute offset of latitude from Rhodes
 - use a data set of equivalents to find offset of longitude from 0
-- use a data set of equivalents to compute offset of latitude from Rhodes
+
 
 ## Analyses to develop as ORCA Collections ##
 
 Contained in the text citation hierarchy:
 
-- continents
-- provinces
+- √ continents
+- √ provinces
 
 Cutting across the citation hierarchy:
 
