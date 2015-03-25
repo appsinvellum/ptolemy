@@ -29,7 +29,11 @@ class PtolemySite {
     return [this.getLongitude(), this.getLatitude()]
   }
   
+  KmlPoint asKml() {
+    return( new KmlPoint([description : this.toString(), coords : this.getLL()]))
+  }
 
+  
   BigDecimal getLatitude() {
     BigDecimal lat
     if (latDegree == null)  {

@@ -1,6 +1,7 @@
 package edu.holycross.shot.ptolemy
 
 import groovy.json.JsonBuilder
+import groovy.xml.MarkupBuilder
 
 import edu.holycross.shot.greekutils.MilesianInteger
 import edu.holycross.shot.greekutils.MilesianFraction
@@ -118,21 +119,59 @@ class DataManager {
     System.err.println "Totals: ${errCount} errors found"
     return ok
   }
-      
 
+
+  
+
+  // expects an array of PTolemySite objects
+  String toKml(ArrayList ptolemyPoints, String label) {
+    def writer = new StringWriter()
+    def xml = new MarkupBuilder(writer)
+    xml.mkp.xmlDeclaration (version: '1.0', encoding: 'UTF-8')
+    xml.kml(xmlns: 'http://www.opengis.net/kml/2.2') {
+      Document {
+        name(label)
+	ptolemyPoints.each { ptol  ->
+	  KmlPoint pt = ptol.asKml()
+	  Placemark {
+	    description {
+	      mkp.yield(pt.description)
+	    }
+	    Point {
+	      coordinates("${pt.coords[0]},${pt.coords[1]},0")
+	    }
+	  }
+	}
+      }
+    }
+    return writer.toString()
+  }
+
+
+
+  /**
+   * Creates a GeoJson string for an array of GeoJsonSite objects.
+   * @param featureList List of GeoJsonSite objects.
+   * @returns A JSON string.
+   */
   String featuresToGeoJson(ArrayList featureList) {
     JsonBuilder bldr = new groovy.json.JsonBuilder()
     bldr(type : 'FeatureCollection', features : featureList)
     return bldr.toPrettyString()
   }
 
+
+
+  // expects PSite
+  /**
+   *
+   */
   String projectPtolemy(ArrayList siteList) {
     def featureList = []
 
     siteList.each { pSite ->
       GeoJsonSite gjSite = new GeoJsonSite(geometry: [:], properties: [:], type: 'Feature')
-      
-      
+        
       TransCoder xcoder = new TransCoder()
       xcoder.setParser("Unicode")
       xcoder.setConverter("GreekXLit")
@@ -148,9 +187,44 @@ class DataManager {
   }
 
 
-  
+  String shrinkKml(ArrayList siteList, String label) {
+    def writer = new StringWriter()
+    def xml = new MarkupBuilder(writer)
+    xml.mkp.xmlDeclaration (version: '1.0', encoding: 'UTF-8')
+    xml.kml(xmlns: 'http://www.opengis.net/kml/2.2') {
+      Document {
+        name(label)
+	siteList.each { ptol  ->
+	  def coords = PtolemyProjector.shrink(ptol)
 
-  
+	  TransCoder xcoder = new TransCoder()
+	  xcoder.setParser("Unicode")
+	  xcoder.setConverter("GreekXLit")
+	  String xcoded = xcoder.getString(ptol.greekName)
+      
+
+	  Placemark {
+	    description {
+	      mkp.yield("${xcoded} (ptol.urnString)")
+	    }
+	    Point {
+	      coordinates("${coords[0]},${coords[1]},0")
+	    }
+	  }
+	}
+      }
+    }
+    return writer.toString()
+
+  }
+
+
+  /**
+   * Creates a list of GeoJsonSite objects with coordinates scaled
+   * down.
+   * @param siteList A list of PtolemySite objects.
+   * @returns A list of GeoJsonSite objects.
+   */
   String shrinkPtolemy(ArrayList siteList) {
     def featureList = []
 
