@@ -39,6 +39,21 @@ class DataManager {
     return urnMap
   }
   
+
+
+  ArrayList joinSitesToLists(ArrayList sites, ArrayList ptolemyLists) {
+    ArrayList returnList = []
+    sites.each { s ->
+      PtolemyList pl = ptolemyLists.find {it.listUrn == s.listUrn}
+      //System.err.println "For ${s.listUrn}
+      s.ptolemyList = pl
+      //System.err.println "${s} : added list " + s.ptolemyList
+      returnList.add(s)
+    }
+    return returnList
+  }
+  
+
   // creates list of PtolemyList objects
   // from minimal csv file with list, seq and text
   ArrayList listsFromCsv(File csv) {
@@ -81,7 +96,6 @@ class DataManager {
 	    System.err.println "ERROR: no matching passage for " + cols[1] + ", failed for " + cols + " using pattern " + includedUrn
 	  }
 	  includedLists.each { pList ->
-	    System.err.println "Matched on " + pList
 	    pList.provinceUrn = cols[2]
 	    // Now replace in original list!
 	    resultList = resultList.findAll { it.listUrn != pList.listUrn}

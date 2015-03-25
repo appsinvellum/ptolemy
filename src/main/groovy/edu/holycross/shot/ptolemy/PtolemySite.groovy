@@ -24,6 +24,7 @@ class PtolemySite {
   MilesianInteger lonDegree
   MilesianFraction lonFraction
 
+  PtolemyList ptolemyList
 
   ArrayList getLL() {
     return [this.getLongitude(), this.getLatitude()]
