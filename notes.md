@@ -33,7 +33,7 @@ Cutting across the citation hierarchy:
 
 ## Analysis ##
 
-- assemble data by all 7 Ptolemaic properties
+- for each of 1264 lists, assemble data for all 7 Ptolemaic properties from external tables mapping URNs together.  Continents and provinces will be mapped to text URNs *containing* the list's text URN: continents are mapped to whole books, provinces to chapters, and lists to sections within chapters. Other properties will be mapped directly to the same section as the list.
 - constructed ordered coasts
 - identify degree of precision for points selected by Ptolemaic property
 - compute density for points selected by Ptolemaic property

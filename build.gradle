@@ -29,8 +29,6 @@ if (hasProperty('conf')) {
     }
 }
 
-
-
 if (hasProperty('pub')) {
     System.err.print "Using configuration data from ${pub}"
     File confFile = new File(pub)
@@ -58,6 +56,10 @@ buildscript {
     classpath group: 'com.github.rjeschke', name: 'txtmark', version: '0.11'
   }
 }
+
+//import edu.holycross.shot.ptolemy.DataManager
+//import edu.holycross.shot.ptolemy.GeoParser
+
 
 group = "edu.holycross.shot"
 version = '0.0.2'
@@ -96,8 +98,6 @@ dependencies {
   //    groovy group:'org.iso_relax.verifier.jaxp.validation', name:'isorelax-jaxp-bridge', version:'1.0'
 
 
-
-
   // DOCUMENT THESE: 
   compile group: 'edu.harvard.chs', name : 'cite' , version: citeVersion
   compile group: 'edu.harvard.chs', name : 'greekutils' , version: greekutilsVersion
@@ -109,6 +109,24 @@ dependencies {
   schemas group: 'edu.harvard.chs', name: 'cite', version: citeVersion, classifier: 'schemas', ext: 'zip'
 
 }
+
+/*
+task geojson() {
+  description = "Generates 3 GeoJson representations"
+}
+geojson.doLast {
+  printn "Parsing XML ..."
+  GeoParser gp = new GeoParser(xmlSource)
+  def siteList = gp.indexPtolemySites()
+  DataManager dm = new DataManager()
+  println "Writing GeoJson for raw coordinates..."
+  File raw = new File("geojson/raw.geojson")
+  raw.setText(dm.toGeoJson(siteList), "UTF-8")
+  println "Done."
+  }*/
+
+
+
 
 task squawk() {
   System.out.println "citeVersion: " + citeVersion
