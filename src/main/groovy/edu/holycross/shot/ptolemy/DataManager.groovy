@@ -23,9 +23,12 @@ class DataManager {
   /** Abbreviated form 0 of latitude value. */
   static String equator_abbr = 'ἰσημεριν.'
 
-
-  // reads a csv file w first col = urn,
-  // second col == label, maps urn -> label
+  /** Creates a map of URNs to human-readable labels
+   * from a csv file with URNs in the first column and
+   * labelling strings in the second column.
+   * @param csv File with the data, in csv format.
+   * @returns Hash keyed by URN with labelling strings as values.
+   */
   HashMap labelMap(File csv) {
     def urnMap = [:]
     Integer count  = 0
@@ -40,7 +43,17 @@ class DataManager {
   }
   
 
-
+  /** Attaches PtolemyList objects to PtolemySite objects.
+   *  Sites are in a many-to-one relation to Lists. Sites should
+   *  always have a URN value identifying the List they belong to.
+   *  This method checks that value against the URNs in ptolemyLists,
+   * and assigns any matching List object to the Site.
+   * @param sites List of PtolemySite objects, presumed to have a
+   * listUrn value.
+   * @param ptolemyLists List of PtolemyLists to check.
+   * @returns ArrayList of PtolemySite objects, with ptolemyList properties
+   * for all sites where matching list was found.
+   */
   ArrayList joinSitesToLists(ArrayList sites, ArrayList ptolemyLists) {
     ArrayList returnList = []
     sites.each { s ->
@@ -54,15 +67,20 @@ class DataManager {
   }
   
 
-  // creates list of PtolemyList objects
-  // from minimal csv file with list, seq and text
+  /** Creates a list of PtolemyList objects from
+   * a minimal CSV source with list URN in the first column,
+   * sequence in the text in the second column, and CTS URN
+   * value for the passage where it occurs in the third column.
+   * @param csv Source file.
+   * @returns ArrayList of PtolemyList objects.
+   */
   ArrayList listsFromCsv(File csv) {
     def ptolLists = []
     Integer count = 0
     csv.eachLine { l ->
       if (count > 0) {
 	def cols = l.split(/,/)
-	if (cols.size() != 3) {
+	if (cols.size() < 3) {
 	  System.err.println "Did not find 3 columns in ${cols}"
 	} else {
 	  Integer seq = cols[1].toInteger()
@@ -207,9 +225,13 @@ class DataManager {
   }
 
 
-  
-
-  // expects an array of PTolemySite objects
+  /** Formats a KML string for a list of PtolemySites.
+   * @param ptolemyPoints List of PtolemyPoint objects with
+   * coordinates and labelling data for each point.
+   * @param label Labelling string for the entire map or
+   * kml data set.
+   * @returns A String of KML text.
+   */
   String toKml(ArrayList ptolemyPoints, String label) {
     def writer = new StringWriter()
     def xml = new MarkupBuilder(writer)
