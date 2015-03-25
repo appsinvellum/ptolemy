@@ -219,6 +219,43 @@ class DataManager {
   }
 
 
+
+
+
+  String projectKml(ArrayList siteList, String label) {
+    def writer = new StringWriter()
+    def xml = new MarkupBuilder(writer)
+    xml.mkp.xmlDeclaration (version: '1.0', encoding: 'UTF-8')
+    xml.kml(xmlns: 'http://www.opengis.net/kml/2.2') {
+      Document {
+        name(label)
+	siteList.each { ptol  ->
+	  def coords = PtolemyProjector.project(ptol)
+
+	  TransCoder xcoder = new TransCoder()
+	  xcoder.setParser("Unicode")
+	  xcoder.setConverter("GreekXLit")
+	  String xcoded = xcoder.getString(ptol.greekName)
+      
+
+	  Placemark {
+	    description {
+	      mkp.yield("${xcoded} (ptol.urnString)")
+	    }
+	    Point {
+	      coordinates("${coords[0]},${coords[1]},0")
+	    }
+	  }
+	}
+      }
+    }
+    return writer.toString()
+
+  }
+
+
+
+
   /**
    * Creates a list of GeoJsonSite objects with coordinates scaled
    * down.
