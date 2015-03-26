@@ -316,7 +316,128 @@ class DataManager {
 	    String xcoded = xcoder.getString(ptol.greekName)
       
 	    description {
-	      mkp.yield("${xcoded} (${ptol.greekName}) in ${provinceLabels[ptol.ptolemyList.provinceUrn]}")
+	      mkp.yield("${xcoded} (${ptol.greekName}) in ${provinceLabels[ptol.ptolemyList.provinceUrn]} (${ptol.ptolemyList.passageUrn})")
+	    }
+	    Point {
+	      coordinates("${coords[0]},${coords[1]},0")
+	    }
+	  }
+	}
+      }
+    }
+    return writer.toString()
+  }
+
+  // make minimal csv file for stet of points
+  String minimalCsv (ArrayList ptolemyPoints, HashMap provinceLabels ) {
+    String csv = "SiteId,Label,Pleiades\n"
+    ptolemyPoints.each { ptol  ->
+      def coords = PtolemyProjector.project(ptol)
+      
+      TransCoder xcoder = new TransCoder()
+      xcoder.setParser("Unicode")
+      xcoder.setConverter("GreekXLit")
+      String xcoded = xcoder.getString(ptol.greekName)
+      
+      String description = "${xcoded} in ${provinceLabels[ptol.ptolemyList.provinceUrn]}"
+
+      csv += "${ptol.urnString},${description},\n"
+    }
+    return csv
+  }
+
+  String kmlByList(ArrayList ptolemyPoints, HashMap provinceLabels, String label) {
+    BigDecimal labelScale = 0.5
+    
+    def writer = new StringWriter()
+    def xml = new MarkupBuilder(writer)
+    xml.mkp.xmlDeclaration (version: '1.0', encoding: 'UTF-8')
+    xml.kml(xmlns: 'http://www.opengis.net/kml/2.2') {
+      Document {
+        name(label)
+        Style(id : "color0") {
+	  IconStyle {
+	    Icon {
+	      href("http://maps.google.com/mapfiles/kml/pal4/icon24.png")
+	    }
+	    color("6414F0FF")
+	    colorMode("normal")
+	  }
+	  LabelStyle {
+	    scale("${labelScale}")
+	  }
+        }
+        Style(id : "color1") {
+	  IconStyle {
+	    Icon {
+	      href("http://maps.google.com/mapfiles/kml/pal4/icon24.png")
+	    }
+	    color("701400D2")
+	    colorMode("normal")
+	  }
+	  LabelStyle {
+	    scale("${labelScale}")
+	  }
+        }
+        Style(id : "color2") {
+	  IconStyle {
+	    Icon {
+	      href("http://maps.google.com/mapfiles/kml/pal4/icon24.png")
+	    }
+	    color("88FF78B4")
+	    colorMode("normal")
+	  }
+	  LabelStyle {
+	    scale("${labelScale}")
+	  }
+        }
+        Style(id : "color3") {
+	  IconStyle {
+	    Icon {
+	      href("http://maps.google.com/mapfiles/kml/pal4/icon24.png")
+	    }
+	    color("7878DC78")
+	    colorMode("normal")
+	  }
+	  LabelStyle {
+	    scale("${labelScale}")
+	  }
+        }
+        Style(id : "color4") {
+	  IconStyle {
+	    Icon {
+	      href("http://maps.google.com/mapfiles/kml/pal4/icon24.png")
+	    }
+	    color("781478FF")
+	    colorMode("normal")
+	  }
+	  LabelStyle {
+	    scale("${labelScale}")
+	  }
+        }
+
+	Integer listCount = 0
+	String currentList = ""
+	ptolemyPoints.each { ptol  ->
+	  if (ptol.listUrn != currentList) {
+	    currentList = ptol.listUrn
+	    listCount++
+	  }
+	  Integer color = listCount.mod(5)
+	  Placemark {
+	    styleUrl {
+	      mkp.yield("#color${color}")
+	    }
+	    
+	    def coords = PtolemyProjector.project(ptol)
+
+	    TransCoder xcoder = new TransCoder()
+	    xcoder.setParser("Unicode")
+	    xcoder.setConverter("GreekXLit")
+	    String xcoded = xcoder.getString(ptol.greekName)
+      
+	    description {
+	      mkp.yield("${xcoded} (${ptol.greekName}) in ${provinceLabels[ptol.ptolemyList.provinceUrn]} (${ptol.ptolemyList.passageUrn})")
 	    }
 	    Point {
 	      coordinates("${coords[0]},${coords[1]},0")
