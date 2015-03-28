@@ -16,5 +16,5 @@ ext {
  greekutilsVersion = '0.8.5'
 
  epidocVersion = '1.2-SNAPSHOT'
-
+ //geoscriptVersion = '1.5.0'
 }
