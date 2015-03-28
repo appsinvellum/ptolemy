@@ -76,13 +76,13 @@ repositories {
 
 }
 
-
+/*
 configurations {
     schemas {
         description = 'Manage schemas'
         transitive = true
     }
-}
+    }*/
 
 
 dependencies {
@@ -112,7 +112,7 @@ dependencies {
 
   compile group : 'edu.unc.epidoc', name: 'transcoder', version : epidocVersion
   
-  schemas group: 'edu.harvard.chs', name: 'cite', version: citeVersion, classifier: 'schemas', ext: 'zip'
+  //schemas group: 'edu.harvard.chs', name: 'cite', version: citeVersion, classifier: 'schemas', ext: 'zip'
 
 }
 
@@ -138,6 +138,7 @@ task squawk() {
   System.out.println "citeVersion: " + citeVersion
 }
 
+/*
 task checkOutSchemas {
   description = ""
   doLast {
@@ -150,15 +151,16 @@ task checkOutSchemas {
     }
   }
 }
+*/
 
-
+/*
 task copySchemas(dependsOn: checkOutSchemas, type: Copy) {
     from 'src/schemas'
     into 'build/schemas'
 }
+*/
 
-
-compileGroovy.dependsOn(copySchemas)
+//compileGroovy.dependsOn(copySchemas)
 
 uploadArchives {
     repositories.mavenDeployer {
