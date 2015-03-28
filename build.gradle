@@ -70,6 +70,10 @@ repositories {
     maven {
         url "http://beta.hpcc.uh.edu/nexus/content/groups/public"
     }
+    maven {
+      url "http://repo.boundlessgeo.com/main"
+    }
+
 }
 
 
@@ -84,8 +88,10 @@ configurations {
 dependencies {
   
   compile group: 'org.codehaus.groovy', name: 'groovy', version: groovyversion
-
-  
+  //compile ("org.geoscript:geoscript-groovy:${geoscriptVersion}") {
+    //      exclude "xml-apis","xml-apis-ext","xercesImpl","xalan"
+    //exclude module: ["xml-apis","xml-apis-ext","xercesImpl","xalan", "xsd", "gt-xml", "gt-wfs"]
+  //}
   
   compile group: 'commons-io', name: 'commons-io', version: commonsioversion
   compile group: 'net.sf.saxon', name: 'saxon-dom', version: '8.7'
@@ -242,6 +248,7 @@ task addVersion(){
 addVersion.doLast {
   tokenMap["version"] = version
   tokenMap["deps"] = """
+    <tr><td>geoscript</td><td>${geoscriptVersion}</td></tr>
     <tr><td>epidoc</td><td>${epidocVersion}</td></tr>
     <tr><td>cite</td><td>${citeVersion}</td></tr>
     <tr><td>greekutils</td><td>${greekutilsVersion}</td></tr>
