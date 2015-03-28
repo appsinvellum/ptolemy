@@ -12,7 +12,7 @@ import edu.unc.epidoc.transcoder.TransCoder
 /**
  * A class for managing tabular data in .csv or .tsv format.
  */
-class DataManager {
+class CsvManager {
 
 
   // Strings allowed in edition for 0 of latitude value.
@@ -131,7 +131,7 @@ class DataManager {
   
   /** Constructor.
    */
-  DataManager() {
+  CsvManager() {
   }
 
 
@@ -225,108 +225,6 @@ class DataManager {
   }
 
 
-  String satrapalKml(ArrayList ptolemyPoints, HashMap provinceLabels, String label) {
-    BigDecimal labelScale = 0.5
-    
-    def writer = new StringWriter()
-    def xml = new MarkupBuilder(writer)
-    xml.mkp.xmlDeclaration (version: '1.0', encoding: 'UTF-8')
-    xml.kml(xmlns: 'http://www.opengis.net/kml/2.2') {
-      Document {
-        name(label)
-        Style(id : "color0") {
-	  IconStyle {
-	    Icon {
-	      href("http://maps.google.com/mapfiles/kml/pal4/icon24.png")
-	    }
-	    color("6414F0FF")
-	    colorMode("normal")
-	  }
-	  LabelStyle {
-	    scale("${labelScale}")
-	  }
-        }
-        Style(id : "color1") {
-	  IconStyle {
-	    Icon {
-	      href("http://maps.google.com/mapfiles/kml/pal4/icon24.png")
-	    }
-	    color("701400D2")
-	    colorMode("normal")
-	  }
-	  LabelStyle {
-	    scale("${labelScale}")
-	  }
-        }
-        Style(id : "color2") {
-	  IconStyle {
-	    Icon {
-	      href("http://maps.google.com/mapfiles/kml/pal4/icon24.png")
-	    }
-	    color("88FF78B4")
-	    colorMode("normal")
-	  }
-	  LabelStyle {
-	    scale("${labelScale}")
-	  }
-        }
-        Style(id : "color3") {
-	  IconStyle {
-	    Icon {
-	      href("http://maps.google.com/mapfiles/kml/pal4/icon24.png")
-	    }
-	    color("7878DC78")
-	    colorMode("normal")
-	  }
-	  LabelStyle {
-	    scale("${labelScale}")
-	  }
-        }
-        Style(id : "color4") {
-	  IconStyle {
-	    Icon {
-	      href("http://maps.google.com/mapfiles/kml/pal4/icon24.png")
-	    }
-	    color("781478FF")
-	    colorMode("normal")
-	  }
-	  LabelStyle {
-	    scale("${labelScale}")
-	  }
-        }
-
-	Integer satrapyCount = 0
-	String currentSatrapy = ""
-	ptolemyPoints.each { ptol  ->
-	  if (ptol.ptolemyList.provinceUrn != currentSatrapy) {
-	    currentSatrapy = ptol.ptolemyList.provinceUrn
-	    satrapyCount++
-	  }
-	  Integer color = satrapyCount.mod(5)
-	  Placemark {
-	    styleUrl {
-	      mkp.yield("#color${color}")
-	    }
-	    
-	    def coords = PtolemyProjector.project(ptol)
-
-	    TransCoder xcoder = new TransCoder()
-	    xcoder.setParser("Unicode")
-	    xcoder.setConverter("GreekXLit")
-	    String xcoded = xcoder.getString(ptol.greekName)
-      
-	    description {
-	      mkp.yield("${xcoded} (${ptol.greekName}) in ${provinceLabels[ptol.ptolemyList.provinceUrn]} (${ptol.ptolemyList.passageUrn})")
-	    }
-	    Point {
-	      coordinates("${coords[0]},${coords[1]},0")
-	    }
-	  }
-	}
-      }
-    }
-    return writer.toString()
-  }
 
   // make minimal csv file for stet of points
   String minimalCsv (ArrayList ptolemyPoints, HashMap provinceLabels ) {
@@ -346,296 +244,21 @@ class DataManager {
     return csv
   }
 
-  String kmlByList(ArrayList ptolemyPoints, HashMap provinceLabels, String label) {
-    BigDecimal labelScale = 0.5
-    
-    def writer = new StringWriter()
-    def xml = new MarkupBuilder(writer)
-    xml.mkp.xmlDeclaration (version: '1.0', encoding: 'UTF-8')
-    xml.kml(xmlns: 'http://www.opengis.net/kml/2.2') {
-      Document {
-        name(label)
-        Style(id : "color0") {
-	  IconStyle {
-	    Icon {
-	      href("http://maps.google.com/mapfiles/kml/pal4/icon24.png")
-	    }
-	    color("6414F0FF")
-	    colorMode("normal")
-	  }
-	  LabelStyle {
-	    scale("${labelScale}")
-	  }
-        }
-        Style(id : "color1") {
-	  IconStyle {
-	    Icon {
-	      href("http://maps.google.com/mapfiles/kml/pal4/icon24.png")
-	    }
-	    color("701400D2")
-	    colorMode("normal")
-	  }
-	  LabelStyle {
-	    scale("${labelScale}")
-	  }
-        }
-        Style(id : "color2") {
-	  IconStyle {
-	    Icon {
-	      href("http://maps.google.com/mapfiles/kml/pal4/icon24.png")
-	    }
-	    color("88FF78B4")
-	    colorMode("normal")
-	  }
-	  LabelStyle {
-	    scale("${labelScale}")
-	  }
-        }
-        Style(id : "color3") {
-	  IconStyle {
-	    Icon {
-	      href("http://maps.google.com/mapfiles/kml/pal4/icon24.png")
-	    }
-	    color("7878DC78")
-	    colorMode("normal")
-	  }
-	  LabelStyle {
-	    scale("${labelScale}")
-	  }
-        }
-        Style(id : "color4") {
-	  IconStyle {
-	    Icon {
-	      href("http://maps.google.com/mapfiles/kml/pal4/icon24.png")
-	    }
-	    color("781478FF")
-	    colorMode("normal")
-	  }
-	  LabelStyle {
-	    scale("${labelScale}")
-	  }
-        }
-
-	Integer listCount = 0
-	String currentList = ""
-	ptolemyPoints.each { ptol  ->
-	  if (ptol.listUrn != currentList) {
-	    currentList = ptol.listUrn
-	    listCount++
-	  }
-	  Integer color = listCount.mod(5)
-	  Placemark {
-	    styleUrl {
-	      mkp.yield("#color${color}")
-	    }
-	    
-	    def coords = PtolemyProjector.project(ptol)
-
-	    TransCoder xcoder = new TransCoder()
-	    xcoder.setParser("Unicode")
-	    xcoder.setConverter("GreekXLit")
-	    String xcoded = xcoder.getString(ptol.greekName)
-      
-	    description {
-	      mkp.yield("${xcoded} (${ptol.greekName}) in ${provinceLabels[ptol.ptolemyList.provinceUrn]} (${ptol.ptolemyList.passageUrn})")
-	    }
-	    Point {
-	      coordinates("${coords[0]},${coords[1]},0")
-	    }
-	  }
-	}
-      }
-    }
-    return writer.toString()
-  }
-
-
-
-
-    String toKml(ArrayList ptolemyPoints, String label) {
-    def writer = new StringWriter()
-    def xml = new MarkupBuilder(writer)
-    xml.mkp.xmlDeclaration (version: '1.0', encoding: 'UTF-8')
-    xml.kml(xmlns: 'http://www.opengis.net/kml/2.2') {
-      Document {
-        name(label)
-	ptolemyPoints.each { ptol  ->
-	  KmlPoint pt = ptol.asKml()
-	  Placemark {
-	    description {
-	      mkp.yield(pt.description)
-	    }
-	    Point {
-	      coordinates("${pt.coords[0]},${pt.coords[1]},0")
-	    }
-	  }
-	}
-      }
-    }
-    return writer.toString()
-  }
-
-
-
-  /**
-   * Creates a GeoJson string for an array of GeoJsonSite objects.
-   * @param featureList List of GeoJsonSite objects.
-   * @returns A JSON string.
-   */
-  String featuresToGeoJson(ArrayList featureList) {
-    JsonBuilder bldr = new groovy.json.JsonBuilder()
-    bldr(type : 'FeatureCollection', features : featureList)
-    return bldr.toPrettyString()
-  }
-
-
-
-  // expects PSite
-  /**
-   *
-   */
-  String projectPtolemy(ArrayList siteList) {
-    def featureList = []
-
-    siteList.each { pSite ->
-      GeoJsonSite gjSite = new GeoJsonSite(geometry: [:], properties: [:], type: 'Feature')
-        
-      TransCoder xcoder = new TransCoder()
-      xcoder.setParser("Unicode")
-      xcoder.setConverter("GreekXLit")
-
-      
-      gjSite.properties = ['urn': pSite.urnString, 'greek': pSite.greekName, 'site': xcoder.getString(pSite.greekName)]
-
-      
-      gjSite.geometry = ['coordinates': PtolemyProjector.project(pSite), 'type': 'Point']
-      featureList.add(gjSite)
-    }
-    return (featuresToGeoJson(featureList))
-  }
-
-
-  String shrinkKml(ArrayList siteList, String label) {
-    def writer = new StringWriter()
-    def xml = new MarkupBuilder(writer)
-    xml.mkp.xmlDeclaration (version: '1.0', encoding: 'UTF-8')
-    xml.kml(xmlns: 'http://www.opengis.net/kml/2.2') {
-      Document {
-        name(label)
-	siteList.each { ptol  ->
-	  def coords = PtolemyProjector.shrink(ptol)
-
-	  TransCoder xcoder = new TransCoder()
-	  xcoder.setParser("Unicode")
-	  xcoder.setConverter("GreekXLit")
-	  String xcoded = xcoder.getString(ptol.greekName)
-      
-
-	  Placemark {
-	    description {
-	      mkp.yield("${xcoded} (ptol.urnString)")
-	    }
-	    Point {
-	      coordinates("${coords[0]},${coords[1]},0")
-	    }
-	  }
-	}
-      }
-    }
-    return writer.toString()
-
-  }
 
 
 
 
 
-  String projectKml(ArrayList siteList, String label) {
-    def writer = new StringWriter()
-    def xml = new MarkupBuilder(writer)
-    xml.mkp.xmlDeclaration (version: '1.0', encoding: 'UTF-8')
-    xml.kml(xmlns: 'http://www.opengis.net/kml/2.2') {
-      Document {
-        name(label)
-	siteList.each { ptol  ->
-	  def coords = PtolemyProjector.project(ptol)
-
-	  TransCoder xcoder = new TransCoder()
-	  xcoder.setParser("Unicode")
-	  xcoder.setConverter("GreekXLit")
-	  String xcoded = xcoder.getString(ptol.greekName)
-      
-
-	  Placemark {
-	    description {
-	      mkp.yield("${xcoded} (ptol.urnString)")
-	    }
-	    Point {
-	      coordinates("${coords[0]},${coords[1]},0")
-	    }
-	  }
-	}
-      }
-    }
-    return writer.toString()
-
-  }
 
 
 
-
-  /**
-   * Creates a list of GeoJsonSite objects with coordinates scaled
-   * down.
-   * @param siteList A list of PtolemySite objects.
-   * @returns A list of GeoJsonSite objects.
-   */
-  String shrinkPtolemy(ArrayList siteList) {
-    def featureList = []
-
-    siteList.each { pSite ->
-      GeoJsonSite gjSite = new GeoJsonSite(geometry: [:], properties: [:], type: 'Feature')
-      
-      
-      TransCoder xcoder = new TransCoder()
-      xcoder.setParser("Unicode")
-      xcoder.setConverter("GreekXLit")
-
-      
-      gjSite.properties = ['urn': pSite.urnString, 'greek': pSite.greekName, 'site': xcoder.getString(pSite.greekName)]
-
-      
-      gjSite.geometry = ['coordinates': PtolemyProjector.shrink(pSite), 'type': 'Point']
-      featureList.add(gjSite)
-    }
-    return (featuresToGeoJson(featureList))
-  }
 
 
   
   
-  /** Formats a list of PtolemySite objects as geojson.
-   */
-  String toGeoJson(ArrayList siteList) {
-    def featureList = []
-    siteList.each { pSite ->
-      GeoJsonSite gjSite = new GeoJsonSite(geometry: [:], properties: [:], type: 'Feature')
-
-      TransCoder xcoder = new TransCoder()
-      xcoder.setParser("Unicode")
-      xcoder.setConverter("GreekXLit")
-
-      
-      gjSite.properties = ['urn': pSite.urnString, 'greek': pSite.greekName, 'site': xcoder.getString(pSite.greekName)]
-      gjSite.geometry = ['coordinates': pSite.getLL(), 'type': 'Point']
-      featureList.add(gjSite)
-    }
-
-    return (featuresToGeoJson(featureList))
-  }
 
   /**
-   */
+
   String toGeoJson(HashMap coordMap) {
     def featureList = []
     
@@ -647,22 +270,18 @@ class DataManager {
       gjSite.geometry = ['coordinates': [coords[0], coords[1]], 'type': 'Point']
       featureList.add(gjSite)
     }
-
     return (featuresToGeoJson(featureList))
-    /*
-    JsonBuilder bldr = new groovy.json.JsonBuilder()
-    bldr(type : 'FeatureCollection', features : featureList)
-    return bldr.toPrettyString()
-    */
   }
 
-  
+   */  
 
   /** Takes a map of site URNs to Ptolemy data arrays,
    * and generates a map of site URNs to lon-lat pairs.
    * @param mapSource Source data map.
    * @returns Map of lon-lat pairs.
    */
+
+  /*
   HashMap convertCoords(HashMap mapSource) {
 
     HashMap decimalCoords = [:]
@@ -764,16 +383,16 @@ class DataManager {
     }
     return decimalCoords
   }
+*/
 
+  /*
   HashMap sitesForList(HashMap siteHash, String listId) {
   }
-  
   HashMap sitesForPassage(HashMap listHash, HashMap siteHash, String urnString) {
     HashMap filtered = [:]
-    
-    
     return filtered
-  }
+    }
+*/
   
 }
 
