@@ -11,7 +11,8 @@ class TestModern extends GroovyTestCase {
   File provinceCsv = new File("collections/orca_provinces.csv")
   
   String delphiUrn = "urn:cite:ptolemy:lonlat.pt_ll_2194"
-      
+
+  
   void testModernSite() {
     CsvManager csvm = new CsvManager()
     def ptLists = csvm.listsFromCsv(csvSource)
@@ -23,13 +24,20 @@ class TestModern extends GroovyTestCase {
     def siteList = gp.indexPtolemySites()
     def compoundSites = csvm.joinSitesToLists(siteList, wProvinces)
 
+    // work with individual site:
     PtolemySite delphi = compoundSites.find {it.urnString == delphiUrn }
     ModernSite modernDelphi = new ModernSite(delphi)
     assert modernDelphi.rawLon == 50
     assert modernDelphi.projectedCoords == [22.0, 37.20]
 
+
+    // convert whole list:
+
+    def modernList = ModernSite.ptolemyToModernSites(compoundSites)
+    assert modernList.size() == compoundSites.size()
+    ModernSite anotherDelphi = modernList.find {it.ptolemySite.urnString == delphiUrn}
+    assert anotherDelphi.projectedCoords == [22.0, 37.20]
+
   }
-
-
 
 }

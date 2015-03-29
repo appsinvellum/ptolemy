@@ -14,6 +14,9 @@ import edu.unc.epidoc.transcoder.TransCoder
  */
 class CsvManager {
 
+  /** Epidoc transcoder for transliterating labels. */
+  TransCoder xcoder
+  
   /** Creates a map of URNs to human-readable labels
    * from a csv file with URNs in the first column and
    * labelling strings in the second column.
@@ -120,9 +123,12 @@ class CsvManager {
   
 
   
-  /** Constructor.
+  /** Constructor configures transcoder.
    */
   CsvManager() {
+    xcoder = new TransCoder()
+    xcoder.setParser("Unicode")
+    xcoder.setConverter("GreekXLit")
   }
 
 
@@ -136,19 +142,20 @@ class CsvManager {
     String csv = "SiteId,Label,Pleiades\n"
     ptolemyPoints.each { ptol  ->
       def coords = PtolemyProjector.project(ptol)
-      
-      TransCoder xcoder = new TransCoder()
-      xcoder.setParser("Unicode")
-      xcoder.setConverter("GreekXLit")
       String xcoded = xcoder.getString(ptol.greekName)
-      
       String description = "${xcoded} in ${provinceLabels[ptol.ptolemyList.provinceUrn]}"
-
       csv += "${ptol.urnString},${description},\n"
     }
     return csv
   }
 
+  
+  String modernSitesToCsv(ArrayList modernSiteList) {
+    String csv = ""
+    modernSiteList.each {
+    }
+  }
+  
 }
 
 
