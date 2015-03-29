@@ -24,10 +24,12 @@ Cutting across the citation hierarchy:
 - physical geographic region or feature
 - ethnic/cultural group
 
+Consider adding all three of these at the same time.  Work by generating KML for sites that do/do not have prior assignment of geographic type.
+
 
 ## Verification of the edition ##
 
-- check spatial consistency of provinces
+- check spatial consistency of provinces.  Generate voronoi tessellations?
 
 
 
@@ -36,7 +38,7 @@ Cutting across the citation hierarchy:
 - for each of 1264 lists, assemble data for all 7 Ptolemaic properties from external tables mapping URNs together.  Continents and provinces will be mapped to text URNs *containing* the list's text URN: continents are mapped to whole books, provinces to chapters, and lists to sections within chapters. Other properties will be mapped directly to the same section as the list.
 - constructed ordered coasts
 - identify degree of precision for points selected by Ptolemaic property
-- compute density for points selected by Ptolemaic property
+- compute density for points selected by Ptolemaic property.  Create convex hull for each province, and measure # sites for area of the polygon.
 
 ## Develop secondary data sets ##
 
