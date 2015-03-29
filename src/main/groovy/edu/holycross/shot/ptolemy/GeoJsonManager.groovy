@@ -27,8 +27,8 @@ class GeoJsonManager {
 
 
   /**
-   * Creates a GeoJson string for an array of GeoJsonSite objects.
-   * @param featureList List of GeoJsonSite objects.
+   * Creates a GeoJson string for an array of GeoJsonPoint objects.
+   * @param featureList List of GeoJsonPoint objects.
    * @returns A JSON string.
    */
   String featuresToGeoJson(ArrayList featureList) {
@@ -48,7 +48,7 @@ class GeoJsonManager {
     return project(siteList, PtolemyProjector.lonOff)
   }
 
-  /** Projects coordinates for a list of GeoJsonSite objects
+  /** Projects coordinates for a list of GeoJsonPoint objects
    * using a given value for the offset of Ptolemy's
    * origin of longitude.
    * @param siteList The list of sites to project.
@@ -59,7 +59,7 @@ class GeoJsonManager {
   String project(ArrayList siteList, BigDecimal lonOffset) {
     def featureList = []
     siteList.each { pSite ->
-      GeoJsonSite gjSite = new GeoJsonSite(geometry: [:], properties: [:], type: 'Feature')
+      GeoJsonPoint gjSite = new GeoJsonPoint(geometry: [:], properties: [:], type: 'Feature')
       gjSite.properties = ['urn': pSite.urnString, 'greek': pSite.greekName, 'site': xcoder.getString(pSite.greekName)]
       gjSite.geometry = ['coordinates': PtolemyProjector.project(pSite, lonOffset), 'type': 'Point']
       featureList.add(gjSite)
@@ -68,17 +68,17 @@ class GeoJsonManager {
   }
 
   /**
-   * Creates a GeoJson representation of a list of GeoJsonSite objects with 
+   * Creates a GeoJson representation of a list of GeoJsonPoint objects with 
    * coordinates rescaled to dimensions appopriate for Eratosthenes' value 
    * for the circumference of the earth.
    * @param siteList A list of PtolemySite objects.
-   * @returns A list of GeoJsonSite objects.
+   * @returns A list of GeoJsonPoint objects.
    */
   String shrink(ArrayList siteList) {
     def featureList = []
 
     siteList.each { pSite ->
-      GeoJsonSite gjSite = new GeoJsonSite(geometry: [:], properties: [:], type: 'Feature')
+      GeoJsonPoint gjSite = new GeoJsonPoint(geometry: [:], properties: [:], type: 'Feature')
       TransCoder xcoder = new TransCoder()
       xcoder.setParser("Unicode")
       xcoder.setConverter("GreekXLit")
@@ -98,7 +98,7 @@ class GeoJsonManager {
   String toGeoJson(ArrayList siteList) {
     def featureList = []
     siteList.each { pSite ->
-      GeoJsonSite gjSite = new GeoJsonSite(geometry: [:], properties: [:], type: 'Feature')
+      GeoJsonPoint gjSite = new GeoJsonPoint(geometry: [:], properties: [:], type: 'Feature')
 
       TransCoder xcoder = new TransCoder()
       xcoder.setParser("Unicode")

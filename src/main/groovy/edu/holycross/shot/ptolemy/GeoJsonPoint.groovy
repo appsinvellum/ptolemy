@@ -5,7 +5,7 @@ package edu.holycross.shot.ptolemy
  * that can be directly passed to a groovy JsonBuilder.
  */
 
-class GeoJsonSite {
+class GeoJsonPoint {
 
   /** Map of property names to values. */
   def properties

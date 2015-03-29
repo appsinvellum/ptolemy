@@ -323,7 +323,7 @@ class KmlManager {
    * coordinates rescaled to dimensions appopriate for Eratosthenes' value 
    * for the circumference of the earth.
    * @param siteList A list of PtolemySite objects.
-   * @returns A list of GeoJsonSite objects.
+   * @returns A valid KML string.
    */
   String shrink(ArrayList siteList, String label) {
     def writer = new StringWriter()
