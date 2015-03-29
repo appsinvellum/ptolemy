@@ -16,14 +16,27 @@ class PtolemyList {
   String passageUrn
 
 
-  // Urns for properties associated with list
+  // Urns for properties associated with each list
+  /** Continent ~ book */
   String continentUrn
+
+  /** Province or "satrapy" ~ chapter */
   String provinceUrn
+
+
+  // Properties cutting across citation hierarchy
+  
+  /** One of Ptolemy's twelve geographic types. */
   String geoTypeUrn
+
+  /** Ethnic group. */
   String ethnicUrn
+
+  /** Physical region. */
   String physicalRegionUrn
   
-   
+
+  /** Overrides toString() method. */
   String toString() {
     return """List ${listUrn} = ${passageUrn}"""
   }

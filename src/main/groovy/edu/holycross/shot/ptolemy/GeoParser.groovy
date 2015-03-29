@@ -7,17 +7,44 @@ import edu.holycross.shot.greekutils.GreekString
 
 /**
  * A class for parsing the geographic database in Ptolemy's Geography.  
- * Works from a TEI source file following a specified set
- * of markup conventions.
+ * Working from a TEI source file following a specified set
+ * of markup conventions, GeoParser objects can create ordered lists of
+ * Ptolemy's two fundamental data structures, the list (PtolemyList class)
+ * and the individual site (PtolemySite).
  */
 class GeoParser {
 
   /** TEI namespace as a groovy Namespace object. */
   static groovy.xml.Namespace tei = new groovy.xml.Namespace("http://www.tei-c.org/ns/1.0")
 
+
+  /* *********************************************************************************** */
+  /* *** Strings allowed in edition for 0 of latitude value. *************************** */
+  /* *********************************************************************************** */
+  
+  /** Nominative case for 0 of latitude value. */
+  static String equator = "ἰσημερινός"
+  
+  /** Accusative case for 0 of latitude value. */
+  static String equator_acc = 'ἰσημερινόν'
+  
+  /** Abbreviated form 0 of latitude value. */
+  static String equator_abbr = 'ἰσημεριν.'
+
+  /** Checks if a string is a valid Ptolemaic value for
+   * the equautor (latitude 0).
+   * @param latString The string to check.
+   * @returns True if latString is a valid value for the equator.
+   */
+  static boolean isEquator(String latString) {
+    return ((latString == equator) || (latString == equator_acc) || (latString == equator_abbr))
+  }
+  /* *********************************************************************************** */
+  /* End Strings for 0 of latitude. */
+  /* *********************************************************************************** */
+  
   /** Root of parsed document. */
   groovy.util.Node root
-
 
   /** Constructor from a File object.
    * @param xmlFile TEI source for edition.
@@ -26,9 +53,93 @@ class GeoParser {
     root = new XmlParser().parse(xmlFile)
   }
 
+
+
+  /** Checks all coordinates in a map of site name to
+   * data collection.
+   * @param mapSource A map keyed by URNs for sites,
+   * containing arrays composed of the following properties:
+   * sequence within the work, URN for the list it bleongs to,
+   * sequence withint the list, name of the site, lon. degree,
+   * lon. fraction, lat. degree, lat. fraction and a boolean 
+   * value indicating wheter or not latitude is south of the equator.
+   * @returns True if all coordinates are valid.
+   */
+  boolean validateCoords(HashMap mapSource) {
+    boolean ok = true
+    Integer errCount = 0
+    
+    mapSource.keySet().each { site ->
+      def siteData = mapSource[site]
+
+      String lonDeg = siteData[4]
+      String lonFract = siteData[5]
+      String latDeg = siteData[6]
+      String latFract = siteData[7]
+      
+      String demarcatedLon = lonFract + '"'
+      String demarcatedLat = latFract + '"'
+
+      try {
+	MilesianInteger mi = new MilesianInteger(lonDeg)
+      } catch (Exception e) {
+	System.err.println "Could not parse lon.deg. ${lonDeg} in row ${siteData}"
+	ok = false
+	errCount++
+      }
+      
+      if (lonFract.size() > 0) {
+	try {
+	  MilesianFraction mf = new MilesianFraction(demarcatedLon)
+	  
+	} catch (Exception e) {
+	  System.err.println "Could not parse lon.fraction ${demarcatedLon} in row ${siteData}"
+	  System.err.println "\tlen was ${lonFract.length()} with ${lonFract.codePointCount(0,lonFract.length())} code points, first one at ${lonFract.codePointAt(0)}.\n\n"
+	  ok = false
+	  errCount++;
+	}
+      }
+
+      if (GeoParser.isEquator(latDeg)) {
+	// valid value == 0
+      } else if (latDeg.size() == 0) {
+	//  empty string == valid value of 0
+      } else {
+
+	try {
+	  MilesianInteger mi = new MilesianInteger(latDeg)
+	} catch (Exception e) {
+	  System.err.println "Could not parse lat.deg. ${latDeg} in row ${siteData}"
+	  ok = false
+	  errCount++
+	    }
+      }
+      
+
+      if (latFract.size() > 0) {
+	try {
+	  MilesianFraction mf = new MilesianFraction(demarcatedLat)
+	  
+	} catch (Exception e) {
+	  System.err.println "Could not parse lon.fraction ${demarcatedLat} in row ${siteData}"
+	  System.err.println "\tlen was ${lonFract.length()} with ${latFract.codePointCount(0,latFract.length())} code points, first one at ${latFract.codePointAt(0)}.\n\n"
+	  ok = false
+	  errCount++;
+	}
+      }
+      
+    }
+    System.err.println "Totals: ${errCount} errors found"
+    return ok
+  }
+
+
+
+
+  
   /** Maps indvidual list items with lon-lat data
    * onto the containing list structure. Useful in conjunction with
-   * DataManager for validating contents of entries and verifying
+   * CsvManager for validating contents of entries and verifying
    * quality of XML source.
    * @returns Map of CITE URNs for items to CITE URNs for lists.
    * @throws Exception if not four coordinates for a site.
@@ -149,14 +260,10 @@ class GeoParser {
 
 	    
 	    MilesianInteger lat1
-	    if ((! DataManager.isEquator(coords[2])) && (coords[2].size() > 0)) {
+	    if ((! GeoParser.isEquator(coords[2])) && (coords[2].size() > 0)) {
 	      lat1  = new MilesianInteger(coords[2])
 	    }
-
 	    MilesianInteger lon1 = new MilesianInteger(coords[0])
-	    //	    if ((! DataManager.isEquator(coords[0])) && (coords[0].size() > 0)) {
-	    //		  lon1 = new MilesianInteger(coords[0])
-	    // }
 
 	    MilesianFraction lat2
 	    MilesianFraction lon2
@@ -211,7 +318,7 @@ class GeoParser {
 
 
 	    MilesianInteger lat1
-	    if ((! DataManager.isEquator(coords[2])) && (coords[2].size() > 0)) {
+	    if ((! GeoParser.isEquator(coords[2])) && (coords[2].size() > 0)) {
 	      lat1 = new MilesianInteger(coords[2])
 	    }
 	    MilesianInteger lon1 = new MilesianInteger(coords[0])

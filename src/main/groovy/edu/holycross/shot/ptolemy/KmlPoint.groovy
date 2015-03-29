@@ -1,13 +1,19 @@
 
 package edu.holycross.shot.ptolemy
 
-/** 
+/**  A class modelling the data used by the KmlManager to
+ * represent a KML Point object.
  */
-
 class KmlPoint {
+
+
+  /** Labelling string for the point */
   String description
-  // lon, lat
+  
+  /** List of pairs of lon / lat values */
   ArrayList coords
+
+  // tba
   String styleClass
   
 

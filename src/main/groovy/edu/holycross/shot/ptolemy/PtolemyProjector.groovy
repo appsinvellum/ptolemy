@@ -138,7 +138,7 @@ class PtolemyProjector {
   }
 
   
-   /** Rescales Ptolemy's raw coordinates for the site to dimensions
+  /** Rescales Ptolemy's raw coordinates for the site to dimensions
    * appopriate for Eratosthenes' value for circumference of the earth.
    * @returns A longitude / latitude pair (in that order),
    * as BigDecimals.
