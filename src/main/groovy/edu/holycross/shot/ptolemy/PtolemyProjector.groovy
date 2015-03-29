@@ -26,6 +26,9 @@ class PtolemyProjector {
    * origin of longitude was west of Greenwich. */
   static BigDecimal lonOff = 14.0
 
+  /** Maximum precision for decimal conversions is 3 decimal places. */
+  static Integer maxDigits = 10**3
+  
 
   /** Alternative, dynamically configurable value for location of
    * Ptolemy's origin of longitude. */
@@ -42,6 +45,16 @@ class PtolemyProjector {
     pSite = site
   }
 
+  // never return more than 3 decimal places
+  static BigDecimal round(BigDecimal dec)
+  throws Exception  {
+    // check for sign:
+    BigDecimal testVal = dec.abs()
+    if (testVal > 1000) {
+      throw new Exception("PtolemyProjector: cannot round value > 1000 or < -1000")
+    }
+    return Math.round(dec * maxDigits) / maxDigits
+  }
 
 
   /** Projects a single site into modern lon-lat coordinates
@@ -52,6 +65,7 @@ class PtolemyProjector {
    * as BigDecimals.
    */
   static ArrayList project(PtolemySite site) {
+    return project(site, PtolemyProjector.lonOff)
   }
 
   /** Projects a single site into modern lon-lat coordinates
@@ -66,8 +80,11 @@ class PtolemyProjector {
   static ArrayList project(PtolemySite site, BigDecimal lonOffset) {
     def shrunk = shrink(site)
     BigDecimal lonAdjusted = shrunk[0] - lonOffset
-    BigDecimal latOff = baseLatitude - (baseLatitude * circumfScale)
+
+    BigDecimal scaledBase = PtolemyProjector.round(baseLatitude * circumfScale)
+    BigDecimal latOff = baseLatitude - scaledBase
     BigDecimal latAdjusted = shrunk[1] + latOff
+    
     return ([lonAdjusted,latAdjusted])
   }
 
@@ -90,7 +107,8 @@ class PtolemyProjector {
    * @returns The rescaled latitude value as a BigDecimal.
    */
   static BigDecimal shrinkLat (PtolemySite site) {
-    return site.getLatitude() * circumfScale
+    return
+    PtolemyProjector.round(site.getLatitude() * circumfScale )
   }
 
 
@@ -100,7 +118,7 @@ class PtolemyProjector {
    * @returns The rescaled longitude value as a BigDecimal.
    */
   static BigDecimal shrinkLon (PtolemySite site) {
-    return site.getLongitude() * circumfScale
+    return PtolemyProjector.round(site.getLongitude() * circumfScale)
   }
 
 
@@ -126,15 +144,7 @@ class PtolemyProjector {
    * as BigDecimals.
    */  
   ArrayList project(BigDecimal lonOffset) {
-    def shrunk = shrink()
-    BigDecimal lonAdjusted = shrunk[0] - lonOffset
-    BigDecimal latOff = baseLatitude - (baseLatitude * circumfScale)
-    BigDecimal latAdjusted = shrunk[1] + latOff
-    //println "lon and lat offsets are " + lonOffset + " / " + latOff
-    //println "${shrunk[1]} + ${latOff} == ${latAdjusted}"
-    def adjusted = [lonAdjusted,latAdjusted]
-    //println "Adjusted: " + adjusted
-    return (adjusted)
+    return PtolemyProjector.project(pSite, lonOffset)
   }
 
   
@@ -145,9 +155,6 @@ class PtolemyProjector {
    */
   ArrayList shrink() {
     def shrunken = [shrinkLon(), shrinkLat()]
-    //println "Shrinking to " + shrunken + " because ..."
-    //println "shrinkLong " + shrinkLon() + " from " + pSite.getLongitude() + " and "
-    //println "shrinkLat " + shrinkLat() + " from " + pSite.getLatitude()
     return shrunken
   }
 
@@ -157,7 +164,7 @@ class PtolemyProjector {
    * @returns The rescaled latitude value as a BigDecimal.
    */
   BigDecimal shrinkLat () {
-    return pSite.getLatitude() * circumfScale
+    return PtolemyProjector.round(pSite.getLatitude() * circumfScale)
   }
   
   /** Rescales Ptolemy's raw longitude coordinate for the site to dimensions
@@ -165,8 +172,7 @@ class PtolemyProjector {
    * @returns The rescaled longitude value as a BigDecimal.
    */
   BigDecimal shrinkLon () {
-    println "\tshrinkLon: from " + pSite.getLongitude()
-    return pSite.getLongitude() * circumfScale
+    return PtolemyProjector.round(pSite.getLongitude() * circumfScale)
   }
 
 
@@ -178,5 +184,4 @@ class PtolemyProjector {
   }
   
 }
-
 
