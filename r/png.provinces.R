@@ -1,5 +1,5 @@
-                                        #png(file="test1.png", bg="transparent", width=1250, height=668)
-svg(file="test1.svg", width=13, height=7)
+png(file="provinces.png", bg="transparent", width=1250, height=668)
+
 
 plot(modern.sdf@coords)
 
