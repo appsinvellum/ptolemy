@@ -10,17 +10,17 @@ urn:cite:ptolemy:province.8,Lugdunensis,991332
 urn:cite:ptolemy:province.9,Belgica,981511
 urn:cite:ptolemy:province.10,Germania,991337
 urn:cite:ptolemy:province.11,Iazyges,207181
-urn:cite:ptolemy:province.12,Raetia-Vindelica,981547
+urn:cite:ptolemy:province.12,Raetia and Vindelica,981547
 urn:cite:ptolemy:province.13,Noricum,981538
 urn:cite:ptolemy:province.14,Upper Pannonia,991356
 urn:cite:ptolemy:province.15,Lower Pannonia,991355
-urn:cite:ptolemy:province.16,Illyria-Dalmatia,981522
+urn:cite:ptolemy:province.16,Illyria and Dalmatia,981522
 urn:cite:ptolemy:province.17,Italia,1052
 urn:cite:ptolemy:province.18,Corsica,991339
 urn:cite:ptolemy:province.19,Sardinia,991344
 urn:cite:ptolemy:province.20,Sarmatia in Europe,825371
 urn:cite:ptolemy:province.21,Sicilia,981549
-urn:cite:ptolemy:province.22,tauric-chersonnese,
+urn:cite:ptolemy:province.22,Tauric Chersonnese,
 urn:cite:ptolemy:province.23,Dacia,981518
 urn:cite:ptolemy:province.24,Upper Mysia,1001904
 urn:cite:ptolemy:province.25,Lower Mysia,1001891
@@ -28,9 +28,9 @@ urn:cite:ptolemy:province.26,Thrace,981552
 urn:cite:ptolemy:province.27,Macedonia,981531
 urn:cite:ptolemy:province.28,Epirus,530871
 urn:cite:ptolemy:province.29,Achaea,570028
-urn:cite:ptolemy:province.30,crete,
-urn:cite:ptolemy:province.31,aethiopia-further,
-urn:cite:ptolemy:province.32,aethiopia-nearer,
+urn:cite:ptolemy:province.30,Crete,
+urn:cite:ptolemy:province.31,Further Aethiopia,
+urn:cite:ptolemy:province.32,Nearer Aethiopia,
 urn:cite:ptolemy:province.33,Africa,775
 urn:cite:ptolemy:province.34,Albania,863731
 urn:cite:ptolemy:province.35,Arabia Deserta,912809
@@ -46,7 +46,7 @@ urn:cite:ptolemy:province.44,Babylonia,912816
 urn:cite:ptolemy:province.45,Bactria,971705
 urn:cite:ptolemy:province.46,cappadocia,
 urn:cite:ptolemy:province.47,carmania,
-urn:cite:ptolemy:province.48,carmania-deserta,
+urn:cite:ptolemy:province.48,Carmania Deserta,
 urn:cite:ptolemy:province.49,Cilicia,981514
 urn:cite:ptolemy:province.50,colchis,
 urn:cite:ptolemy:province.51,cyprus,
@@ -56,29 +56,29 @@ urn:cite:ptolemy:province.54,galatia,
 urn:cite:ptolemy:province.55,gedrosia,
 urn:cite:ptolemy:province.56,hyrcania,
 urn:cite:ptolemy:province.57,iberia,
-urn:cite:ptolemy:province.58,india-within,
-urn:cite:ptolemy:province.59,india-outside,
-urn:cite:ptolemy:province.60,libya-interior,
+urn:cite:ptolemy:province.58,Interior India,
+urn:cite:ptolemy:province.59,Exterior India,
+urn:cite:ptolemy:province.60,Interior Libya,
 urn:cite:ptolemy:province.61,lycia,
 urn:cite:ptolemy:province.62,margiana,
 urn:cite:ptolemy:province.63,marmarice,
-urn:cite:ptolemy:province.64,mauritania-caesariensis,
-urn:cite:ptolemy:province.65,mauritania-tingitana,
+urn:cite:ptolemy:province.64,Mauritania Caesariensis,
+urn:cite:ptolemy:province.65,Mauritania Tingitana,
 urn:cite:ptolemy:province.66,media,
 urn:cite:ptolemy:province.67,Mesopotamia,874602
 urn:cite:ptolemy:province.68,Pamphylia,639034
 urn:cite:ptolemy:province.69,palestine,
-urn:cite:ptolemy:province.70,paropanisadae,
+urn:cite:ptolemy:province.70,Paropanisadae,
 urn:cite:ptolemy:province.71,parthia,
 urn:cite:ptolemy:province.72,Persis,922698
-urn:cite:ptolemy:province.73,pontus-bithynia,
+urn:cite:ptolemy:province.73,Pontus and Bithynia,
 urn:cite:ptolemy:province.74,sacae,
-urn:cite:ptolemy:province.75,sarmatia-asia,
-urn:cite:ptolemy:province.76,scythia-within,
-urn:cite:ptolemy:province.77,scythia-beyond,
+urn:cite:ptolemy:province.75,Sarmatia in Asia,
+urn:cite:ptolemy:province.76,Nearer Scythia,
+urn:cite:ptolemy:province.77,Further Scythia,
 urn:cite:ptolemy:province.78,serice,
 urn:cite:ptolemy:province.79,sinae,
 urn:cite:ptolemy:province.80,sogdia,
 urn:cite:ptolemy:province.81,susiana,
-urn:cite:ptolemy:province.82,syria-coele,
+urn:cite:ptolemy:province.82,Syria Coele,
 urn:cite:ptolemy:province.83,Taprobane,50298
