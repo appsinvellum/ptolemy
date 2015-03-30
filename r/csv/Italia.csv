@@ -1,0 +1,341 @@
+SiteId,Label,Lon,Lat
+urn:cite:ptolemy:lonlat.pt_ll_6339,'tōn Ouarou tou potamou ekbolōn, hōn thesis',5.8,41.04
+urn:cite:ptolemy:lonlat.pt_ll_1114,'Nikaia',6.16,41.10
+urn:cite:ptolemy:lonlat.pt_ll_1115,'Hērakleous limēn',6.34,40.86
+urn:cite:ptolemy:lonlat.pt_ll_1116,'Tropaia Sebastou',6.52,40.68
+urn:cite:ptolemy:lonlat.pt_ll_1117,'Monoikou limēn',6.64,40.80
+urn:cite:ptolemy:lonlat.pt_ll_1118,'Albintimilion',7.0,40.86
+urn:cite:ptolemy:lonlat.pt_ll_1119,'Albiggaunon',7.24,40.86
+urn:cite:ptolemy:lonlat.pt_ll_1120,'Genoua',7.6,40.92
+urn:cite:ptolemy:lonlat.pt_ll_1121,'Entella potamou ekbolai',7.96,40.92
+urn:cite:ptolemy:lonlat.pt_ll_1122,'Tigoullia',8.02,40.98
+urn:cite:ptolemy:lonlat.pt_ll_1123,'Makralla potamou ekbolai',8.92,40.86
+urn:cite:ptolemy:lonlat.pt_ll_1124,'ektropē Boakiou potamou',8.68,41.04
+urn:cite:ptolemy:lonlat.pt_ll_1125,'Louna',9.04,40.86
+urn:cite:ptolemy:lonlat.pt_ll_1126,'Selēnēs akron',9.04,40.80
+urn:cite:ptolemy:lonlat.pt_ll_1127,'Hērakleous hieron',9.52,40.86
+urn:cite:ptolemy:lonlat.pt_ll_1128,'Arnou potamou ekbolai',10.0,40.80
+urn:cite:ptolemy:lonlat.pt_ll_1129,'Poplōnion polis',10.12,40.32
+urn:cite:ptolemy:lonlat.pt_ll_1130,'Poplōnion akron',10.12,40.32
+urn:cite:ptolemy:lonlat.pt_ll_1131,'Traianos limēn',10.48,40.44
+urn:cite:ptolemy:lonlat.pt_ll_1132,'Telamōn akron',10.66,40.32
+urn:cite:ptolemy:lonlat.pt_ll_1133,'Osa potamou ekbolai',10.84,40.32
+urn:cite:ptolemy:lonlat.pt_ll_1134,'Kossai',11.2,40.26
+urn:cite:ptolemy:lonlat.pt_ll_1135,'Graouiskai',11.44,40.14
+urn:cite:ptolemy:lonlat.pt_ll_1136,'Kastron Neon',11.68,40.08
+urn:cite:ptolemy:lonlat.pt_ll_1137,'Purgoi',11.92,40.08
+urn:cite:ptolemy:lonlat.pt_ll_1138,'Alsion',12.1,40.08
+urn:cite:ptolemy:lonlat.pt_ll_1139,'Tiberios potamou ekbolai',12.28,39.96
+urn:cite:ptolemy:lonlat.pt_ll_1140,'hē pros dusmas epistrophē tou pot.',12.28,40.32
+urn:cite:ptolemy:lonlat.pt_ll_1141,'Ōstia',12.28,39.96
+urn:cite:ptolemy:lonlat.pt_ll_1142,'Antion',12.52,39.84
+urn:cite:ptolemy:lonlat.pt_ll_1143,'Klōstra',12.76,39.84
+urn:cite:ptolemy:lonlat.pt_ll_1144,'Kirkaion akron',13.0,39.72
+urn:cite:ptolemy:lonlat.pt_ll_1145,'Tarrakinai',13.18,39.78
+urn:cite:ptolemy:lonlat.pt_ll_1146,'Phormiai',13.48,39.78
+urn:cite:ptolemy:lonlat.pt_ll_1147,'Lirios potamou ekbolai',13.6,39.78
+urn:cite:ptolemy:lonlat.pt_ll_1148,'Sinoessa',13.72,39.84
+urn:cite:ptolemy:lonlat.pt_ll_1149,'Ouoltournon',13.9,39.66
+urn:cite:ptolemy:lonlat.pt_ll_1150,'Liternon',14.2,39.72
+urn:cite:ptolemy:lonlat.pt_ll_1151,'Koumai',14.32,39.72
+urn:cite:ptolemy:lonlat.pt_ll_1152,'Misēnoi',14.44,39.60
+urn:cite:ptolemy:lonlat.pt_ll_1153,'Pouteoloi',14.68,39.60
+urn:cite:ptolemy:lonlat.pt_ll_1154,'Neapolis',14.8,39.54
+urn:cite:ptolemy:lonlat.pt_ll_1155,'Sarnou potamou ekbolai',14.86,39.54
+urn:cite:ptolemy:lonlat.pt_ll_1156,'Sourrenton',14.8,39.36
+urn:cite:ptolemy:lonlat.pt_ll_1157,'Salernon',14.8,39.24
+urn:cite:ptolemy:lonlat.pt_ll_1158,'Silarou potamou ekbolai',14.86,39.06
+urn:cite:ptolemy:lonlat.pt_ll_1159,'Paiston',14.92,38.88
+urn:cite:ptolemy:lonlat.pt_ll_1160,'Oueliai',15.04,38.70
+urn:cite:ptolemy:lonlat.pt_ll_1161,'Bouxenton',14.8,38.52
+urn:cite:ptolemy:lonlat.pt_ll_1162,'Laou potamou ekbolai',14.8,38.34
+urn:cite:ptolemy:lonlat.pt_ll_1163,'Tempsa',14.8,38.16
+urn:cite:ptolemy:lonlat.pt_ll_1164,'Taurianos skopelos',14.92,37.98
+urn:cite:ptolemy:lonlat.pt_ll_1165,'Hippōniatēs kolpos',15.04,37.98
+urn:cite:ptolemy:lonlat.pt_ll_1166,'Skullaion akron',14.68,37.68
+urn:cite:ptolemy:lonlat.pt_ll_1167,'Rhēgion Ioulion',14.68,37.62
+urn:cite:ptolemy:lonlat.pt_ll_1168,'Leukopetra akra',14.68,37.44
+urn:cite:ptolemy:lonlat.pt_ll_1169,'Zephurion akron',15.34,37.50
+urn:cite:ptolemy:lonlat.pt_ll_1170,'Lokroi',15.4,37.74
+urn:cite:ptolemy:lonlat.pt_ll_1171,'Lokanou potamou ekbolai',15.46,37.86
+urn:cite:ptolemy:lonlat.pt_ll_1172,'polis Skulakion',15.34,37.92
+urn:cite:ptolemy:lonlat.pt_ll_1173,'ho mukhos tou Skulakiou kolpou',15.34,37.98
+urn:cite:ptolemy:lonlat.pt_ll_1174,'Lakinion akron',15.88,37.98
+urn:cite:ptolemy:lonlat.pt_ll_1175,'Krotōn',15.88,38.28
+urn:cite:ptolemy:lonlat.pt_ll_1176,'Thourion',15.46,38.52
+urn:cite:ptolemy:lonlat.pt_ll_5670,'Metapontion',15.46,38.82
+urn:cite:ptolemy:lonlat.pt_ll_1177,'Taras',15.88,38.88
+urn:cite:ptolemy:lonlat.pt_ll_1178,'Iapugia akra hē kai Salentinē',16.48,37.98
+urn:cite:ptolemy:lonlat.pt_ll_1179,'Hudrous',16.96,38.22
+urn:cite:ptolemy:lonlat.pt_ll_1180,'Louppiai',16.72,38.34
+urn:cite:ptolemy:lonlat.pt_ll_1181,'Brendesion',16.6,38.64
+urn:cite:ptolemy:lonlat.pt_ll_1182,'Egnatia',16.6,38.76
+urn:cite:ptolemy:lonlat.pt_ll_1183,'Barion',16.6,38.94
+urn:cite:ptolemy:lonlat.pt_ll_1184,'Auphidiou potamou ekbolai',16.6,39.06
+urn:cite:ptolemy:lonlat.pt_ll_1185,'Salapiai',16.48,39.12
+urn:cite:ptolemy:lonlat.pt_ll_1186,'Sipous',16.48,39.24
+urn:cite:ptolemy:lonlat.pt_ll_1187,'Apenestai',16.48,39.42
+urn:cite:ptolemy:lonlat.pt_ll_1188,'Garganon oros',16.72,39.60
+urn:cite:ptolemy:lonlat.pt_ll_1189,'Hurion',16.6,39.78
+urn:cite:ptolemy:lonlat.pt_ll_1190,'Tiphernou potamou ekbolai',16.24,39.96
+urn:cite:ptolemy:lonlat.pt_ll_1191,'Bouka',16.0,40.08
+urn:cite:ptolemy:lonlat.pt_ll_1192,'Istonion',15.88,40.14
+urn:cite:ptolemy:lonlat.pt_ll_1193,'Sarou potamou ekbolai',15.76,40.32
+urn:cite:ptolemy:lonlat.pt_ll_1194,'Ortōn',15.34,40.50
+urn:cite:ptolemy:lonlat.pt_ll_1195,'Aternou potamou ekbolai',15.16,40.68
+urn:cite:ptolemy:lonlat.pt_ll_1196,'Matrinou potamou ekbolai',14.32,40.86
+urn:cite:ptolemy:lonlat.pt_ll_1197,'Kastron',13.72,41.04
+urn:cite:ptolemy:lonlat.pt_ll_1198,'Koupra Maritima',13.36,41.16
+urn:cite:ptolemy:lonlat.pt_ll_1199,'Trouentinou potamou ekbolai',13.12,41.28
+urn:cite:ptolemy:lonlat.pt_ll_1200,'Potentia',12.82,41.40
+urn:cite:ptolemy:lonlat.pt_ll_1201,'Noumana',12.52,41.52
+urn:cite:ptolemy:lonlat.pt_ll_1202,'Agkōn',12.28,41.52
+urn:cite:ptolemy:lonlat.pt_ll_1203,'Asiou potamou ekbolai',12.16,41.52
+urn:cite:ptolemy:lonlat.pt_ll_1204,'Sēna Gallika',11.92,41.52
+urn:cite:ptolemy:lonlat.pt_ll_1205,'Phanon Phortounai',11.68,41.58
+urn:cite:ptolemy:lonlat.pt_ll_1206,'Pisauron',11.44,41.58
+urn:cite:ptolemy:lonlat.pt_ll_1207,'Ariminon',11.2,41.64
+urn:cite:ptolemy:lonlat.pt_ll_5671,'Rhoubikōnos potamou ekbolai',11.14,41.70
+urn:cite:ptolemy:lonlat.pt_ll_1208,'Rhaouenna',10.96,41.76
+urn:cite:ptolemy:lonlat.pt_ll_1209,'Padou potamou ekbolai',11.02,41.76
+urn:cite:ptolemy:lonlat.pt_ll_1210,'hē kata tēn Larion limnēn kephalē tou potamou',7.12,42.30
+urn:cite:ptolemy:lonlat.pt_ll_5165,'hē sumbolē, kath hēn sumballei tō Doria potamō',8.08,41.58
+urn:cite:ptolemy:lonlat.pt_ll_1211,'hē kephalē tou Doria potamou hē kata tēn Poininan limnēn',6.7,41.58
+urn:cite:ptolemy:lonlat.pt_ll_1212,'kath ho ektrepetai epi tēn Bainakon limnēn',8.86,41.40
+urn:cite:ptolemy:lonlat.pt_ll_1213,'autēs tēs limnēs thesis',7.96,42.48
+urn:cite:ptolemy:lonlat.pt_ll_1214,'Atrianou potamou ekbolai',10.48,41.88
+urn:cite:ptolemy:lonlat.pt_ll_1215,'Tilaouentou potamou ekbolai',9.76,42.36
+urn:cite:ptolemy:lonlat.pt_ll_1216,'Natisōnos potamou ekbolai',10.48,42.36
+urn:cite:ptolemy:lonlat.pt_ll_1217,'Tergestron',10.84,42.42
+urn:cite:ptolemy:lonlat.pt_ll_1218,'Phormiōnos potamou ekbolai',11.2,42.42
+urn:cite:ptolemy:lonlat.pt_ll_1219,'Parention',11.44,42.42
+urn:cite:ptolemy:lonlat.pt_ll_1220,'Pola',11.92,42.24
+urn:cite:ptolemy:lonlat.pt_ll_1221,'Nesakton',12.1,42.42
+urn:cite:ptolemy:lonlat.pt_ll_1222,'Poukinon',11.02,42.48
+urn:cite:ptolemy:lonlat.pt_ll_1223,'Pikouenton',11.56,42.54
+urn:cite:ptolemy:lonlat.pt_ll_1224,'Alouon',11.92,42.48
+urn:cite:ptolemy:lonlat.pt_ll_1225,'Phoros Ioulios kolōnia',9.64,42.42
+urn:cite:ptolemy:lonlat.pt_ll_1226,'Konkordia',9.94,42.42
+urn:cite:ptolemy:lonlat.pt_ll_1227,'Akoulēia',10.48,42.48
+urn:cite:ptolemy:lonlat.pt_ll_1228,'Ouikentia',9.16,42.12
+urn:cite:ptolemy:lonlat.pt_ll_1229,'Belounon',9.4,42.24
+urn:cite:ptolemy:lonlat.pt_ll_1230,'Akelon',9.4,42.12
+urn:cite:ptolemy:lonlat.pt_ll_1231,'Opitergion',9.52,42.30
+urn:cite:ptolemy:lonlat.pt_ll_1232,'Ateste',9.52,41.94
+urn:cite:ptolemy:lonlat.pt_ll_1233,'Patauion',9.64,42.12
+urn:cite:ptolemy:lonlat.pt_ll_1234,'Altinon',9.94,42.06
+urn:cite:ptolemy:lonlat.pt_ll_1235,'Atria',9.88,41.82
+urn:cite:ptolemy:lonlat.pt_ll_1236,'Bergomon',9.04,42.00
+urn:cite:ptolemy:lonlat.pt_ll_1237,'Phoros Hioutountōn',8.86,41.76
+urn:cite:ptolemy:lonlat.pt_ll_1238,'Brixia',9.4,41.88
+urn:cite:ptolemy:lonlat.pt_ll_1239,'Kremōnia',9.04,41.52
+urn:cite:ptolemy:lonlat.pt_ll_1240,'Ouērōna',9.76,41.76
+urn:cite:ptolemy:lonlat.pt_ll_1241,'Mantoua',9.58,41.52
+urn:cite:ptolemy:lonlat.pt_ll_1242,'Tridente',10.24,41.58
+urn:cite:ptolemy:lonlat.pt_ll_1243,'Boutrion',10.48,41.64
+urn:cite:ptolemy:lonlat.pt_ll_1244,'Ouaunia',8.32,42.24
+urn:cite:ptolemy:lonlat.pt_ll_1245,'Karraka',8.56,42.24
+urn:cite:ptolemy:lonlat.pt_ll_1246,'Bretina',8.8,42.30
+urn:cite:ptolemy:lonlat.pt_ll_1247,'Anaunion',8.68,42.12
+urn:cite:ptolemy:lonlat.pt_ll_1248,'Nouaria',7.96,42.12
+urn:cite:ptolemy:lonlat.pt_ll_1249,'Mediolanion',8.08,41.94
+urn:cite:ptolemy:lonlat.pt_ll_1250,'Kōmon',8.32,42.00
+urn:cite:ptolemy:lonlat.pt_ll_1251,'Tikinon',8.32,41.76
+urn:cite:ptolemy:lonlat.pt_ll_1252,'Augousta Praitōria',7.6,41.76
+urn:cite:ptolemy:lonlat.pt_ll_1253,'Eporedia',7.78,41.64
+urn:cite:ptolemy:lonlat.pt_ll_1254,'Augousta Taurinōn',7.96,41.52
+urn:cite:ptolemy:lonlat.pt_ll_1255,'Augousta Bagiennōn',7.24,41.28
+urn:cite:ptolemy:lonlat.pt_ll_1256,'Iria',7.6,41.28
+urn:cite:ptolemy:lonlat.pt_ll_1257,'Dertōna',7.96,41.28
+urn:cite:ptolemy:lonlat.pt_ll_1258,'Ouerkellai',8.14,41.64
+urn:cite:ptolemy:lonlat.pt_ll_1259,'Laumellon',8.68,41.52
+urn:cite:ptolemy:lonlat.pt_ll_1260,'Phoros Klaudiou',6.88,42.42
+urn:cite:ptolemy:lonlat.pt_ll_1261,'Axima',7.42,42.42
+urn:cite:ptolemy:lonlat.pt_ll_1262,'Oskela',6.88,42.24
+urn:cite:ptolemy:lonlat.pt_ll_1263,'Ebourodounon',7.36,42.12
+urn:cite:ptolemy:lonlat.pt_ll_1264,'Segousion',6.52,41.70
+urn:cite:ptolemy:lonlat.pt_ll_1265,'Brigantion',6.88,41.82
+urn:cite:ptolemy:lonlat.pt_ll_1266,'Ouintion',6.52,41.52
+urn:cite:ptolemy:lonlat.pt_ll_1267,'Salinai',6.52,41.28
+urn:cite:ptolemy:lonlat.pt_ll_1268,'Kemeneleon',6.52,41.10
+urn:cite:ptolemy:lonlat.pt_ll_1269,'Sanition',6.52,40.92
+urn:cite:ptolemy:lonlat.pt_ll_1270,'Sabata',7.12,41.04
+urn:cite:ptolemy:lonlat.pt_ll_1271,'Pollentian',7.36,41.04
+urn:cite:ptolemy:lonlat.pt_ll_1272,'Astan',7.84,41.10
+urn:cite:ptolemy:lonlat.pt_ll_1273,'Alban Pompēian',8.08,41.16
+urn:cite:ptolemy:lonlat.pt_ll_1274,'Libarnan',8.32,41.16
+urn:cite:ptolemy:lonlat.pt_ll_1275,'Plakentian',8.56,41.40
+urn:cite:ptolemy:lonlat.pt_ll_1276,'Phidentian',8.8,41.40
+urn:cite:ptolemy:lonlat.pt_ll_1277,'Brixellon',9.04,41.28
+urn:cite:ptolemy:lonlat.pt_ll_1278,'Parman',9.04,41.40
+urn:cite:ptolemy:lonlat.pt_ll_1279,'Rhēgion Lepidion',9.4,41.40
+urn:cite:ptolemy:lonlat.pt_ll_1280,'Noukerian',9.4,41.28
+urn:cite:ptolemy:lonlat.pt_ll_1281,'Tanēton',10.0,41.52
+urn:cite:ptolemy:lonlat.pt_ll_5672,'Moutinan',9.76,41.52
+urn:cite:ptolemy:lonlat.pt_ll_1282,'Bonōnian',10.12,41.40
+urn:cite:ptolemy:lonlat.pt_ll_1283,'Klaterna',10.36,41.40
+urn:cite:ptolemy:lonlat.pt_ll_1284,'Phoron Kornēliou',10.66,41.40
+urn:cite:ptolemy:lonlat.pt_ll_1285,'Kaisēnan',10.96,41.52
+urn:cite:ptolemy:lonlat.pt_ll_1286,'Phaouentian',10.72,41.58
+urn:cite:ptolemy:lonlat.pt_ll_1287,'Birakellon',8.86,41.16
+urn:cite:ptolemy:lonlat.pt_ll_1288,'Phossai Papirianai',9.04,40.92
+urn:cite:ptolemy:lonlat.pt_ll_1289,'Bondelia',9.4,40.92
+urn:cite:ptolemy:lonlat.pt_ll_1290,'Louka',9.76,41.16
+urn:cite:ptolemy:lonlat.pt_ll_5673,'Loukos Phērōnias',9.34,40.98
+urn:cite:ptolemy:lonlat.pt_ll_1291,'Pistōria',10.0,41.04
+urn:cite:ptolemy:lonlat.pt_ll_1292,'Phlōrentia',10.36,41.04
+urn:cite:ptolemy:lonlat.pt_ll_1293,'Pisai',10.12,40.86
+urn:cite:ptolemy:lonlat.pt_ll_1294,'Ouolaterrai',10.3,40.80
+urn:cite:ptolemy:lonlat.pt_ll_1295,'Rhousellai',10.12,40.56
+urn:cite:ptolemy:lonlat.pt_ll_1296,'Phaisoulai',10.48,41.04
+urn:cite:ptolemy:lonlat.pt_ll_1297,'Perousia',11.44,40.68
+urn:cite:ptolemy:lonlat.pt_ll_1298,'Arrētion',10.96,40.86
+urn:cite:ptolemy:lonlat.pt_ll_1299,'Kortōna',11.2,40.80
+urn:cite:ptolemy:lonlat.pt_ll_1300,'Akoulēia',10.96,41.04
+urn:cite:ptolemy:lonlat.pt_ll_1301,'Bitourgia',11.2,40.98
+urn:cite:ptolemy:lonlat.pt_ll_1302,'Manliana',10.84,40.80
+urn:cite:ptolemy:lonlat.pt_ll_1303,'Ouetoulōnion',10.48,40.68
+urn:cite:ptolemy:lonlat.pt_ll_1304,'Saina',10.72,40.68
+urn:cite:ptolemy:lonlat.pt_ll_1305,'Souana',11.08,40.62
+urn:cite:ptolemy:lonlat.pt_ll_1306,'Satourniana',10.48,40.56
+urn:cite:ptolemy:lonlat.pt_ll_1307,'Ēba',10.84,40.50
+urn:cite:ptolemy:lonlat.pt_ll_1308,'Ouolkoi',10.96,40.44
+urn:cite:ptolemy:lonlat.pt_ll_1309,'Klousion',10.96,40.56
+urn:cite:ptolemy:lonlat.pt_ll_1310,'Ouolsinion',11.2,40.56
+urn:cite:ptolemy:lonlat.pt_ll_1311,'Soudernon',11.56,40.38
+urn:cite:ptolemy:lonlat.pt_ll_1312,'Pherentia',11.56,40.56
+urn:cite:ptolemy:lonlat.pt_ll_1313,'Soutrion',11.92,40.44
+urn:cite:ptolemy:lonlat.pt_ll_1314,'Tarkouinai',11.38,40.32
+urn:cite:ptolemy:lonlat.pt_ll_1315,'Blēra',11.68,40.26
+urn:cite:ptolemy:lonlat.pt_ll_5674,'Phoros Klōdiou',11.86,40.26
+urn:cite:ptolemy:lonlat.pt_ll_1316,'Nepeta',11.92,40.20
+urn:cite:ptolemy:lonlat.pt_ll_1317,'Phalerion',12.28,40.26
+urn:cite:ptolemy:lonlat.pt_ll_1318,'Kaire',12.16,40.20
+urn:cite:ptolemy:lonlat.pt_ll_1319,'Souasa',11.56,41.52
+urn:cite:ptolemy:lonlat.pt_ll_1320,'Ostra',11.92,41.40
+urn:cite:ptolemy:lonlat.pt_ll_1321,'Traiana',12.28,41.34
+urn:cite:ptolemy:lonlat.pt_ll_5675,'Ourbasalouia',12.58,41.28
+urn:cite:ptolemy:lonlat.pt_ll_1322,'Septempeda',12.52,41.40
+urn:cite:ptolemy:lonlat.pt_ll_1323,'Koupra Montana',13.0,41.16
+urn:cite:ptolemy:lonlat.pt_ll_1324,'Phirmion',13.0,40.98
+urn:cite:ptolemy:lonlat.pt_ll_1325,'Askoulon',13.6,40.92
+urn:cite:ptolemy:lonlat.pt_ll_1326,'Adria',13.9,40.92
+urn:cite:ptolemy:lonlat.pt_ll_1327,'Pitinon',10.96,41.22
+urn:cite:ptolemy:lonlat.pt_ll_1328,'Tiphernon',10.96,41.34
+urn:cite:ptolemy:lonlat.pt_ll_1329,'Phoros Semprōniou',11.08,41.40
+urn:cite:ptolemy:lonlat.pt_ll_1330,'Igouion',11.2,41.10
+urn:cite:ptolemy:lonlat.pt_ll_1331,'Aisis',11.44,41.28
+urn:cite:ptolemy:lonlat.pt_ll_1332,'Touphikon',11.56,41.10
+urn:cite:ptolemy:lonlat.pt_ll_1333,'Sentinon',12.28,40.92
+urn:cite:ptolemy:lonlat.pt_ll_1334,'Aisision',11.44,40.86
+urn:cite:ptolemy:lonlat.pt_ll_1335,'Kamerinon',11.92,41.04
+urn:cite:ptolemy:lonlat.pt_ll_1336,'Noukeria',11.8,40.80
+urn:cite:ptolemy:lonlat.pt_ll_1337,'Arna',11.56,40.80
+urn:cite:ptolemy:lonlat.pt_ll_1338,'Hispellon',11.68,40.68
+urn:cite:ptolemy:lonlat.pt_ll_1339,'Touder',11.8,40.56
+urn:cite:ptolemy:lonlat.pt_ll_1340,'Phoros Phlaminiou',11.92,40.80
+urn:cite:ptolemy:lonlat.pt_ll_1341,'Spōlētion',12.16,40.86
+urn:cite:ptolemy:lonlat.pt_ll_1342,'Mēouania',12.1,40.68
+urn:cite:ptolemy:lonlat.pt_ll_1343,'Ameria',12.28,40.50
+urn:cite:ptolemy:lonlat.pt_ll_1344,'Narnia',12.28,40.68
+urn:cite:ptolemy:lonlat.pt_ll_1345,'Okrikolon',12.46,40.44
+urn:cite:ptolemy:lonlat.pt_ll_1346,'Noursia',12.46,40.92
+urn:cite:ptolemy:lonlat.pt_ll_1347,'Kliternon',13.0,40.80
+urn:cite:ptolemy:lonlat.pt_ll_1348,'Karsioloi',12.88,40.56
+urn:cite:ptolemy:lonlat.pt_ll_1349,'Aix',13.12,40.68
+urn:cite:ptolemy:lonlat.pt_ll_1350,'Alba Phoukinis',13.36,40.56
+urn:cite:ptolemy:lonlat.pt_ll_1351,'Beregra',13.72,40.68
+urn:cite:ptolemy:lonlat.pt_ll_1352,'Interamnia',13.6,40.56
+urn:cite:ptolemy:lonlat.pt_ll_1353,'Pinna',14.08,40.80
+urn:cite:ptolemy:lonlat.pt_ll_1354,'Aouia',14.08,40.62
+urn:cite:ptolemy:lonlat.pt_ll_1355,'Amiternon',14.08,40.50
+urn:cite:ptolemy:lonlat.pt_ll_1356,'Angoulos',14.44,40.68
+urn:cite:ptolemy:lonlat.pt_ll_1357,'Teatea',14.62,40.68
+urn:cite:ptolemy:lonlat.pt_ll_1358,'Astu Rhōmē',12.4,40.08
+urn:cite:ptolemy:lonlat.pt_ll_1359,'Tibour',12.52,40.32
+urn:cite:ptolemy:lonlat.pt_ll_1360,'Praineston',13.0,40.26
+urn:cite:ptolemy:lonlat.pt_ll_1361,'Touskoulon',12.52,40.14
+urn:cite:ptolemy:lonlat.pt_ll_1362,'Arikia',12.64,40.08
+urn:cite:ptolemy:lonlat.pt_ll_1363,'Ardea',12.46,39.96
+urn:cite:ptolemy:lonlat.pt_ll_1364,'Nōmenton',13.0,40.38
+urn:cite:ptolemy:lonlat.pt_ll_1365,'Trēba',13.0,40.14
+urn:cite:ptolemy:lonlat.pt_ll_1366,'Anagnia',12.88,40.08
+urn:cite:ptolemy:lonlat.pt_ll_1367,'Ouelitron',13.0,39.96
+urn:cite:ptolemy:lonlat.pt_ll_1368,'Lanoubion',12.82,39.90
+urn:cite:ptolemy:lonlat.pt_ll_1369,'Atina',13.54,40.32
+urn:cite:ptolemy:lonlat.pt_ll_1370,'Phidēnai',13.36,40.26
+urn:cite:ptolemy:lonlat.pt_ll_1371,'Phrousinōn',13.24,40.14
+urn:cite:ptolemy:lonlat.pt_ll_1372,'Pherentinon',13.36,40.08
+urn:cite:ptolemy:lonlat.pt_ll_1373,'Priouernon',13.18,40.02
+urn:cite:ptolemy:lonlat.pt_ll_1374,'Sētia',13.36,39.96
+urn:cite:ptolemy:lonlat.pt_ll_1375,'Akouinon',13.72,40.26
+urn:cite:ptolemy:lonlat.pt_ll_1376,'Sōra',13.6,40.08
+urn:cite:ptolemy:lonlat.pt_ll_1377,'Mintournai',13.6,39.90
+urn:cite:ptolemy:lonlat.pt_ll_1378,'Phoundoi',13.48,39.96
+urn:cite:ptolemy:lonlat.pt_ll_1379,'Korphinion',15.52,40.56
+urn:cite:ptolemy:lonlat.pt_ll_1380,'Soulmōn',15.88,40.32
+urn:cite:ptolemy:lonlat.pt_ll_1381,'Agxanon',15.64,40.26
+urn:cite:ptolemy:lonlat.pt_ll_1382,'Larinon',15.88,39.96
+urn:cite:ptolemy:lonlat.pt_ll_1383,'Auphidēna',15.28,40.14
+urn:cite:ptolemy:lonlat.pt_ll_1384,'Bouianon',14.14,40.32
+urn:cite:ptolemy:lonlat.pt_ll_1385,'Aisernia',14.08,40.08
+urn:cite:ptolemy:lonlat.pt_ll_1386,'Saipinon',14.44,40.20
+urn:cite:ptolemy:lonlat.pt_ll_1387,'Allipha',14.8,40.14
+urn:cite:ptolemy:lonlat.pt_ll_1388,'Toutikon',14.92,40.08
+urn:cite:ptolemy:lonlat.pt_ll_1389,'Telesia',15.16,39.84
+urn:cite:ptolemy:lonlat.pt_ll_1390,'Beneouenton',15.52,39.84
+urn:cite:ptolemy:lonlat.pt_ll_1391,'Kaudion',15.76,39.66
+urn:cite:ptolemy:lonlat.pt_ll_1392,'Ouenaphron',13.84,40.08
+urn:cite:ptolemy:lonlat.pt_ll_1393,'Teanon',14.08,39.96
+urn:cite:ptolemy:lonlat.pt_ll_1394,'Souessa',13.84,39.90
+urn:cite:ptolemy:lonlat.pt_ll_1395,'Kalēs',14.32,39.96
+urn:cite:ptolemy:lonlat.pt_ll_1396,'Kasilinon',14.26,39.84
+urn:cite:ptolemy:lonlat.pt_ll_1397,'Trēboula',14.5,39.96
+urn:cite:ptolemy:lonlat.pt_ll_1398,'Phoros Popiliou',14.62,39.78
+urn:cite:ptolemy:lonlat.pt_ll_1399,'Kapuē',14.8,39.72
+urn:cite:ptolemy:lonlat.pt_ll_1400,'Abella',15.04,39.72
+urn:cite:ptolemy:lonlat.pt_ll_1401,'Atella',14.92,39.66
+urn:cite:ptolemy:lonlat.pt_ll_1402,'Nōla',14.98,39.42
+urn:cite:ptolemy:lonlat.pt_ll_1403,'Noukeria',15.16,39.36
+urn:cite:ptolemy:lonlat.pt_ll_1404,'Oulkoi',15.28,39.24
+urn:cite:ptolemy:lonlat.pt_ll_1405,'Kōmpsa',15.16,39.12
+urn:cite:ptolemy:lonlat.pt_ll_1406,'Potentia',15.28,39.06
+urn:cite:ptolemy:lonlat.pt_ll_1407,'Blanda',15.04,39.00
+urn:cite:ptolemy:lonlat.pt_ll_1408,'Groumenton',15.22,38.70
+urn:cite:ptolemy:lonlat.pt_ll_1409,'Akouilōnia',15.52,39.66
+urn:cite:ptolemy:lonlat.pt_ll_1410,'Abellinon',15.4,39.42
+urn:cite:ptolemy:lonlat.pt_ll_1411,'Aikoulanon',15.76,39.42
+urn:cite:ptolemy:lonlat.pt_ll_1412,'Phratouolon',15.52,39.12
+urn:cite:ptolemy:lonlat.pt_ll_1413,'Teanon',16.0,39.90
+urn:cite:ptolemy:lonlat.pt_ll_1414,'Noukeria Apoulōn',15.88,39.60
+urn:cite:ptolemy:lonlat.pt_ll_1415,'Ouibarna',16.24,39.60
+urn:cite:ptolemy:lonlat.pt_ll_1416,'Arpoi',16.0,39.78
+urn:cite:ptolemy:lonlat.pt_ll_1417,'Erdōnia',16.0,39.36
+urn:cite:ptolemy:lonlat.pt_ll_1418,'Kanusion',16.3,39.24
+urn:cite:ptolemy:lonlat.pt_ll_1419,'Ouenousia',16.0,39.18
+urn:cite:ptolemy:lonlat.pt_ll_1420,'Kailia',16.36,38.88
+urn:cite:ptolemy:lonlat.pt_ll_1421,'Noumistrōn',15.04,38.28
+urn:cite:ptolemy:lonlat.pt_ll_1422,'Kōnsentia',15.28,38.28
+urn:cite:ptolemy:lonlat.pt_ll_1423,'Ouibōn Oualentia',14.98,38.10
+urn:cite:ptolemy:lonlat.pt_ll_1424,'Petēlia',15.34,38.16
+urn:cite:ptolemy:lonlat.pt_ll_1425,'Abruston',15.34,38.46
+urn:cite:ptolemy:lonlat.pt_ll_1426,'Rhoudia',16.12,38.70
+urn:cite:ptolemy:lonlat.pt_ll_1427,'Nērēton',16.24,38.58
+urn:cite:ptolemy:lonlat.pt_ll_1428,'Alētion',16.24,38.40
+urn:cite:ptolemy:lonlat.pt_ll_1429,'Bausta',16.42,38.34
+urn:cite:ptolemy:lonlat.pt_ll_1430,'Ouxenton',16.24,38.28
+urn:cite:ptolemy:lonlat.pt_ll_1431,'Ouerēton',16.48,38.16
+urn:cite:ptolemy:lonlat.pt_ll_1432,'Stournoi',16.6,38.40
+urn:cite:ptolemy:lonlat.pt_ll_1433,'Ourēton',16.6,38.28
+urn:cite:ptolemy:lonlat.pt_ll_1434,'Aithalē nēsos',8.08,40.32
+urn:cite:ptolemy:lonlat.pt_ll_1435,'Kapraria nēsos',9.04,40.32
+urn:cite:ptolemy:lonlat.pt_ll_1436,'Iloua nēsos',9.76,40.32
+urn:cite:ptolemy:lonlat.pt_ll_1437,'Planasia nēsos',10.48,39.60
+urn:cite:ptolemy:lonlat.pt_ll_1438,'Pontia nēsos',12.88,39.42
+urn:cite:ptolemy:lonlat.pt_ll_1439,'Pandatōria nēsos',13.24,39.42
+urn:cite:ptolemy:lonlat.pt_ll_1440,'Parthenopē nēsos',13.6,39.42
+urn:cite:ptolemy:lonlat.pt_ll_1441,'Prokhutē nēsos',13.9,39.36
+urn:cite:ptolemy:lonlat.pt_ll_1442,'Pithēkoussa nēsos',14.32,39.24
+urn:cite:ptolemy:lonlat.pt_ll_1443,'Kaprea nēsos',14.32,39.00
+urn:cite:ptolemy:lonlat.pt_ll_1444,'Seirēnoussai nēsoi',14.44,38.82
+urn:cite:ptolemy:lonlat.pt_ll_1445,'hai kaloumenai Diomēdeiai nēsoi',17.44,39.12
