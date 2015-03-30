@@ -11,13 +11,17 @@ package edu.holycross.shot.ptolemy
 class SpatialAnalyst {
 
   /*
-- for each point in a province: find its twelfth value.
-- find most precise fraction in province
+- for each point in a set: find its twelfth value.
+- find most precise fraction in the set
 - test distribution of twelfths against expected distributtion for implied
 precision.
    */
 
   
-  SpatialAnalyst(){
+  // constructor with list of ModernSite objects
+  SpatialAnalyst(ArrayList modernSites){
   }
+
+  
+  
 }

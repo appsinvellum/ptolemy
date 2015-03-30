@@ -24,4 +24,8 @@ dev.off()
 
 
 rm(i)
-
+rm(path)
+rm(base.name)
+rm(file.names)
+rm(color.idx)
+rm(hull)

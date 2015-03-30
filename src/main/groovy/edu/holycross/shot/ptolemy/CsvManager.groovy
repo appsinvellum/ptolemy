@@ -153,7 +153,8 @@ class CsvManager {
   String modernSitesToCsv(ArrayList modernSiteList) {
     String csv = "SiteId,Label,Lon,Lat\n"
     modernSiteList.each { s ->
-      String newLine = "${s.ptolemySite.urnString},'" + s.ptolemySite.greekName + "',${s.projectedCoords[0]},${s.projectedCoords[1]}\n"
+      String xcoded = xcoder.getString(s.ptolemySite.greekName)
+      String newLine = "${s.ptolemySite.urnString},'" + xcoded + "',${s.projectedCoords[0]},${s.projectedCoords[1]}\n"
       csv += newLine
     }
     return csv
