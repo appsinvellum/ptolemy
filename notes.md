@@ -29,8 +29,7 @@ Consider adding all three of these at the same time.  Work by generating KML for
 
 ## Verification of the edition ##
 
-- check spatial consistency of provinces.  Generate voronoi tessellations?
-
+- √ check spatial consistency of provinces.
 
 
 ## Analysis ##
