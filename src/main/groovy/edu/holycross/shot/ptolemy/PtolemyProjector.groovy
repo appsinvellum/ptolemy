@@ -79,7 +79,6 @@ class PtolemyProjector {
    */
   static ArrayList project(PtolemySite site, BigDecimal lonOffset) {
     def shrunk = shrink(site)
-    println "static project: shrunk is " + shrunk
     
     BigDecimal lonAdjusted = shrunk[0] - lonOffset
 
@@ -109,7 +108,6 @@ class PtolemyProjector {
    * @returns The rescaled latitude value as a BigDecimal.
    */
   static BigDecimal shrinkLat (PtolemySite site) {
-    println "static shrinkLat: site lat is " + site.getLatitude()
     return    PtolemyProjector.round(site.getLatitude() * circumfScale )
   }
 
