@@ -22,7 +22,7 @@ class Test_GenGeoJson extends GroovyTestCase {
 
 
     String shrunkjson = gjsm.shrink(siteList)
-    File raw = new File("${outputDir}/shrunk.geojson")
+    File shrunk = new File("${outputDir}/shrunk.geojson")
     shrunk.setText(shrunkjson, "UTF-8")
 
     String projectedjson = gjsm.project(siteList)
