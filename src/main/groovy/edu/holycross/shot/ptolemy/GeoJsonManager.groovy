@@ -1,7 +1,6 @@
 package edu.holycross.shot.ptolemy
 
 import groovy.json.JsonBuilder
-import groovy.xml.MarkupBuilder
 
 import edu.holycross.shot.greekutils.MilesianInteger
 import edu.holycross.shot.greekutils.MilesianFraction
