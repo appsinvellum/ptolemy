@@ -286,7 +286,6 @@ class KmlManager {
   }
 
 
-
   /**
    * Composes a KML representation of a set of PtolemyPoints.
    * @param ptolemyPoints List of points to represent as KML.
@@ -301,7 +300,7 @@ class KmlManager {
       Document {
         name(label)
 	ptolemyPoints.each { ptol  ->
-	  KmlPoint pt = ptol.asKml()
+	  KmlPoint pt = ptol.asKmlPoint()
 	  Placemark {
 	    description {
 	      mkp.yield(pt.description)
