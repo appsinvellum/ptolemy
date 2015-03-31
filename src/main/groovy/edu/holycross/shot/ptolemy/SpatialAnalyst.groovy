@@ -96,7 +96,6 @@ precision.
   // maps a histogram of fractional values
   HashMap lonTwelfths() {
     HashMap histo = initTwelfths()
-    println "Initial histo: " + histo
     siteList.each { s ->
       PtolemySite pt =  s.ptolemySite
       BigDecimal decimal = 0
@@ -104,8 +103,6 @@ precision.
 	decimal = pt.lonFraction.getFractionValue()
       }
       String twelfths = keyForFract(decimal)
-      println "${decimal} -> ${twelfths}"
-      println "Curr val: " + histo[twelfths]
       histo[twelfths] = histo[twelfths] + 1
     }
     return histo
