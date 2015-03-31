@@ -13,13 +13,25 @@ csv2sdf <- function(csvfile) {
 }
 
 
-
 # Find convex hull from a SpatialDataFrame
 sdfhull <- function(sdf) {
     coords <- sdf@coords
     con.hull.pos <- chull(coords)
     # return convex hull:
     rbind(coords[con.hull.pos,], coords[con.hull.pos[1],])
+}
+
+
+# gets vector of names for files
+# organized by province
+provdatanames <- function(path) {
+    provnames <- c()
+    file.names <- dir(path,pattern=".csv")
+    for (i in 1:length(file.names)) {
+        base.name <- gsub(pattern = ".csv", replacement = "",file.names[i])
+        provnames <- c(provnames, base.name)
+    }
+    provnames
 }
 
 
