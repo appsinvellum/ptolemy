@@ -22,8 +22,10 @@ class Test_GenModern extends GroovyTestCase {
     def ptLists = csvm.listsFromCsv(csvSource)
     def wProvinces = csvm.addProvinces(ptLists, provinceCsv)
     def compoundSites = csvm.joinSitesToLists(siteList, wProvinces)
-
-    
+    def modernList = ModernSite.ptolemyToModernSites(compoundSites)
+    File modernFile = new File("${outputDir}/modern.csv")
+    modernFile.setText(csvm.modernSitesToCsv(modernList), "UTF-8")
+		       
     // convert provinces to csv
     File provinces = new File("collections/provinces.csv")
     provinces.eachLine { l ->
