@@ -52,7 +52,10 @@ Set up work by generating KML for sites that do/do not have prior assignment of 
 
 ## Visualization ##
 
-
+- Output as:
+    - √ kml set of points
+    - √ geoson set of points
+    - leaflet maps
 - implementations of both global projections
 - regional maps?
 - symbology for all of Ptolemy's properties, perhaps
