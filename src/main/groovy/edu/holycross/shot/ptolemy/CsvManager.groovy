@@ -88,6 +88,61 @@ class CsvManager {
     return ptolLists
   }
 
+
+  ArrayList addEthnics(ArrayList ptolLists, File csv) {
+    ArrayList resultList = ptolLists
+    Integer count = 0
+    csv.eachLine { l ->
+      if (count > 0) {
+	def cols = l.split(/,/)
+	String urnStr = cols[1]
+	if (cols.size() != 3) {
+	  System.err.println "Did not find 3 columns in ${cols}"
+	} else {
+	  def includedLists = ptolLists.findAll {it.passageUrn ==~ urnStr}
+	  if (includedLists == null) {
+	    System.err.println "ERROR: no matching passage for " + urnStr + ", failed for " + cols
+	  }
+	  includedLists.each { pList ->
+	    pList.ethnicUrn = cols[2]
+	    // Now replace in original list!
+	    resultList = resultList.findAll { it.listUrn != pList.listUrn}
+	    resultList.add(pList)
+	  }
+	}
+      }
+      count++
+    }
+    return resultList
+  }
+
+  ArrayList addGeoTypes(ArrayList ptolLists, File csv) {
+    ArrayList resultList = ptolLists
+    Integer count = 0
+    csv.eachLine { l ->
+      if (count > 0) {
+	def cols = l.split(/,/)
+	String urnStr = cols[1]
+	if (cols.size() != 3) {
+	  System.err.println "Did not find 3 columns in ${cols}"
+	} else {
+	  def includedLists = ptolLists.findAll {it.passageUrn ==~ urnStr}
+	  if (includedLists == null) {
+	    System.err.println "ERROR: no matching passage for " + urnStr + ", failed for " + cols
+	  }
+	  includedLists.each { pList ->
+	    pList.geoTypeUrn = cols[2]
+	    // Now replace in original list!
+	    resultList = resultList.findAll { it.listUrn != pList.listUrn}
+	    resultList.add(pList)
+	  }
+	}
+      }
+      count++
+    }
+    return resultList
+  }
+  
   /** Adds data from CSV source to a list of PtolemyList objects.
    * @param ptolLists A list of PtolemyList objects.
    * @param csv CSV file with data for provinces.
@@ -158,6 +213,19 @@ class CsvManager {
     }
     return csv
   }
+
+
+  // full join of site and list properties
+  String compoundSitesToCsv(ArrayList modernSiteList) {
+    String csv = "site,label,lon,lat,textSequence,textUrn,contintent,province,geoType,ethnic,physicalRegion\n"
+    modernSiteList.each { s ->
+      String xcoded = xcoder.getString(s.ptolemySite.greekName)
+      String newLine = "${s.ptolemySite.urnString},'" + xcoded + "',${s.projectedCoords[0]},${s.projectedCoords[1]},${s.ptolemySite.textSequence},${s.ptolemySite.ptolemyList.passageUrn},${s.ptolemySite.ptolemyList.continentUrn},${s.ptolemySite.ptolemyList.provinceUrn},${s.ptolemySite.ptolemyList.geoTypeUrn},${s.ptolemySite.ptolemyList.ethnicUrn},${s.ptolemySite.ptolemyList.physicalRegionUrn}"
+      csv += newLine
+    }
+    return csv
+  }
+
   
 }
 
