@@ -21,27 +21,34 @@ Contained in the text citation hierarchy:
 Cutting across the citation hierarchy:
 
 - √ geographic type (originally, in XML on `div@n` )
-- physical geographic region or feature (originally in XML on `list@ana`)
 - ethnic/cultural group (originally, in XML on `div@ana` )
+- physical geographic region or feature (originally in XML on `list@ana`)
 
-Consider adding all three of these at the same time.  Work by generating KML for sites that do/do not have prior assignment of geographic type.
+
+Set up work by generating KML for sites that do/do not have prior assignment of geographic type:
+
+- √ ethnic/cultural group (originally, in XML on `div@ana` )
+- physical geographic region or feature (originally in XML on `list@ana`)
 
 
 ## Verification of the edition ##
 
-- √ check spatial consistency of provinces.
+- check spatial consistency of provinces by reviewing convex hulls
 
 
 ## Analysis ##
 
 - for each of 1264 lists, assemble data for all 7 Ptolemaic properties from external tables mapping URNs together.  Continents and provinces will be mapped to text URNs *containing* the list's text URN: continents are mapped to whole books, provinces to chapters, and lists to sections within chapters. Other properties will be mapped directly to the same section as the list.
+
 - constructed ordered coasts
 - identify degree of precision for points selected by Ptolemaic property
-- compute density for points selected by Ptolemaic property.  Create convex hull for each province, and measure # sites for area of the polygon.
+- compute density for points selected by Ptolemaic property:
+    - create convex hull for each province in bonne equal area projection, and measure # sites for area of the polygon
+    - create boundaries polygon as defined by Ptolemy using geotype.1
 
 ## Develop secondary data sets ##
 
-- composite geo objects (especially rivers) 
+- composite geo objects (especially rivers).  Pull in earlier work.
 
 ## Visualization ##
 
