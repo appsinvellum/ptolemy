@@ -44,10 +44,11 @@ class Test_GenUneditedKml extends GroovyTestCase {
     def provLabels = csvm.labelMap(provinces)
     provLabels.keySet().each { provUrn ->
       String label = provLabels[provUrn]
-    
       def provincial = compoundSites.findAll {it.ptolemyList.ethnicUrn == null && it.ptolemyList.provinceUrn == provUrn}
-      File lists = new File(outputDir, "${label.replaceAll(/ /,'_')}.kml")
-      lists.setText(km.colorByList(provincial, provLabels, "${label}: sites needing analysis"), "UTF-8")
+      if (provincial.size() > 0) {
+	File lists = new File(outputDir, "${label.replaceAll(/ /,'_')}.kml")
+	lists.setText(km.colorByList(provincial, provLabels, "${label}: sites needing analysis"), "UTF-8")
+      }
     }
 
   }
