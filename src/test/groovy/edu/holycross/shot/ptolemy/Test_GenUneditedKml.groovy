@@ -7,7 +7,7 @@ import org.junit.Test
 
 class Test_GenUneditedKml extends GroovyTestCase {
 
-  String outputDir = "kml"
+  File outputDir = new File("editing")
 
   File xmlSource = new File("specs/resources/texts/editions/ptolemy-geo-hc.xml")
 
@@ -38,11 +38,17 @@ class Test_GenUneditedKml extends GroovyTestCase {
 
     
     def compoundSites = csvm.joinSitesToLists(siteList, wEthnics)
-    def unedited = compoundSites.findAll {it.ptolemyList.ethnicUrn == null}
+    //def unedited = compoundSites.findAll {it.ptolemyList.ethnicUrn == null}
 
-    File lists = new File("unedited.kml")
+
     def provLabels = csvm.labelMap(provinces)
-    lists.setText(km.colorByList(unedited, provLabels, "Sites needing analysis"), "UTF-8")
+    provLabels.keySet().each { provUrn ->
+      String label = provLabels[provUrn]
+    
+      def provincial = compoundSites.findAll {it.ptolemyList.ethnicUrn == null && it.ptolemyList.provinceUrn == provUrn}
+      File lists = new File(outputDir, "${label.replaceAll(/ /,'_')}.kml")
+      lists.setText(km.colorByList(provincial, provLabels, "${label}: sites needing analysis"), "UTF-8")
+    }
 
   }
 
