@@ -18,7 +18,8 @@ sdfhull <- function(sdf) {
     coords <- sdf@coords
     con.hull.pos <- chull(coords)
     # return convex hull:
-    rbind(coords[con.hull.pos,], coords[con.hull.pos[1],])
+    hull.coords <- coords[c(con.hull.pos, con.hull.pos[1]),]
+    #rbind(coords[con.hull.pos,], coords[con.hull.pos[1],])
 }
 
 
@@ -32,6 +33,15 @@ provdatanames <- function(path) {
         provnames <- c(provnames, base.name)
     }
     provnames
+}
+
+
+wgs84 <- function() {
+    CRS("+proj=longlat +ellps=WGS84 +datum=WGS84")
+}
+
+bonne36 <- function() {
+    CRS("+proj=bonne +ellps=WGS84 +datum=WGS84 +lat_1=36 +lon_0=25")
 }
 
 
