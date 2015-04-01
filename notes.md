@@ -1,7 +1,7 @@
 ## Content to add to ghpages ##
 
 - digital editing and the Ptolemy Machine:  rationale
-
+- reconstruction of Ptolemy's derivation of spherical coords
 
 ## Content to add to master branch ##
 
@@ -20,9 +20,9 @@ Contained in the text citation hierarchy:
 
 Cutting across the citation hierarchy:
 
-- geographic type
-- physical geographic region or feature
-- ethnic/cultural group
+- √ geographic type (originally, in XML on `div@n` )
+- physical geographic region or feature (originally in XML on `list@ana`)
+- ethnic/cultural group (originally, in XML on `div@ana` )
 
 Consider adding all three of these at the same time.  Work by generating KML for sites that do/do not have prior assignment of geographic type.
 
@@ -48,7 +48,11 @@ Consider adding all three of these at the same time.  Work by generating KML for
 
 - implementations of both global projections
 - regional maps?
-
+- symbology for all of Ptolemy's properties, perhaps
+    - convex hull for satrapy
+    - icon for geotype
+    - phys ?
+    - ethnic ?
 
 ## Coordination with MSS? ##
 

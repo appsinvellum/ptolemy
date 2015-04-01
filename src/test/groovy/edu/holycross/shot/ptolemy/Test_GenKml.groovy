@@ -12,10 +12,9 @@ class Test_GenKml extends GroovyTestCase {
   File xmlSource = new File("specs/resources/texts/editions/ptolemy-geo-hc.xml")
 
   // Analyses of PtolemyLists are in .csv files
-  File provinces = new File("collections/provinces.csv")
-  File geoLists = new File("collections/geoLists.csv")
+  File geoLists = new File("collections/data/lists.csv")
+  File provinces = new File("collections/vocab/provinces.csv")
   File provinceAnalyses = new File("collections/analyses/orca_provinces.csv")
-
   
   void testAllKml() {
     GeoParser gp = new GeoParser(xmlSource)
