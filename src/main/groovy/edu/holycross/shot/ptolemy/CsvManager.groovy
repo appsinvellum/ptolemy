@@ -13,6 +13,10 @@ import edu.unc.epidoc.transcoder.TransCoder
  */
 class CsvManager {
 
+
+
+  Integer debug = 0
+
   /** Epidoc transcoder for transliterating labels. */
   TransCoder xcoder
   
@@ -23,13 +27,20 @@ class CsvManager {
    * @returns Hash keyed by URN with labelling strings as values.
    */
   HashMap labelMap(File csv) {
+    return labelMap(csv, true)
+  }
+
+  HashMap labelMap(File csv, boolean hasHeader) {
     def urnMap = [:]
     Integer count  = 0
     csv.eachLine { l ->
-      def cols = l.split(/,/)
-      String urn = cols[0]
-      
-      urnMap[urn] = cols[1]
+      if (hasHeader && count == 0) {
+	//omit
+      } else {
+	def cols = l.split(/,/)
+	String urn = cols[0]
+	urnMap[urn] = cols[1]
+      }
       count++
     }
     return urnMap
@@ -47,13 +58,18 @@ class CsvManager {
    * @returns ArrayList of PtolemySite objects, with ptolemyList properties
    * for all sites where matching list was found.
    */
-  ArrayList joinSitesToLists(ArrayList sites, ArrayList ptolemyLists) {
+  ArrayList joinSitesToLists(ArrayList sites, ArrayList ptolemyLists)
+  throws Exception {
     ArrayList returnList = []
     sites.each { s ->
       PtolemyList pl = ptolemyLists.find {it.listUrn == s.listUrn}
-      //System.err.println "For ${s.listUrn}
+      if (pl == null) {
+	throw new Exception("for ${s}: no list found matching ${s.listUrn}")
+      }
       s.ptolemyList = pl
-      //System.err.println "${s} : added list " + s.ptolemyList
+      if (debug > 0) {
+	System.err.println "Site ${s} : added list " + s.ptolemyList + " from ${s.listUrn}"
+      }
       returnList.add(s)
     }
     return returnList
@@ -96,7 +112,7 @@ class CsvManager {
       if (count > 0) {
 	def cols = l.split(/,/)
 	String urnStr = cols[1]
-	if (cols.size() != 3) {
+	if (cols.size() < 3) {
 	  System.err.println "Did not find 3 columns in ${cols}"
 	} else {
 	  def includedLists = ptolLists.findAll {it.passageUrn ==~ urnStr}
@@ -123,7 +139,7 @@ class CsvManager {
       if (count > 0) {
 	def cols = l.split(/,/)
 	String urnStr = cols[1]
-	if (cols.size() != 3) {
+	if (cols.size() < 3) {
 	  System.err.println "Did not find 3 columns in ${cols}"
 	} else {
 	  def includedLists = ptolLists.findAll {it.passageUrn ==~ urnStr}
@@ -153,7 +169,7 @@ class CsvManager {
     csv.eachLine { l ->
       if (count > 0) {
 	def cols = l.split(/,/)
-	if (cols.size() != 3) {
+	if (cols.size() <  3) {
 	  System.err.println "Did not find 3 columns in ${cols}"
 	} else {
 	  def includedUrn = ~/${cols[1]}\..*/
