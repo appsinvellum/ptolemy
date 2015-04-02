@@ -5,10 +5,10 @@ source("ptolemy.R")
 
 
 
-base.names <- provdatanames("csv")
+base.names <- provdatanames("provinces")
 for (i in 1:length(base.names)) {
     print (paste("Process", base.names[i]))
-    assign(paste(base.names[i],".sdf",sep=""), csv2sdf(paste("csv/",base.names[i],".csv", sep="")))
+    assign(paste(base.names[i],".sdf",sep=""), csv2sdf(paste("provinces/",base.names[i],".csv", sep="")))
     sdf <- as.name(paste(base.names[i],".sdf",sep=""))
     assign(paste(base.names[i],".hull",sep=""), sdfhull(eval(sdf)))
 }
