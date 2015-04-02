@@ -36,15 +36,24 @@ class Test_GenUneditedKml extends GroovyTestCase {
     def noAnalysis = wEthnics.findAll {it.ethnicUrn == null }
     System.err.println "Number of lists wout ethnic analysis: " + noAnalysis.size()
 
-    
+    csvm.debug = 0
     def compoundSites = csvm.joinSitesToLists(siteList, wEthnics)
+
+    println "Compound sites : " + compoundSites.size()
+    def missing =  compoundSites.findAll{it.ptolemyList == null}
+    println "Sites without list: " + missing.size()
+    missing.each {
+      println it
+    }
+    
     //def unedited = compoundSites.findAll {it.ptolemyList.ethnicUrn == null}
 
 
     def provLabels = csvm.labelMap(provinces)
     provLabels.keySet().each { provUrn ->
       String label = provLabels[provUrn]
-      def provincial = compoundSites.findAll {it.ptolemyList.ethnicUrn == null && it.ptolemyList.provinceUrn == provUrn}
+      System.err.println "Get sites for " + label + " (${provUrn})"
+      def provincial = compoundSites.findAll { it.ptolemyList.provinceUrn == provUrn && (it.ptolemyList.ethnicUrn == null || it.ptolemyList.geoTypeUrn == null) }
       if (provincial.size() > 0) {
 	File lists = new File(outputDir, "${label.replaceAll(/ /,'_')}.kml")
 	lists.setText(km.colorByList(provincial, provLabels, "${label}: sites needing analysis"), "UTF-8")
