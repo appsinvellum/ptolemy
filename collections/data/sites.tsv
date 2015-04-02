@@ -16,14 +16,14 @@ urn:cite:ptolemy:lonlat.pt_ll_14	14	urn:cite:ptolemy:list.list0002	8	Νότιο
 urn:cite:ptolemy:lonlat.pt_ll_15	15	urn:cite:ptolemy:list.list0003	0	Μετὰ τὸ Νότιον ἄκρον, ὅ ἐστιν	ζ	𐅷	νζ	𐅵 δ	false
 urn:cite:ptolemy:lonlat.pt_ll_16	16	urn:cite:ptolemy:list.list0003	1	Δαβρώνα ποταμοῦ ἐκβολαί	ια	δ	νζ		false
 urn:cite:ptolemy:lonlat.pt_ll_17	17	urn:cite:ptolemy:list.list0003	2	Βίργου ποταμοῦ ἐκβολαί	ιβ	𐅵	νζ	𐅵	false
-urn:cite:ptolemy:lonlat.pt_ll_18	18	urn:cite:ptolemy:list.list0003	3	Ἱερὸν ἄκρον.	ιδ		νζ	𐅵 γ	false
+urn:cite:ptolemy:lonlat.pt_ll_18	18	urn:cite:ptolemy:list.list0003	3	Ἱερὸν ἄκρον	ιδ		νζ	𐅵 γ	false
 urn:cite:ptolemy:lonlat.pt_ll_19	19	urn:cite:ptolemy:list.list0004	0	τὸ Ἱερὸν ἄκρον	ιδ		νζ	𐅵 γ	false
 urn:cite:ptolemy:lonlat.pt_ll_20	20	urn:cite:ptolemy:list.list0004	1	Μοδόννου ποταμοῦ ἐκβολαί	ιγ	𐅷	νη	𐅷	false
 urn:cite:ptolemy:lonlat.pt_ll_21	21	urn:cite:ptolemy:list.list0004	2	Μαναπία πόλις	ιγ	𐅵	νη	𐅷	false
 urn:cite:ptolemy:lonlat.pt_ll_22	22	urn:cite:ptolemy:list.list0004	3	Ὀβόκα ποταμοῦ ἐκβολαί	ιγ	ϛ	νθ		false
 urn:cite:ptolemy:lonlat.pt_ll_23	23	urn:cite:ptolemy:list.list0004	4	Ἔβλανα πόλις	ιδ		νθ	𐅵	false
 urn:cite:ptolemy:lonlat.pt_ll_24	24	urn:cite:ptolemy:list.list0004	5	Βουουίνδα ποταμοῦ ἐκβολαί	ιδ	𐅷	νθ	𐅷	false
-urn:cite:ptolemy:lonlat.pt_ll_25	25	urn:cite:ptolemy:list.list0004	6	Ἰσάμνιον [ἄκρον]	ιε		ξ		false
+urn:cite:ptolemy:lonlat.pt_ll_25	25	urn:cite:ptolemy:list.list0004	6	Ἰσάμνιον ἄκρον	ιε		ξ		false
 urn:cite:ptolemy:lonlat.pt_ll_26	26	urn:cite:ptolemy:list.list0004	7	Οὐινδέριος ποταμοῦ ἐκβολαί	ιε		ξ	δ	false
 urn:cite:ptolemy:lonlat.pt_ll_27	27	urn:cite:ptolemy:list.list0004	8	Λογία ποταμοῦ ἐκβολαί	ιε	γ	ξ	𐅷	false
 urn:cite:ptolemy:lonlat.pt_ll_28	28	urn:cite:ptolemy:list.list0005	0	Ῥηγία	ιγ		ξ	γ	false
@@ -136,12 +136,12 @@ urn:cite:ptolemy:lonlat.pt_ll_131	134	urn:cite:ptolemy:list.list0020	3	Κάλα
 urn:cite:ptolemy:lonlat.pt_ll_132	135	urn:cite:ptolemy:list.list0020	4	Ἰσούριον	κ		νζ	𐅷	false
 urn:cite:ptolemy:lonlat.pt_ll_133	136	urn:cite:ptolemy:list.list0020	5	Ῥιγόδουνον	ιη		νζ	𐅵	false
 urn:cite:ptolemy:lonlat.pt_ll_134	137	urn:cite:ptolemy:list.list0020	6	Ὀλίκανα	ιθ		νζ	𐅵	false
-urn:cite:ptolemy:lonlat.pt_ll_5145	138	urn:cite:ptolemy:list.list0020	7	Ἐβόρακον, ΛεγίωνΝικηφόρος	κ		νζ	γ	false
+urn:cite:ptolemy:lonlat.pt_ll_5145	138	urn:cite:ptolemy:list.list0020	7	Ἐβόρακον, Λεγίων Νικηφόρος	κ		νζ	γ	false
 urn:cite:ptolemy:lonlat.pt_ll_135	139	urn:cite:ptolemy:list.list0020	8	Καμουλόδουνον	ιη		νζ	𐅵 δ	false
 urn:cite:ptolemy:lonlat.pt_ll_136	140	urn:cite:ptolemy:list.list0021	0	Πετουαρία	κ	𐅷	νϛ	𐅷	false
 urn:cite:ptolemy:lonlat.pt_ll_137	141	urn:cite:ptolemy:list.list0022	0	Μεδιολάνιον	ιϛ	𐅵 δ	νϛ	𐅷	false
 urn:cite:ptolemy:lonlat.pt_ll_138	142	urn:cite:ptolemy:list.list0022	1	Βραννογένιον	ιϛ	𐅵 δ	νϛ	δ	false
-urn:cite:ptolemy:lonlat.pt_ll_5146	143	urn:cite:ptolemy:list.list0023	0	Δηοῦα, ΛεγίωνΝικηφόρος	ιζ	𐅵	νϛ	𐅵 δ	false
+urn:cite:ptolemy:lonlat.pt_ll_5146	143	urn:cite:ptolemy:list.list0023	0	Δηοῦα, Λεγίων Νικηφόρος	ιζ	𐅵	νϛ	𐅵 δ	false
 urn:cite:ptolemy:lonlat.pt_ll_139	144	urn:cite:ptolemy:list.list0023	1	Οὐιροκόνιον	ιϛ	𐅵 δ	νε	𐅵 δ	false
 urn:cite:ptolemy:lonlat.pt_ll_140	145	urn:cite:ptolemy:list.list0024	0	Λίνδον	ιη	𐅷	νϛ	𐅵	false
 urn:cite:ptolemy:lonlat.pt_ll_141	146	urn:cite:ptolemy:list.list0024	1	Ῥάται	ιη		νε	𐅵	false
