@@ -28,7 +28,14 @@ Cutting across the citation hierarchy:
 Set up work by generating KML for sites that do/do not have prior assignment of geographic type:
 
 - √ ethnic/cultural group (originally, in XML on `div@ana` )
-- physical geographic region or feature (originally in XML on `list@ana`)
+- √ physical geographic region or feature (originally in XML on `list@ana`)
+
+
+Other Ptolemaic taxonomy to extract:
+
+- Extract sections that list "demes/tribes" without coordinates, map named geographic entities
+- Identify provicnes with no ethnic subdivisions (e.g., British Isles)
+
 
 
 ## Verification of the edition ##
