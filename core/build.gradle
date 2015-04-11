@@ -57,14 +57,6 @@ buildscript {
   }
 }
 
-//import edu.holycross.shot.ptolemy.DataManager
-//import edu.holycross.shot.ptolemy.GeoParser
-
-
-group = "edu.holycross.shot"
-version = '0.0.2'
-
-
 repositories {
     mavenCentral()
     maven {
@@ -76,22 +68,10 @@ repositories {
 
 }
 
-/*
-configurations {
-    schemas {
-        description = 'Manage schemas'
-        transitive = true
-    }
-    }*/
-
 
 dependencies {
   
   compile group: 'org.codehaus.groovy', name: 'groovy', version: groovyversion
-      //      exclude "xml-apis","xml-apis-ext","xercesImpl","xalan"
-        //exclude module: ["xml-apis","xml-apis-ext","xercesImpl","xalan", "xsd", "gt-xml", "gt-wfs"]
-  //}
-  
   compile group: 'commons-io', name: 'commons-io', version: commonsioversion
   compile group: 'net.sf.saxon', name: 'saxon-dom', version: '8.7'
 
@@ -100,66 +80,13 @@ dependencies {
   testCompile 'org.concordion:concordion:1.4.4'
   testCompile group :'xmlunit', name: 'xmlunit', version: xmlunitversion
   compile group: 'com.thaiopensource', name:'jing', version: jingversion
-  //    groovy group:'org.iso_relax.verifier.jaxp.validation', name:'isorelax-jaxp-bridge', version:'1.0'
-
 
   // DOCUMENT THESE: 
   compile group: 'edu.harvard.chs', name : 'cite' , version: citeVersion
   compile group: 'edu.harvard.chs', name : 'greekutils' , version: greekutilsVersion
-
   compile group: 'edu.holycross.shot', name : 'greeklang' , version: greeklangVersion
-
   compile group : 'edu.unc.epidoc', name: 'transcoder', version : epidocVersion
-  
-  //schemas group: 'edu.harvard.chs', name: 'cite', version: citeVersion, classifier: 'schemas', ext: 'zip'
-
 }
-
-/*
-task geojson() {
-  description = "Generates 3 GeoJson representations"
-}
-geojson.doLast {
-  printn "Parsing XML ..."
-  GeoParser gp = new GeoParser(xmlSource)
-  def siteList = gp.indexPtolemySites()
-  DataManager dm = new DataManager()
-  println "Writing GeoJson for raw coordinates..."
-  File raw = new File("geojson/raw.geojson")
-  raw.setText(dm.toGeoJson(siteList), "UTF-8")
-  println "Done."
-  }*/
-
-
-
-
-task squawk() {
-  System.out.println "citeVersion: " + citeVersion
-}
-
-/*
-task checkOutSchemas {
-  description = ""
-  doLast {
-    configurations.schemas.files.each { f ->
-      println "SCHEMA DEPENDENCY: " + f.name
-      FileTree schemaTree = zipTree(f)
-      schemaTree.each { s ->
-	println "${s} from ${s.getClass()}"
-      }
-    }
-  }
-}
-*/
-
-/*
-task copySchemas(dependsOn: checkOutSchemas, type: Copy) {
-    from 'src/schemas'
-    into 'build/schemas'
-}
-*/
-
-//compileGroovy.dependsOn(copySchemas)
 
 uploadArchives {
     repositories.mavenDeployer {
