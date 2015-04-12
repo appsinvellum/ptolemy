@@ -1,0 +1,73 @@
+apply plugin: 'application'
+apply plugin: 'groovy'
+
+apply from: "versions.gradle"
+apply from: "dgconf.gradle"
+
+
+repositories {
+    mavenCentral()
+    maven {
+        url "http://beta.hpcc.uh.edu/nexus/content/groups/public"
+    }
+    maven {
+      url "http://repo.boundlessgeo.com/main"
+    }
+
+}
+dependencies {
+    compile 'log4j:log4j:1.2.17'
+    compile project(':core')
+    compile group: 'edu.harvard.chs', name : 'cite' , version: citeVersion
+  compile group: 'edu.harvard.chs', name : 'greekutils' , version: greekutilsVersion
+
+  compile group: 'edu.holycross.shot', name : 'greeklang' , version: greeklangVersion
+
+  compile group : 'edu.unc.epidoc', name: 'transcoder', version : epidocVersion
+    compile group: 'org.codehaus.groovy', name: 'groovy', version: groovyversion
+}
+
+task copyLicense {
+    outputs.file new File("$buildDir/LICENSE")
+    doLast {
+        copy {
+            from "LICENSE"
+            into "$buildDir"
+        }
+    }
+}
+
+applicationDistribution.from(copyLicense) {
+    into ""
+}
+
+
+
+task unedited(type:JavaExec) {
+  description = "Generates individual .kml files for each Ptolemaic list not fully edited, using three arguments for XML source file, collections directory, and output directory"
+   main = "ptolemy/UneditedKml"
+   args = [file(xml), file("../collections"), file("../editing")]
+   classpath = sourceSets.main.runtimeClasspath
+}
+
+
+
+task fullcsv(type:JavaExec) {
+  description = "Generates single .csv file from three arguments for XML source file, collections directory, and output directory"
+  main = "ptolemy/FullCsv"
+  args = [file(xml), file("../collections"), file("../r")]
+  classpath = sourceSets.main.runtimeClasspath
+}
+
+
+
+
+task modern(type:JavaExec) {
+  description = "Generates..."
+  main = "ptolemy/ModernSites"
+  args = [file(xml), file("../collections"), file("../r/provinces")]
+  classpath = sourceSets.main.runtimeClasspath
+}
+
+
+
