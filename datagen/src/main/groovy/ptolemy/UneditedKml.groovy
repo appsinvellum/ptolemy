@@ -5,16 +5,10 @@ import edu.holycross.shot.ptolemy.*
 class UneditedKml {
 
 
-
-
-
   /*
      arg[0] = XML source file
      arg[1] = repository's collection directory
      arg[2] = output directory
-
-
-
    */
   static void main(args) {
     File xml = new File(args[0])
@@ -64,27 +58,5 @@ class UneditedKml {
     
   }
 
-
-  /*
-  void testUneditedKml() {
-
-    
-    /// Join sites and lists for KML colored by analyzed properties:
-
-    csvm.debug = 0
-    def compoundSites = csvm.joinSitesToLists(siteList, wEthnics)
-
-    println "Compound sites : " + compoundSites.size()
-    def missing =  compoundSites.findAll{it.ptolemyList == null}
-    println "Sites without list: " + missing.size()
-    missing.each {
-      println it
-    }
-    
-    //def unedited = compoundSites.findAll {it.ptolemyList.ethnicUrn == null}
-
-
-
-  }
-  */
-  }
+  
+}

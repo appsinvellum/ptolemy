@@ -60,6 +60,13 @@ task fullcsv(type:JavaExec) {
 }
 
 
+task kml(type:JavaExec) {
+  description = "Generates kml..."
+  main = "ptolemy/Kml"
+  args = [file(xml), file("../collections"), file("../kml")]
+  classpath = sourceSets.main.runtimeClasspath
+}
+
 
 
 task modern(type:JavaExec) {

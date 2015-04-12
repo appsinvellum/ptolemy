@@ -8,11 +8,11 @@ import edu.holycross.shot.greekutils.GreekString
 /**
  * A class for parsing the geographic database in Ptolemy's Geography.  
  * Working from a TEI source file following a specified set
- * of markup conventions, GeoParser objects can create ordered lists of
+ * of markup conventions, GreekGeoParser objects can create ordered lists of
  * Ptolemy's two fundamental data structures, the list (PtolemyList class)
  * and the individual site (PtolemySite).
  */
-class GeoParser {
+class GreekGeoParser {
 
   /** TEI namespace as a groovy Namespace object. */
   static groovy.xml.Namespace tei = new groovy.xml.Namespace("http://www.tei-c.org/ns/1.0")
@@ -49,7 +49,8 @@ class GeoParser {
   /** Constructor from a File object.
    * @param xmlFile TEI source for edition.
    */
-  GeoParser(File xmlFile) {
+  GreekGeoParser(File xmlFile) {
+    System.err.println "PARSING " + xmlFile
     root = new XmlParser().parse(xmlFile)
   }
 
@@ -100,7 +101,7 @@ class GeoParser {
 	}
       }
 
-      if (GeoParser.isEquator(latDeg)) {
+      if (GreekGeoParser.isEquator(latDeg)) {
 	// valid value == 0
       } else if (latDeg.size() == 0) {
 	//  empty string == valid value of 0
@@ -173,7 +174,7 @@ class GeoParser {
 	    }
 
 	    if (coords.size() != 4) {
-	      throw new Exception("GeoParser: too few coordinates for site ${siteUrn} in list ${listId}")
+	      throw new Exception("GreekGeoParser: too few coordinates for site ${siteUrn} in list ${listId}")
 	    }
 	    def dataRecord = [siteTotal, listId, itemIdx, siteName, coords[0], coords[1], coords[2], coords[3], negativeLat]
 
@@ -205,7 +206,7 @@ class GeoParser {
 	    }
 
 	    if (coords.size() != 4) {
-	      throw new Exception("GeoParser: too few coordinates for site ${siteUrn} in list ${listId}")
+	      throw new Exception("GreekGeoParser: too few coordinates for site ${siteUrn} in list ${listId}")
 	    }
 
 
@@ -255,12 +256,12 @@ class GeoParser {
 	    }
 
 	    if (coords.size() != 4) {
-	      throw new Exception("GeoParser: too few coordinates for site ${siteUrn} in list ${listId}")
+	      throw new Exception("GreekGeoParser: too few coordinates for site ${siteUrn} in list ${listId}")
 	    }
 
 	    
 	    MilesianInteger lat1
-	    if ((! GeoParser.isEquator(coords[2])) && (coords[2].size() > 0)) {
+	    if ((! GreekGeoParser.isEquator(coords[2])) && (coords[2].size() > 0)) {
 	      lat1  = new MilesianInteger(coords[2])
 	    }
 	    MilesianInteger lon1 = new MilesianInteger(coords[0])
@@ -313,12 +314,12 @@ class GeoParser {
 	    }
 
 	    if (coords.size() != 4) {
-	      throw new Exception("GeoParser: too few coordinates for site ${siteUrn} in list ${listId}")
+	      throw new Exception("GreekGeoParser: too few coordinates for site ${siteUrn} in list ${listId}")
 	    }
 
 
 	    MilesianInteger lat1
-	    if ((! GeoParser.isEquator(coords[2])) && (coords[2].size() > 0)) {
+	    if ((! GreekGeoParser.isEquator(coords[2])) && (coords[2].size() > 0)) {
 	      lat1 = new MilesianInteger(coords[2])
 	    }
 	    MilesianInteger lon1 = new MilesianInteger(coords[0])
