@@ -69,6 +69,15 @@ task kml(type:JavaExec) {
 
 
 
+task geojson(type:JavaExec) {
+  description = "Generates geojson..."
+  main = "ptolemy/GeoJson"
+  args = [file(xml), file("../collections"), file("../geojson")]
+  classpath = sourceSets.main.runtimeClasspath
+}
+
+
+
 task modern(type:JavaExec) {
   description = "Generates..."
   main = "ptolemy/ModernSites"
