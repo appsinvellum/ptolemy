@@ -46,7 +46,7 @@ class KmlManager {
    * using the default value for offset of Ptolemy's longitude. Labelling strings
    * identify sites by transliterated name and province, and colors sites by the
    * province or "satrapy" they belong to.
-   * @param ptolemyPoints List of PtolemyPoints to map.
+   * @param ptolemyPoints List of PtolemyPoints to map.  UPGRADE TO MODERN POINTS
    * @param lonOff  Number of degrees west of Greenwich to
    * use for Ptolemy's origin of longitude.
    * @param provinceLabels Map of province URNs to labelling strings.

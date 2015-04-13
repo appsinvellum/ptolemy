@@ -3,7 +3,7 @@ package ptolemy;
 
 import org.concordion.integration.junit3.ConcordionTestCase;
 
-import edu.holycross.shot.ptolemy.GeoParser;
+import edu.holycross.shot.ptolemy.GreekGeoParser;
 import java.io.File;
 import java.util.HashMap;
 
@@ -22,7 +22,7 @@ public class PtolemyTest extends ConcordionTestCase {
     throws Exception {
 	String xmlFullPath = new java.io.File( "." ).getCanonicalPath() + xmlLocation;
 	File xmlFile = new File(xmlFullPath);
-	GeoParser geo = new GeoParser(xmlFile);
+	GreekGeoParser geo = new GreekGeoParser(xmlFile);
 	return geo.indexLists().keySet().size();
     }
 
@@ -32,7 +32,7 @@ public class PtolemyTest extends ConcordionTestCase {
     throws Exception {
 	String xmlFullPath = new java.io.File( "." ).getCanonicalPath() + xmlLocation;
 	File xmlFile = new File(xmlFullPath);
-	GeoParser geo = new GeoParser(xmlFile);
+	GreekGeoParser geo = new GreekGeoParser(xmlFile);
 	return geo.indexListItems().keySet().size();
     }
 }

@@ -79,6 +79,7 @@ class PtolemySite {
    * @returns A BigDecimal rounded to .001.
    */
   BigDecimal getLatitude() {
+
     BigDecimal lat
     if (latDegree == null)  {
       lat = 0
@@ -88,6 +89,8 @@ class PtolemySite {
     if (latFraction != null) {
       lat += latFraction.getFractionValue()
     }
+    //ok:
+    //System.err.println "PtolemySite: looking at lat, with latfract " + latFraction + " == " + latFraction.getFractionValue() + ", so returning " + lat
     return lat
   }
 

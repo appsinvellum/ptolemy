@@ -37,6 +37,10 @@ class ModernSite {
     }
     if (ptolemySite.latFraction != null) {
       rawLat = ptolemySite.latFraction.getFractionValue()
+      
+      //System.err.println "ModernSite: lat fract ${rawLat}: ${ptolemySite}"
+    } else {
+      //System.err.println "ModernSite: LAT FRACT WAS NULL ${ptolemySite}"
     }
     
     PtolemyProjector projector = new PtolemyProjector(ptolemySite)

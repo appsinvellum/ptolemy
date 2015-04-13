@@ -14,6 +14,10 @@ import edu.holycross.shot.greekutils.GreekString
  */
 class GreekGeoParser {
 
+
+  Integer debug = 0
+
+  
   /** TEI namespace as a groovy Namespace object. */
   static groovy.xml.Namespace tei = new groovy.xml.Namespace("http://www.tei-c.org/ns/1.0")
 
@@ -50,8 +54,7 @@ class GreekGeoParser {
    * @param xmlFile TEI source for edition.
    */
   GreekGeoParser(File xmlFile) {
-    System.err.println "PARSING " + xmlFile
-    root = new XmlParser().parse(xmlFile)
+     root = new XmlParser().parse(xmlFile)
   }
 
 
@@ -268,6 +271,7 @@ class GreekGeoParser {
 
 	    MilesianFraction lat2
 	    MilesianFraction lon2
+
 	    if (coords[1].size() > 0) {
 	      lon2 = new MilesianFraction(coords[1] + '"')
 	    }
@@ -275,6 +279,11 @@ class GreekGeoParser {
 	      lat2 = new MilesianFraction(coords[3] + '"')
 	    }
 
+	    if (debug > 2) {
+	      System.err.println("Looking at coords " + coords)
+	      System.err.println ("Fracts in ${coords[1]} and ${coords[3]}")
+	      System.err.println "Yields " + lon2 + ":" + lat2
+	    }
 	    def dataRecord = [urnString: siteUrn, textSequence : siteTotal, listUrn: listId, listIndex: itemIdx, greekName: siteName, southLatitude: negativeLat, lonDegree:  lon1]
 	    
 	    if (lat1 != null) {

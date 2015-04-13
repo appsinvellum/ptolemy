@@ -3,7 +3,7 @@ package edu.holycross.shot.ptolemy
 
 /**
  * A class analyzing spatial density and implied precision of
- * Ptolemy's data by province, as well as checking correlations of 
+ * Ptolemy's data by list, as well as checking correlations of 
  * all properties of Ptolemaic points.
  * It would be cool to do this with geotools, but I can't get them
  * working. Perhaps work with data generated from R.
@@ -26,6 +26,44 @@ precision.
     siteList = modernSites
   }
 
+
+  static HashMap lonTwelfthsMap(ArrayList sites) {
+    def twelfths = [:]
+    sites.each { s ->
+      if (s.rawLonFract != null) {
+	twelfths[s.ptolemySite.urnString] = keyForFract(s.rawLonFract)
+      } else {
+	System.err.println "NULL val for rawlonfract on ${s} (${s.ptolemySite.urnString})"
+      }
+    }
+    return twelfths
+  }
+
+  static HashMap latTwelfthsMap(ArrayList sites) {
+    def twelfths = [:]
+    sites.each { s ->
+      if (s.rawLatFract != null) {
+	twelfths[s.ptolemySite.urnString] = keyForFract(s.rawLatFract)
+      } else {
+	System.err.println "NULL val for rawlatfract on ${s} (${s.ptolemySite.urnString})"
+      }
+    }
+    return twelfths
+  }
+
+
+  
+  HashMap lonTwelfthsMap() {
+    return lonTwelfthsMap(siteList)
+  }
+
+
+  HashMap latTwelfthsMap() {
+    return latTwelfthsMap(siteList)
+  }
+
+
+  
   String keyForFract(BigDecimal decimal)
   throws Exception {
     String twelfth 
@@ -94,7 +132,7 @@ precision.
   }
   
   // maps a histogram of fractional values
-  HashMap lonTwelfths() {
+  HashMap lonTwelfthsHist() {
     HashMap histo = initTwelfths()
     siteList.each { s ->
       PtolemySite pt =  s.ptolemySite
