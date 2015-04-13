@@ -118,4 +118,21 @@ class PtolemySite {
   String toString() {
     return """Site ${urnString} = ${greekName}"""
   }
+
+  String showSettings() {
+    return """
+urnString ${urnString}
+textSequence ${textSequence}
+listUrn ${listUrn}
+listIndex ${listIndex}
+greekName ${greekName}
+southLatitude ${southLatitude}
+latDegree ${latDegree}
+latFraction ${latFraction}
+lonDegree ${lonDegree}
+lonFraction ${lonFraction}
+ptolemyList ${ptolemyList}
+"""
+  }
+  
 }

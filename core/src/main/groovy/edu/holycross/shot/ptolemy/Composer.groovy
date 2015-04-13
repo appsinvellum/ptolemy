@@ -1,6 +1,5 @@
-package ptolemy
+package edu.holycross.shot.ptolemy
 
-import edu.holycross.shot.ptolemy.*
 
 class Composer {
 

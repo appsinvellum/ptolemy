@@ -2,7 +2,11 @@ package edu.holycross.shot.ptolemy
 
 
 
+/** A class adding modern coordinate information to a 
+ * PtolemySite object.
+ */
 class ModernSite {
+
 
   
   PtolemySite ptolemySite
@@ -29,16 +33,14 @@ class ModernSite {
     rawLon = ptolemySite.lonDegree.toInteger() as Integer
     
     if (ptolemySite.lonFraction != null) {
-      rawLon = ptolemySite.lonFraction.getFractionValue()
+      rawLonFract = ptolemySite.lonFraction.getFractionValue()
     }
 
     if (ptolemySite.latDegree != null) {
       rawLat = ptolemySite.latDegree.toInteger() as Integer
     }
     if (ptolemySite.latFraction != null) {
-      rawLat = ptolemySite.latFraction.getFractionValue()
-      
-      //System.err.println "ModernSite: lat fract ${rawLat}: ${ptolemySite}"
+      rawLatFract = ptolemySite.latFraction.getFractionValue()
     } else {
       //System.err.println "ModernSite: LAT FRACT WAS NULL ${ptolemySite}"
     }

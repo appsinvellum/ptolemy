@@ -32,8 +32,9 @@ precision.
     sites.each { s ->
       if (s.rawLonFract != null) {
 	twelfths[s.ptolemySite.urnString] = keyForFract(s.rawLonFract)
+	//System.err.println "lon fract = " + keyForFract(s.rawLonFract)
       } else {
-	System.err.println "NULL val for rawlonfract on ${s} (${s.ptolemySite.urnString})"
+	//System.err.println "NULL val for rawlonfract on ${s} (${s.ptolemySite.urnString})"
       }
     }
     return twelfths
@@ -43,7 +44,8 @@ precision.
     def twelfths = [:]
     sites.each { s ->
       if (s.rawLatFract != null) {
-	twelfths[s.ptolemySite.urnString] = keyForFract(s.rawLatFract)
+	twelfths[s.ptolemySite.urnString] = keyForFract(s.rawLatFract.getFractionValue())
+	System.err.println "lan fract = " + keyForFract(s.rawLanFract.getFractionValue())
       } else {
 	System.err.println "NULL val for rawlatfract on ${s} (${s.ptolemySite.urnString})"
       }
@@ -61,10 +63,8 @@ precision.
   HashMap latTwelfthsMap() {
     return latTwelfthsMap(siteList)
   }
-
-
   
-  String keyForFract(BigDecimal decimal)
+  static String keyForFract(BigDecimal decimal)
   throws Exception {
     String twelfth 
     switch(decimal) {
