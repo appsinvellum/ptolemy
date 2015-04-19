@@ -1,13 +1,22 @@
 
 ext {
-    tischemaurl = "http://www.homermultitext.org/hmtschemas/TextInventory.rng"
 
-    mdSrc = "specs/md"
+  // URL for TextInventory schema
+  tischemaurl = "http://www.homermultitext.org/hmtschemas/TextInventory.rng"
     
-    htmlPreface = """
+  // XML edition to work from (relative to project directory):
+  xml = "core/specs/resources/texts/editions/ptolemy-geo-hc.xml"
+
+  // Source for concordion specs (relative to project directory):
+  mdSrc = "core/specs/md"
+
+  // ant properties to substitute for in generating concordion HTML:
+  tokenMap = [    "openex": "<div class='example'>", "closeex" : "</div>"]
+
+  // open and close values for concordion HTML:
+  htmlEnd = "</body>\n</html>\n"  
+  htmlPreface = """
 <html xmlns:concordion="http://www.concordion.org/2007/concordion">
 <body>
-    """
-    htmlEnd = "</body>\n</html>\n"
-    tokenMap = [    "openex": "<div class='example'>", "closeex" : "</div>"]
+  """
 }

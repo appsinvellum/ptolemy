@@ -137,6 +137,8 @@ task addVersion(){
 }
 addVersion.doLast {
   tokenMap["version"] = version
+  println "Set version num to " + tokenMap["version"]
+  
   tokenMap["deps"] = """
     <tr><td>epidoc</td><td>${epidocVersion}</td></tr>
     <tr><td>cite</td><td>${citeVersion}</td></tr>

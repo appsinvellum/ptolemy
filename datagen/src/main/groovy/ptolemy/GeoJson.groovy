@@ -37,7 +37,6 @@ class GeoJson  {
     String projectedjson = gjsm.project(siteList)
     File projected = new File(outputDir, "/projected.geojson")
     projected.setText(projectedjson, "UTF-8")
-
     
   }
 

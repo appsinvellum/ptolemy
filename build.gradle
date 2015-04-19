@@ -7,7 +7,7 @@ apply plugin:  "groovy"
 apply plugin:  "maven"
 
 
-apply from: "versions.gradle"
+apply from: "${project.rootDir}/confs/versions.gradle"
 
 
 if (hasProperty('conf')) {
@@ -20,12 +20,12 @@ if (hasProperty('conf')) {
     }
 
 } else {
-    File confFile = new File("conf.gradle")
+    File confFile = new File("${project.rootDir}/confs/conf.gradle")
     if (! confFile.exists()) {
         throw new Exception("No configuration file ${confFile} found.")
     } else {
         println "Using default configuration in 'conf.gradle'"
-        apply from: "conf.gradle"
+        apply from: "${project.rootDir}/confs/conf.gradle"
     }
 }
 
@@ -39,12 +39,12 @@ if (hasProperty('pub')) {
     }
 
 } else {
-    File confFile = new File("pub.gradle")
+    File confFile = new File("${project.rootDir}/confs/pub.gradle")
     if (! confFile.exists()) {
         throw new Exception("No publication configuration file ${confFile} found.")
     } else {
         println "Using default configuration in 'pub.gradle'"
-        apply from: "pub.gradle"
+        apply from: "${project.rootDir}/confs/pub.gradle"
     }
 }
 
@@ -57,8 +57,11 @@ buildscript {
   }
 }
 
-group = "edu.holycross.shot"
-version = '0.0.3'
+
+subprojects {
+  group = "edu.holycross.shot"
+  version = '0.0.4'
+}
 
 repositories {
     mavenCentral()
@@ -89,3 +92,5 @@ dependencies {
   compile group: 'edu.holycross.shot', name : 'greeklang' , version: greeklangVersion
   compile group : 'edu.unc.epidoc', name: 'transcoder', version : epidocVersion
 }
+
+
