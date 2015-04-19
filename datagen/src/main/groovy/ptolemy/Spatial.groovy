@@ -1,10 +1,14 @@
-package edu.holycross.shot.ptolemy
+package ptolemy
 
-import static org.junit.Assert.*
-import org.junit.Test
+import edu.holycross.shot.ptolemy.*
 
-class Test_GenSpatial extends GroovyTestCase {
+class SpatialAnalysis {
 
+
+  static void main(args) {
+  }
+  
+  /*
 
   File xmlSource = new File("specs/resources/texts/editions/ptolemy-geo-hc.xml")
 
@@ -46,5 +50,5 @@ class Test_GenSpatial extends GroovyTestCase {
     File histoFile = new File("provincesPrecision.csv")
     histoFile.setText( csv, "UTF-8")
   }
-  
+  */  
 }

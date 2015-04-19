@@ -6,48 +6,6 @@ apply plugin: "base"
 apply plugin:  "groovy"
 apply plugin:  "maven"
 
-
-apply from: "versions.gradle"
-
-
-if (hasProperty('conf')) {
-    System.err.print "Using configuration data from ${conf}"
-    File confFile = new File(conf)
-    if (! confFile.exists()) {
-        throw new Exception("No configuration file ${conf} found.")
-    } else {
-        apply from: conf
-    }
-
-} else {
-    File confFile = new File("conf.gradle")
-    if (! confFile.exists()) {
-        throw new Exception("No configuration file ${confFile} found.")
-    } else {
-        println "Using default configuration in 'conf.gradle'"
-        apply from: "conf.gradle"
-    }
-}
-
-if (hasProperty('pub')) {
-    System.err.print "Using configuration data from ${pub}"
-    File confFile = new File(pub)
-    if (! confFile.exists()) {
-        throw new Exception("No publication configuration file ${pub} found.")
-    } else {
-        apply from: pub
-    }
-
-} else {
-    File confFile = new File("pub.gradle")
-    if (! confFile.exists()) {
-        throw new Exception("No publication configuration file ${confFile} found.")
-    } else {
-        println "Using default configuration in 'pub.gradle'"
-        apply from: "pub.gradle"
-    }
-}
-
 buildscript {
   repositories {
     mavenCentral()
@@ -65,7 +23,6 @@ repositories {
     maven {
       url "http://repo.boundlessgeo.com/main"
     }
-
 }
 
 
@@ -97,15 +54,15 @@ uploadArchives {
 }
 
 
-
-// for specs with concordion:
+// ******************************************************************* //
+// block of tasks for specs with concordion:
 sourceSets {
     main {
         java {
             srcDir 'core/src'
         }
         resources {
-            srcDir 'coresrc'
+            srcDir 'core/src'
         }
     }
     test {
@@ -134,13 +91,14 @@ task cpCollections(type: Copy) {
 task setUpResources(dependsOn: cpResources) {
 }
 setUpResources.doLast {
-  println "READING FILE TREE FROM " + mdSrc + " DIRECTORY"
-  FileTree tree = fileTree(mdSrc) {
+  println "READING FILE TREE FROM ${project.rootDir}/${mdSrc}"
+  FileTree tree = fileTree("${project.rootDir}/${mdSrc}") {
     include "**/*.md"
   }
   tree.visit { f ->
+    println "Look at " + f
     if (f.relativePath.isFile()) {
-      File inFile = new File("${mdSrc}/${f.relativePath}")
+      File inFile = new File("${project.rootDir}/${mdSrc}/${f.relativePath}")
       println "Need to work on " + inFile
       def segs = f.relativePath.getSegments()
       String treePath = "${buildDir}/specs"
@@ -159,8 +117,12 @@ setUpResources.doLast {
       File htmlFile = new File(outDir, htmlFileName)
       println "Created ${htmlFile}"
 
-      String body = Processor.process(inFile.getText("UTF-8"),Configuration.DEFAULT)
-      htmlFile.setText("${htmlPreface}${body}${htmlEnd}", "UTF-8")
+      try {
+	String body = Processor.process(inFile.getText("UTF-8"),Configuration.DEFAULT)
+	htmlFile.setText("${htmlPreface}${body}${htmlEnd}", "UTF-8")
+      } catch (Exception e) {
+	println "Failed on file ${inFile}: ${e}"
+      }
     }
   }
 }
@@ -183,8 +145,11 @@ addVersion.doLast {
 }
 
 task conc(type: Copy, dependsOn: [test, addVersion, cpCollections]) {
-//task conc(type: Copy) {
   from "${buildDir}/concordion-results"
   into "${buildDir}/concordion-formatted"
   filter(ReplaceTokens, tokens: tokenMap)
 }
+
+
+// End concordion spec tasks
+// ******************************************************************* //

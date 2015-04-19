@@ -44,10 +44,10 @@ precision.
     def twelfths = [:]
     sites.each { s ->
       if (s.rawLatFract != null) {
-	twelfths[s.ptolemySite.urnString] = keyForFract(s.rawLatFract.getFractionValue())
-	System.err.println "lan fract = " + keyForFract(s.rawLanFract.getFractionValue())
+	twelfths[s.ptolemySite.urnString] = keyForFract(s.rawLatFract)
+	//System.err.println "lat fract = " + keyForFract(s.rawLatFract)
       } else {
-	System.err.println "NULL val for rawlatfract on ${s} (${s.ptolemySite.urnString})"
+	//System.err.println "NULL val for rawlatfract on ${s} (${s.ptolemySite.urnString})"
       }
     }
     return twelfths
@@ -145,5 +145,25 @@ precision.
     }
     return histo
   }
-  
+
+
+
+
+
+
+    // maps a histogram of fractional values
+  HashMap latTwelfthsHist() {
+    HashMap histo = initTwelfths()
+    siteList.each { s ->
+      PtolemySite pt =  s.ptolemySite
+      BigDecimal decimal = 0
+      if (pt.latFraction != null) {
+	decimal = pt.latFraction.getFractionValue()
+      }
+      String twelfths = keyForFract(decimal)
+      histo[twelfths] = histo[twelfths] + 1
+    }
+    return histo
+  }
+
 }
