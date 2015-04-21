@@ -10,6 +10,8 @@ package edu.holycross.shot.ptolemy
  */
 class SpatialAnalyst {
 
+  Integer debug =  0
+  
   /*
 - for each point in a set: find its twelfth value.
 - find most precise fraction in the set
@@ -18,42 +20,83 @@ precision.
    */
 
 
-  // list of  ModernSites
+  
+
+  /** List of  ModernSites objects */
   ArrayList siteList
   
-  // constructor with list of ModernSite objects
+  /** Constructor with list of ModernSite objects. 
+   * @param modernSites Sites to analyze.
+   */
   SpatialAnalyst(ArrayList modernSites){
     siteList = modernSites
+    if (debug > 0) {
+      System.err.println "SpatialAnalyst: initialized with " + siteList.size() + " sites"
+    }
   }
 
 
+  /** Creates map of strings indicating fractional value, in twelfths, for
+   * each site in sites.
+   * 
+   */
   static HashMap lonTwelfthsMap(ArrayList sites) {
     def twelfths = [:]
     sites.each { s ->
       if (s.rawLonFract != null) {
 	twelfths[s.ptolemySite.urnString] = keyForFract(s.rawLonFract)
-	//System.err.println "lon fract = " + keyForFract(s.rawLonFract)
       } else {
-	//System.err.println "NULL val for rawlonfract on ${s} (${s.ptolemySite.urnString})"
+	twelfths[s.ptolemySite.urnString] = "00"
       }
     }
     return twelfths
   }
 
+
+
+  static HashMap lonPrecisionMap(ArrayList sites) {
+    def precision = [:]
+    sites.each { s ->
+      if (s.rawLonFract != null) {
+	precision[s.ptolemySite.urnString] = precisionForFract(s.rawLonFract)
+      } else {
+	precision[s.ptolemySite.urnString] = 0
+      }
+    }
+    return precision
+  }
+
+
+
+
+  
   static HashMap latTwelfthsMap(ArrayList sites) {
     def twelfths = [:]
     sites.each { s ->
       if (s.rawLatFract != null) {
 	twelfths[s.ptolemySite.urnString] = keyForFract(s.rawLatFract)
-	//System.err.println "lat fract = " + keyForFract(s.rawLatFract)
       } else {
-	//System.err.println "NULL val for rawlatfract on ${s} (${s.ptolemySite.urnString})"
+	twelfths[s.ptolemySite.urnString] = "00"
       }
     }
     return twelfths
   }
 
 
+  static HashMap latPrecisionMap(ArrayList sites) {
+    def precision = [:]
+    sites.each { s ->
+      if (s.rawLatFract != null) {
+	precision[s.ptolemySite.urnString] = precisionForFract(s.rawLatFract)
+      } else {
+	precision[s.ptolemySite.urnString] = 0
+      }
+    }
+    return precision
+  }
+
+
+  
   
   HashMap lonTwelfthsMap() {
     return lonTwelfthsMap(siteList)
@@ -63,6 +106,72 @@ precision.
   HashMap latTwelfthsMap() {
     return latTwelfthsMap(siteList)
   }
+
+
+
+  HashMap lonPrecisionMap() {
+    return lonPrecisionMap(siteList)
+  }
+
+
+  HashMap latPrecisionMap() {
+    return latPrecisionMap(siteList)
+  }
+
+
+  // minimum precision, in 12ths of a degree, implied
+  // by a decimal fraction
+  static Integer precisionForFract(BigDecimal decimal) {
+    Integer twelfth
+    switch(decimal) {
+    case 0:
+    twelfth = 0
+    break
+    
+    case 0.083:
+    twelfth = 1
+    break
+
+    case 0.167:
+    twelfth = 2
+    break
+
+    case 0.25:
+        twelfth = 3
+    break
+    case 0.333:
+        twelfth = 4
+    break
+    case 0.416:
+        twelfth = 1
+    break
+    case   0.5:
+    twelfth = 2
+    break
+
+    case 0.583:
+        twelfth = 1
+    break
+    case 0.667:
+        twelfth = 4
+    break
+    case 0.75:
+        twelfth = 3
+    break
+    case 0.833:
+        twelfth = 2
+    break
+    case 0.916:
+        twelfth = 1
+    break
+    default:
+    throw new Exception("SpatialAnalyst: unrecognized fraction for twelfth ${decimal}")
+    break
+    }
+    return twelfth
+
+  }
+
   
   static String keyForFract(BigDecimal decimal)
   throws Exception {
